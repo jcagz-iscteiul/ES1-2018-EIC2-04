@@ -31,7 +31,7 @@ public class XML {
 		Document doc = docBuilder.parse(filepath);
 		
 		System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
-
+	
 		
 		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 		
@@ -76,6 +76,8 @@ public class XML {
 		transformer.transform(source, result);
 
 		System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+		
+		//Catch's
 
 	   } catch (ParserConfigurationException pce) {
 		pce.printStackTrace();
