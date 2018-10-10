@@ -35,6 +35,8 @@ public class XML {
 		
 		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 		
+		
+		//Dados alterados ou não
 		if(email == null && password == null) {
 			System.out.println("Nenhum dado foi alterado");
 		} else {

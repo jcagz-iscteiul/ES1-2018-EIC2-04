@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<XML>	
+	<Service Account="eic2.04.lei@gmail.com" Password="ISCTE2018lei"/>
+	<Paths>
+		<docPath>/users/js/importantDocument.doc</docPath>
+		<logPath>/users/js/dailyLog.log</logPath>
+	</Paths>	
+</XML>
