@@ -26,8 +26,6 @@ public class Main extends Application {
 		
 		
 		
-		
-		
 		//3ªcommit 
 		//4ºcommit
 }
