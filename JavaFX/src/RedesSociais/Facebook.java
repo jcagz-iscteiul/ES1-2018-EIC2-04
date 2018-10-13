@@ -17,7 +17,8 @@ public class Facebook {  //implements interfaceFiltragem
 	private final String accessToken = "EAAfIbZAN045UBAGZB4i8TxPzMZAwvjDS7WqrUAk1ZCteeZBmcwBTksKH2gjmI5OaAeqZCx6bfr3UGSWSWAbjIINVN7CtnD7La4ZA4do49Ieye3lZAk0EfQtmI8J2qXzVZCgZA4hazBHgtmV7LRlqHRlUayc95P2j992H3oFFgAZAxlAip8AdSpMa4fF";
 	private FacebookClient fbClient = new DefaultFacebookClient(accessToken);
 	private final User me = fbClient.fetchObject("me", User.class);
-	private List<Post> posts = new ArrayList<Post>();
+	
+	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
 	
 	
 	
@@ -34,16 +35,14 @@ public class Facebook {  //implements interfaceFiltragem
 		
 		for(List<Post> page: result) {
 			for(Post aPost : page) {
-				posts.add(aPost);
+				fb_posts.add(new FacebookPost(aPost));
 			}
 		}
-		
-		
 	}
 	
 	
-	public List<Post> getPosts(){
-		return posts;
+	public ArrayList<FacebookPost> getPosts(){
+		return fb_posts;
 	}
 	
 	
