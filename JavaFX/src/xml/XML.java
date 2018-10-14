@@ -45,26 +45,26 @@ public class XML {
 		
 		// Set email attribute
 		if(email != null) {
-		NamedNodeMap attr_email = Facebook.getAttributes();
-		Node nodeAttr_email = attr_email.getNamedItem("Email");
-		nodeAttr_email.setTextContent(email);
-		
-		
-        // Print do novo email
-		System.out.print("Email : ");
-        System.out.println(nodeAttr_email.getNodeValue());
+			NamedNodeMap attr_email = Facebook.getAttributes();
+			Node nodeAttr_email = attr_email.getNamedItem("Email");
+			nodeAttr_email.setTextContent(email);
+			
+			
+	        // Print do novo email
+			System.out.print("Email : ");
+	        System.out.println(nodeAttr_email.getNodeValue());
 		}
 		
 		// Set password attribute
         if(password != null) {
-		NamedNodeMap attr_password = Facebook.getAttributes();
-		Node nodeAttr_password = attr_password.getNamedItem("Password");
-		nodeAttr_password.setTextContent(password);
-        
-        
-		 // Print da nova password
-		System.out.print("Password : ");
-        System.out.println(nodeAttr_password.getNodeValue());
+			NamedNodeMap attr_password = Facebook.getAttributes();
+			Node nodeAttr_password = attr_password.getNamedItem("Password");
+			nodeAttr_password.setTextContent(password);
+	        
+	        
+			 // Print da nova password
+			System.out.print("Password : ");
+	        System.out.println(nodeAttr_password.getNodeValue());
         }
 
 
