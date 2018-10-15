@@ -22,8 +22,11 @@ import org.xml.sax.SAXException;
 
 public class XML {
 	
+	private String AcessToken;
+	private String AppID;
+	private String AppSecret;
 	
-	// ------------------------------------- GETERS ------------------------------------------
+	// ------------------------------------- SETERS ------------------------------------------
 
 	public void setAppSecret(String AppSecret) {
 
@@ -43,7 +46,8 @@ public class XML {
 			NamedNodeMap attr_appsecret = Facebook.getAttributes();
 			Node nodeAttr_appsecret = attr_appsecret.getNamedItem("AppSecret");
 			nodeAttr_appsecret.setTextContent(AppSecret);
-
+			
+			
 			// Print do novo AppSecret
 			System.out.print("AppSecret : ");
 			System.out.println(nodeAttr_appsecret.getNodeValue());
@@ -150,10 +154,107 @@ public class XML {
 			sae.printStackTrace();
 		}
 	}
-
-// ----------------------------------- SETERS ----------------------------------------------------
 	
-	public void getAcessToken() {
+	
+
+// ----------------------------------- GETERS ----------------------------------------------------
+	
+	
+	
+	
+	
+	public String getAppSecret() throws ParserConfigurationException, SAXException, IOException {
+
+		
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
+
+		// Não mexer até aqui
+
+		NamedNodeMap attr_appsecret = Facebook.getAttributes();
+		String nodeAttr_appsecret = attr_appsecret.getNamedItem("AppSecret").toString();
+		String result = nodeAttr_appsecret.substring(nodeAttr_appsecret.indexOf("=") + 1);
+		String appsecret = result.substring(1, result.length()-1);
+		//System.out.println(appsecret);
+		
+		return appsecret;
+		
+	
+		
+	
+		
+		
+	}
+	
+	public String getAcessToken() throws ParserConfigurationException, SAXException, IOException {
+		
+
+		
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
+
+		// Não mexer até aqui
+
+		NamedNodeMap attr_acesstoken = Facebook.getAttributes();
+		String nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken").toString();
+		String result = nodeAttr_acesstoken.substring(nodeAttr_acesstoken.indexOf("=") + 1);
+		String acesstoken = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return acesstoken;
+		
+			
+		
+	}
+
+	public String getAppID() throws ParserConfigurationException, SAXException, IOException {
+	
+	
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory .newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Facebook = doc.getElementsByTagName("Facebook").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_appid = Facebook.getAttributes();
+			String nodeAttr_appid = attr_appid.getNamedItem("AppID").toString();
+			String result = nodeAttr_appid.substring(nodeAttr_appid.indexOf("=") + 1);
+			String appid = result.substring(1, result.length()-1);
+			//System.out.println(appid);
+			
+			return appid;
+			
+	
+	
+	}
+	
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+		XML xml = new XML();
+		
+		String appSecret = xml.getAppSecret();
+		System.out.println(appSecret);
+		
+		String acessToken = xml.getAcessToken();
+		System.out.println(acessToken);
+		
+		String appid = xml.getAppID();
+		System.out.println(appid);
 		
 		
 	}
