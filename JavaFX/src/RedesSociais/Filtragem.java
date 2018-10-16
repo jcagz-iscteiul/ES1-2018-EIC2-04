@@ -13,5 +13,7 @@ public interface Filtragem {
 	//últimas 24 horas
 	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts);
 	
+	//vai buscar um post especifico atraves do post_preview
+	public FacebookPost getPostEspecifico(String titulo);
 
 }

@@ -2,6 +2,8 @@ package RedesSociais;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
@@ -51,6 +53,10 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	public ArrayList<FacebookPost> getPosts(){
 		return fb_posts;
 	}
+	
+	public void setPosts(ArrayList<FacebookPost> fb_posts) {
+		this.fb_posts = fb_posts;
+	}
 
 	//Funções da Interface Filtragem
 
@@ -65,7 +71,13 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	@Override
 	public ArrayList<FacebookPost> palavraChave(String palavra, ArrayList<FacebookPost> fb_posts) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<FacebookPost> novaListaPosts = new ArrayList<FacebookPost>();
+		for(FacebookPost post: fb_posts) {
+			if(post.getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
+				novaListaPosts.add(post);
+			}
+		}
+		return novaListaPosts;
 	}
 
 
@@ -73,6 +85,19 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	@Override
 	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public FacebookPost getPostEspecifico(String titulo) {
+		// TODO Auto-generated method stub
+		for(FacebookPost post: fb_posts) {
+			if(post.getPostPreview().equals(titulo)) {
+				return post;
+			}
+		}
 		return null;
 	}
 	

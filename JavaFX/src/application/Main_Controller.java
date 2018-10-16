@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class Main_Controller implements Initializable{
@@ -60,6 +61,9 @@ public class Main_Controller implements Initializable{
     @FXML
     private Tab tabTwitter;
     
+    @FXML
+    private TextField searchBarFacebook;
+    
     
     
     public Main_Controller() {
@@ -79,11 +83,36 @@ public class Main_Controller implements Initializable{
     	
     }
     
+    @FXML
+    public void searchButton(ActionEvent ae) {
+    	//Vai buscar a palavra que o utilizador escreveu
+    	String palavra = searchBarFacebook.getText();
+    	System.out.println("Palavra a procura: " + palavra);
+    	int index = listFacebook.getSelectionModel().getSelectedIndex();
+    	listFacebook.getSelectionModel().clearSelection(index);
+    	listFacebook.getItems().clear();
+    	//Vai buscar a lista nova
+    	ArrayList<FacebookPost> listaFacebook = fb.getPosts();
+    	ArrayList<FacebookPost> lista = fb.palavraChave(palavra, listaFacebook);
+  
+    	this.fb_posts = lista;
+    	for(FacebookPost fbPost: lista) {
+    		System.out.println(fbPost.getPostPreview());
+    		listFacebook.getItems().add(fbPost.getPostPreview());
+    	}
+    	
+    }
+    
+//    @FXML
+//    public void listEmailClick(ActionEvent event) {
+//    	System.out.println("Clickei na lista Email!");
+//    }
+    
     
    
 
 
-    ObservableList<String> lista = FXCollections.observableArrayList();
+//    ObservableList<String> lista = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -96,6 +125,13 @@ public class Main_Controller implements Initializable{
 			System.out.println("twitter ja estava selecionado o email");
 		}
 		
+		listEmail.getItems().add("Item1");
+		listEmail.getItems().add("Item2");
+		listEmail.getItems().add("Item3");
+		listEmail.getItems().add("Item4");
+		listEmail.getItems().add("Item5");
+		listEmail.getItems().add("Item6");
+		
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
 
 		    @Override
@@ -106,12 +142,13 @@ public class Main_Controller implements Initializable{
 		        	
 		        	
 		        	for(FacebookPost post : fb_posts) {
-		        		lista.add(post.getPostPreview());
+//		        		lista.add(post.getPostPreview());
+		        		listFacebook.getItems().add(post.getPostPreview());
 		    			
 		    		}
 		        	
 
-		        	listFacebook.setItems(lista);
+//		        	listFacebook.setItems(lista);
 		        	fb_flag=true;
 		        	
 		        }
@@ -128,20 +165,60 @@ public class Main_Controller implements Initializable{
 		
 		
 		listFacebook.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-		    @Override
+		    
+			private int currentSelection = -1;
+			
+			@Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-		        
-		        for(FacebookPost post : fb_posts) {
-		        	if(newValue.equals(post.getPostPreview())) {
-		        		System.out.println(post.getFullPost());
-		        		textAreaFacebook_list.clear();
-		        		textAreaFacebook_list.appendText(post.getFullPost());
-		        		
-		        	}
-		        	
-		        }
+		    	
+		    	
+		    	
+//		        for(FacebookPost post : fb.getPosts()) {
+////		        	System.out.println(post.getPostPreview());
+//		        	if(newValue.equals(post.getPostPreview())) {
+//		        		System.out.println(post.getFullPost());
+//		        		textAreaFacebook_list.clear();
+//		        		textAreaFacebook_list.appendText(post.getFullPost());
+//		        		
+//		        	}
+//		        	
+//		        }
+				
+				int i = listFacebook.getSelectionModel().getSelectedIndex();
+				if(i != currentSelection) {
+					currentSelection = i;	
+					String selectedItem = listFacebook.getSelectionModel().getSelectedItem();
+					System.out.println(selectedItem);
+					FacebookPost post = fb.getPostEspecifico(selectedItem);
+					textAreaFacebook_list.clear();
+					textAreaFacebook_list.appendText(post.getFullPost());
+					//Ir buscar o post atraves do titulo (com o objeto fb)
+//					for(FacebookPost post: fb.getPosts()) {
+//						if(newValue.equals(post.getFullPost())) {
+//							textAreaFacebook_list.clear();
+//							textAreaFacebook_list.appendText(post.getFullPost());
+//						}
+//					}
+				}
+				currentSelection = -1;
 		    }
+		    
 		});
+		
+		listEmail.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			
+			@Override
+			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+			        
+					for(String item: listEmail.getItems()) {
+						if(newValue.equals(item)) {
+							System.out.println("Clickei neste item: " + item);
+						}
+						
+					}
+			    }
+		});
+		
 		
 		
 	}
