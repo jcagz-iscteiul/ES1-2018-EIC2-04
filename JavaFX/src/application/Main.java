@@ -19,15 +19,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-	//1ºcommit
-		
-	//2ºcommit
-		
-		
-		
-		
-		//3ªcommit 
-		//4ºcommit
 }
 	
 	public static void main(String[] args) {
