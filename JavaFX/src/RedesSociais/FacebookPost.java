@@ -12,7 +12,7 @@ public class FacebookPost {
 	private String fullPost;
 	
 	public FacebookPost(Post post) {
-		this.postPreview = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22);
+		this.postPreview = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22) + "... ";
 		this.date = post.getCreatedTime();
 		this.fullPost = post.getMessage();
 	}
