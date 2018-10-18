@@ -1,6 +1,9 @@
 package RedesSociais;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +23,7 @@ import com.restfb.Version;
 public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	
 	private final Version version = Version.VERSION_2_11;
-	private final String accessToken = "EAAGZCQ9NArewBAKqCLOMl8JiAPX4lU6WF9XDvgYo9oNMop4dPHECQtop2AUMcJu6zqS390WpmDj2lbhyzsD37G0M5NfGZC86TMQkw5ab4md0ZAaqSSBEtTgb6IvFntopAxLmQLnRcLBqNJ2pYc9j6IwCxshhZBkMWoNGt8x7rHhMDgIuIsXZA";
+	private final String accessToken = "EAAb1xNqnPAcBAFpC6yZCPtFvTZB22CV8RjitcWBHrUfWfMys0cFpaFcjbLtIggy3qqfC4Hgl1GnEVnh4I34xBzb2L0hsuQOZBB44rRkn8LphPLdvSulL0hF7pUXG2f5Cm6ZCwuLT1sPNIZBZAJkLQdkLNZAtOxddLJlpQ8rls0nZBmaLORsMZClHx";
 	private FacebookClient fbClient = new DefaultFacebookClient(accessToken, version);
 	private final User me = fbClient.fetchObject("me", User.class);
 	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
@@ -84,15 +87,29 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 
 	@Override
 	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<FacebookPost> last24hours = new ArrayList<FacebookPost>();
+		
+		Calendar calendar = Calendar.getInstance(); 
+		Date today = calendar.getTime();
+		System.out.println("Data de hoje: " + today.toString());
+		
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		Date yesterday = calendar.getTime();
+		System.out.println("data hà 24h atrás: " + yesterday.toString());
+		
+		for(FacebookPost post : fb_posts) {
+			if(post.getDate().compareTo(yesterday) * post.getDate().compareTo(today)<=0){
+				last24hours.add(post);
+			}
+		}
+		
+		return last24hours;
 	}
 
 
 
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
-		// TODO Auto-generated method stub
 		for(FacebookPost post: fb_posts) {
 			if(post.getPostPreview().equals(titulo)) {
 				return post;
@@ -102,5 +119,9 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	}
 	
 
+	
+	
+	public static void main(String[] args) {
+	}
 
 }

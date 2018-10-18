@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -64,6 +65,9 @@ public class Main_Controller implements Initializable{
     @FXML
     private TextField searchBarFacebook;
     
+    @FXML
+    private SplitMenuButton facebookSplitMenu;
+    
     
     
     public Main_Controller() {
@@ -75,13 +79,23 @@ public class Main_Controller implements Initializable{
     
     
     
+    @FXML
+    public void filtragem24_facebook(ActionEvent event) {
+    	listFacebook.getItems().clear();
+    	
+    	for(FacebookPost post : fb.vinteQuatroHoras(fb.getPosts())){
+    		listFacebook.getItems().add(post.getPostPreview());
+    	}
+    }
+    
+    
 
     @FXML
     void printa(ActionEvent event) {
     	System.out.println("printa");
-    	area.appendText("benfica");
-    	
+    	area.appendText("benfica");	
     }
+    
     
     @FXML
     public void searchButton(ActionEvent ae) {
