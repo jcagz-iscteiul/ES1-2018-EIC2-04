@@ -1,5 +1,6 @@
 package RedesSociais;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,6 +8,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
@@ -16,6 +21,9 @@ import com.restfb.types.FacebookType;
 import com.restfb.types.Page;
 import com.restfb.types.Post;
 import com.restfb.types.User;
+
+import xml.XML;
+
 import com.restfb.Version;
 
 //import java.util.List;
@@ -23,14 +31,19 @@ import com.restfb.Version;
 public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	
 	private final Version version = Version.VERSION_2_11;
-	private final String accessToken = "EAAb1xNqnPAcBAFpC6yZCPtFvTZB22CV8RjitcWBHrUfWfMys0cFpaFcjbLtIggy3qqfC4Hgl1GnEVnh4I34xBzb2L0hsuQOZBB44rRkn8LphPLdvSulL0hF7pUXG2f5Cm6ZCwuLT1sPNIZBZAJkLQdkLNZAtOxddLJlpQ8rls0nZBmaLORsMZClHx";
-	private FacebookClient fbClient = new DefaultFacebookClient(accessToken, version);
-	private final User me = fbClient.fetchObject("me", User.class);
+	
+	private FacebookClient fbClient; 
+	private User me;
 	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
-	//pageID : 245783216099056
+	private XML xml = new XML();
+	private final String accessToken;
 	
 	
-	public Facebook() {
+	public Facebook() throws ParserConfigurationException, SAXException, IOException {
+		
+		accessToken = xml.getAcessToken();
+		fbClient = new DefaultFacebookClient(accessToken, version);
+		me = fbClient.fetchObject("me", User.class);
 		addPostsToArray();
 	}
 	
