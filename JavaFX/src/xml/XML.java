@@ -22,6 +22,12 @@ import org.xml.sax.SAXException;
 
 public class XML {
 	
+<<<<<<< HEAD
+=======
+	private String AcessToken;
+	private String AppID;
+	private String AppSecret;
+>>>>>>> refs/heads/Garcez
 	
 	// ------------------------------------- SETERS ------------------------------------------
 
