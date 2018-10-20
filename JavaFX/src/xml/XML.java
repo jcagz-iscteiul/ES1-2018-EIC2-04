@@ -22,12 +22,10 @@ import org.xml.sax.SAXException;
 
 public class XML {
 	
-<<<<<<< HEAD
-=======
+
 	private String AcessToken;
 	private String AppID;
 	private String AppSecret;
->>>>>>> refs/heads/Garcez
 	
 	// ------------------------------------- SETERS ------------------------------------------
 
@@ -44,7 +42,7 @@ public class XML {
 
 			Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-			// Não mexer até aqui
+			// NÃ£o mexer atÃ© aqui
 
 			NamedNodeMap attr_appsecret = Facebook.getAttributes();
 			Node nodeAttr_appsecret = attr_appsecret.getNamedItem("AppSecret");
@@ -61,7 +59,7 @@ public class XML {
 			StreamResult result = new StreamResult(new File(filepath));
 			transformer.transform(source, result);
 
-			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+			System.out.println("Ficheiro xml salvo com as alteraÃ§Ãµes pretendidas");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -87,7 +85,7 @@ public class XML {
 
 			Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-			// Não mexer até aqui
+			// NÃ£o mexer atÃ© aqui
 
 			NamedNodeMap attr_appid = Facebook.getAttributes();
 			Node nodeAttr_appid = attr_appid.getNamedItem("AppID");
@@ -103,7 +101,7 @@ public class XML {
 			StreamResult result = new StreamResult(new File(filepath));
 			transformer.transform(source, result);
 
-			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+			System.out.println("Ficheiro xml salvo com as alteraÃ§Ãµes pretendidas");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -129,7 +127,7 @@ public class XML {
 
 			Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-			// Não mexer até aqui
+			// NÃ£o mexer atÃ© aqui
 
 			NamedNodeMap attr_acesstoken = Facebook.getAttributes();
 			Node nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken");
@@ -145,7 +143,7 @@ public class XML {
 			StreamResult result = new StreamResult(new File(filepath));
 			transformer.transform(source, result);
 
-			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+			System.out.println("Ficheiro xml salvo com as alteraÃ§Ãµes pretendidas");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -178,7 +176,7 @@ public class XML {
 
 		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-		// Não mexer até aqui
+		// NÃ£o mexer atÃ© aqui
 
 		NamedNodeMap attr_appsecret = Facebook.getAttributes();
 		String nodeAttr_appsecret = attr_appsecret.getNamedItem("AppSecret").toString();
@@ -208,7 +206,7 @@ public class XML {
 
 		Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-		// Não mexer até aqui
+		// NÃ£o mexer atÃ© aqui
 
 		NamedNodeMap attr_acesstoken = Facebook.getAttributes();
 		String nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken").toString();
@@ -233,7 +231,7 @@ public class XML {
 
 			Node Facebook = doc.getElementsByTagName("Facebook").item(0);
 
-			// Não mexer até aqui
+			// NÃ£o mexer atÃ© aqui
 
 			NamedNodeMap attr_appid = Facebook.getAttributes();
 			String nodeAttr_appid = attr_appid.getNamedItem("AppID").toString();
