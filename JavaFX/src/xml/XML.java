@@ -1,5 +1,9 @@
-package xml;
+/*
+ * Está classe é reponsavél pela leitura e escrita do ficheiro xml
+ * @author eic2.04
+ */
 
+package xml;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +29,12 @@ public class XML {
 	
 	// ------------------------------------- SETERS ------------------------------------------
 
+	/**
+	 * Altera o campo AppSecret no ficheiro xml com o novo valor pretendido
+	 * 
+	 */
 	public void setAppSecret(String AppSecret) {
+		
 
 		try {
 
@@ -67,7 +76,12 @@ public class XML {
 			sae.printStackTrace();
 		}
 	}
-
+	
+	
+	/**
+	 * Altera o campo AppID no ficheiro xml com o novo valor pretendido
+	 * 
+	 */
 	public void setAppID(String AppID) {
 
 		try {
@@ -109,7 +123,11 @@ public class XML {
 			sae.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Altera o campo AcessToken no ficheiro xml com o novo valor pretendido
+	 * 
+	 */
 	public void setAcessToken(String AcessToken) {
 
 		try {
@@ -158,8 +176,10 @@ public class XML {
 	
 	
 	
-	
-	
+	/**
+	 * Returna o valor AppSecret do ficheiro xml
+	 * @return O valor AppSecret
+	 */
 	public String getAppSecret() throws ParserConfigurationException, SAXException, IOException {
 
 		
@@ -181,14 +201,14 @@ public class XML {
 		//System.out.println(appsecret);
 		
 		return appsecret;
-		
-	
-		
-	
-		
+			
 		
 	}
 	
+	/**
+	 * Returna o valor AcessToken do ficheiro xml
+	 * @return O valor AcessToken
+	 */
 	public String getAcessToken() throws ParserConfigurationException, SAXException, IOException {
 		
 
@@ -214,7 +234,11 @@ public class XML {
 			
 		
 	}
-
+	
+	/**
+	 * Returna o valor AppID do ficheiro xml
+	 * @return O valor AppID
+	 */
 	public String getAppID() throws ParserConfigurationException, SAXException, IOException {
 	
 	
@@ -239,20 +263,5 @@ public class XML {
 			
 	
 	
-	}
-	
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-		XML xml = new XML();
-		
-		String appSecret = xml.getAppSecret();
-		System.out.println(appSecret);
-		
-		String acessToken = xml.getAcessToken();
-		System.out.println(acessToken);
-		
-		String appid = xml.getAppID();
-		System.out.println(appid);
-		
-		
 	}
 }
