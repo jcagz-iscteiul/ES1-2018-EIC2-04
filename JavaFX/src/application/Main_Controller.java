@@ -1,10 +1,15 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import com.restfb.types.Post;
 
@@ -71,8 +76,13 @@ public class Main_Controller implements Initializable{
     
     
     public Main_Controller() {
-		fb = new Facebook();
-		fb_posts = fb.getPosts();
+		try {
+			fb = new Facebook();
+			fb_posts = fb.getPosts();
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
@@ -139,12 +149,6 @@ public class Main_Controller implements Initializable{
 			System.out.println("twitter ja estava selecionado o email");
 		}
 		
-		listEmail.getItems().add("Item1");
-		listEmail.getItems().add("Item2");
-		listEmail.getItems().add("Item3");
-		listEmail.getItems().add("Item4");
-		listEmail.getItems().add("Item5");
-		listEmail.getItems().add("Item6");
 		
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
 
