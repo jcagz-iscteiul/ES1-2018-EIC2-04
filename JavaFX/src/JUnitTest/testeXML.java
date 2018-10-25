@@ -36,7 +36,7 @@ public class testeXML {
 	@Test
 	public void testSetGetAppID() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
-		String GetAppIDAntesTest = teste.getAcessToken();
+		String GetAppIDAntesTest = teste.getAppID();
 		String nova = "teste";
 		teste.setAppID(nova);
 		String atualizada = teste.getAppID();
@@ -54,7 +54,7 @@ public class testeXML {
 	@Test
 	public void testSetGetAppSecret() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
-		String GetAppSecret = teste.getAcessToken();
+		String GetAppSecret = teste.getAppSecret();
 		String nova = "teste";
 		teste.setAppSecret(nova);
 		String atualizada = teste.getAppSecret();
