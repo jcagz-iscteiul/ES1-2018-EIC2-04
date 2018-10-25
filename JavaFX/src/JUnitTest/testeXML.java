@@ -1,4 +1,4 @@
-package xml;
+package JUnitTest;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
+
+import xml.XML;
 
 public class testeXML {
 

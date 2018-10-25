@@ -12,7 +12,7 @@ public class FacebookPost {
 	private String fullPost;
 	
 	public FacebookPost(Post post) {
-		this.postPreview = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22) + "... ";
+		this.postPreview = createPostPreview(post);
 		this.date = post.getCreatedTime();
 		this.fullPost = post.getMessage();
 	}
@@ -28,6 +28,18 @@ public class FacebookPost {
 	public String getFullPost() {
 		return fullPost;
 	}
-
+	
+	
+	public String createPostPreview(Post post) {
+		String str;
+		
+		if(post.getMessage().length() < 22) {
+			str = post.getCreatedTime().toString() + " - " + post.getMessage() + "... ";
+		}
+		else {
+			str = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22) + "... ";
+		}
+		return str;
+	}
 
 }
