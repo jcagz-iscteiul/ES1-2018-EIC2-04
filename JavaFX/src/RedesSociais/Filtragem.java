@@ -4,16 +4,34 @@ import java.util.ArrayList;
 
 public interface Filtragem {
 	
-	//Organizar post de acordo com a origem da mensagem
+	
+	/**
+	 * Retorna uma ArrayList<FacebookPost> organizado por utilizadores
+	 * @param fb_posts
+	 * @return ArrayList<FacebookPost>
+	 */
 	public ArrayList<FacebookPost> origemMensagem(ArrayList<FacebookPost> fb_posts);
 	
-	//Recebe uma palavra chave no conteudo
+	/**
+	 * Retorna uma nova lista de FacebookPost com as respetivas palavras escolhidas pelo utilizador
+	 * @param palavra
+	 * @param fb_posts
+	 * @return ArrayList<FacebookPost>
+	 */
 	public ArrayList<FacebookPost> palavraChave(String palavra, ArrayList<FacebookPost> fb_posts);
 	
-	//últimas 24 horas
+	/**
+	 * Retorna uma nova lista com os posts das últimas 24 horas
+	 * @param fb_posts
+	 * @return ArrayList<FacebookPost>
+	 */
 	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts);
 	
-	//vai buscar um post especifico atraves do post_preview
+	/**
+	 * Retorna um FacebookPost passando o título desse post como argumento
+	 * @param titulo
+	 * @return FacebookPost
+	 */
 	public FacebookPost getPostEspecifico(String titulo);
 
 }

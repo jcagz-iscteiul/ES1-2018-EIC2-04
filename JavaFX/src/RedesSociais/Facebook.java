@@ -27,7 +27,12 @@ import xml.XML;
 import com.restfb.Version;
 
 //import java.util.List;
-
+/**
+ * Simula a rede social facebook
+ * @author
+ * @version
+ *
+ */
 public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	
 	private final Version version = Version.VERSION_2_11;
@@ -48,7 +53,9 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	}
 	
 	
-	
+	/**
+	 * Adiciona os posts do utilizador ao atributo fb_posts
+	 */
 	public void addPostsToArray() {
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		
@@ -65,20 +72,28 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @return 
+	 */
 	public ArrayList<FacebookPost> getPosts(){
 		return fb_posts;
 	}
 	
+	/**
+	 * Altera o atributo fb_posts com uma lista nova
+	 * @param fb_posts
+	 */
 	public void setPosts(ArrayList<FacebookPost> fb_posts) {
 		this.fb_posts = fb_posts;
 	}
 
 	//Funções da Interface Filtragem
 
+	
+	
 	@Override
 	public ArrayList<FacebookPost> origemMensagem(ArrayList<FacebookPost> fb_posts) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -131,10 +146,5 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		return null;
 	}
 	
-
-	
-	
-	public static void main(String[] args) {
-	}
 
 }
