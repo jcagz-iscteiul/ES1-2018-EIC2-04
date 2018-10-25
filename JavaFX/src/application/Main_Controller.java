@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,13 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+/**
+ * É o controlador da interface gráfica. Vão ser inicializados
+ * os handlers dos eventos da interface gráfica
+ * @author 
+ *
+ */
 
 public class Main_Controller implements Initializable{
 
@@ -74,7 +82,10 @@ public class Main_Controller implements Initializable{
     private SplitMenuButton facebookSplitMenu;
     
     
-    
+    /**
+     * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são inicializados através 
+     * da criação do objeto Facebook
+     */
     public Main_Controller() {
 		try {
 			fb = new Facebook();
@@ -127,28 +138,17 @@ public class Main_Controller implements Initializable{
     	
     }
     
-//    @FXML
-//    public void listEmailClick(ActionEvent event) {
-//    	System.out.println("Clickei na lista Email!");
-//    }
-    
-    
-   
 
-
-//    ObservableList<String> lista = FXCollections.observableArrayList();
-
+    /**
+     * 
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Main:Controler ativo");
 		
-		
-		
-		
 		if(tabPane.getSelectionModel().getSelectedItem().equals(tabEmail)) {
 			System.out.println("twitter ja estava selecionado o email");
 		}
-		
 		
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
 
@@ -157,16 +157,10 @@ public class Main_Controller implements Initializable{
 		        if(newTab == tabFacebook && !fb_flag) {
 		        	System.out.println("tab facebook aqui");
 		        	
-		        	
-		        	
 		        	for(FacebookPost post : fb_posts) {
-//		        		lista.add(post.getPostPreview());
 		        		listFacebook.getItems().add(post.getPostPreview());
-		    			
 		    		}
 		        	
-
-//		        	listFacebook.setItems(lista);
 		        	fb_flag=true;
 		        	
 		        }
@@ -177,11 +171,9 @@ public class Main_Controller implements Initializable{
 		        	System.out.println("tab email aqui");
 		        }
 		        }
-		    });
+		});
 		
-		
-		
-		
+		this.textAreaFacebook_list.setWrapText(true);
 		listFacebook.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		    
 			private int currentSelection = -1;
@@ -189,19 +181,6 @@ public class Main_Controller implements Initializable{
 			@Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 		    	
-		    	
-		    	
-//		        for(FacebookPost post : fb.getPosts()) {
-////		        	System.out.println(post.getPostPreview());
-//		        	if(newValue.equals(post.getPostPreview())) {
-//		        		System.out.println(post.getFullPost());
-//		        		textAreaFacebook_list.clear();
-//		        		textAreaFacebook_list.appendText(post.getFullPost());
-//		        		
-//		        	}
-//		        	
-//		        }
-				
 				int i = listFacebook.getSelectionModel().getSelectedIndex();
 				if(i != currentSelection) {
 					currentSelection = i;	
@@ -210,13 +189,6 @@ public class Main_Controller implements Initializable{
 					FacebookPost post = fb.getPostEspecifico(selectedItem);
 					textAreaFacebook_list.clear();
 					textAreaFacebook_list.appendText(post.getFullPost());
-					//Ir buscar o post atraves do titulo (com o objeto fb)
-//					for(FacebookPost post: fb.getPosts()) {
-//						if(newValue.equals(post.getFullPost())) {
-//							textAreaFacebook_list.clear();
-//							textAreaFacebook_list.appendText(post.getFullPost());
-//						}
-//					}
 				}
 				currentSelection = -1;
 		    }

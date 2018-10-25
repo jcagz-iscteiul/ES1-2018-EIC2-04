@@ -26,7 +26,7 @@ import xml.XML;
 
 import com.restfb.Version;
 
-//import java.util.List;
+
 /**
  * Simula a rede social facebook
  * @author
@@ -39,13 +39,8 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	private final String accessToken;
 	private FacebookClient fbClient;
 	private XML xml = new XML();
-	
-
-
-
 	private final User me;
 	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
-	//pageID : 245783216099056
 	
 	
 	public Facebook() throws ParserConfigurationException, SAXException, IOException {
@@ -77,8 +72,8 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	
 	
 	/**
-	 * 
-	 * @return 
+	 * Retorna o resptivo atributo ArrayList<FacebookPost> fb_posts 
+	 * @return ArrayList<FacebookPost>
 	 */
 	public ArrayList<FacebookPost> getPosts(){
 		return fb_posts;
@@ -91,11 +86,17 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	public void setPosts(ArrayList<FacebookPost> fb_posts) {
 		this.fb_posts = fb_posts;
 	}
+	
+	/**
+	 * Retorna o atributo xml da classe Facebook
+	 * @return XML
+	 */
+	public XML getXml() {
+		return xml;
+	}
 
+	
 	//Funções da Interface Filtragem
-
-	
-	
 	@Override
 	public ArrayList<FacebookPost> origemMensagem(ArrayList<FacebookPost> fb_posts) {
 		return null;
@@ -150,9 +151,7 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		return null;
 	}
 	
-	public XML getXml() {
-		return xml;
-	}
+
 	
 
 }
