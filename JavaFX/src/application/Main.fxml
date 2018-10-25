@@ -483,8 +483,8 @@
 								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 							</rowConstraints>
 							<children>
-								<Label alignment="CENTER" prefHeight="17.0" prefWidth="195.0" text="Bem-vindo, jcgaz!" textAlignment="CENTER" />
-								<Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="17.0" prefWidth="195.0" text="08.10.2018" textAlignment="CENTER" GridPane.rowIndex="1" />
+								<Label alignment="CENTER" prefHeight="17.0" prefWidth="195.0" text="Bem-vindo!" textAlignment="CENTER" />
+								<Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="17.0" prefWidth="195.0" text="26.10.2018" textAlignment="CENTER" GridPane.rowIndex="1" />
 							</children>
 						</GridPane>
 					</children>

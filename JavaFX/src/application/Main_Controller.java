@@ -114,7 +114,7 @@ public class Main_Controller implements Initializable{
     @FXML
     public void filtragem24_facebook(ActionEvent event) {
     	listFacebook.getItems().clear();
-    	
+    	textAreaFacebook_list.clear();
     	for(FacebookPost post : fb.vinteQuatroHoras(fb.getPosts())){
     		listFacebook.getItems().add(post.getPostPreview());
     	}
@@ -145,7 +145,7 @@ public class Main_Controller implements Initializable{
     	//Vai buscar a lista nova
     	ArrayList<FacebookPost> listaFacebook = fb.getPosts();
     	ArrayList<FacebookPost> lista = fb.palavraChave(palavra, listaFacebook);
-  
+    	textAreaFacebook_list.clear();
     	this.fb_posts = lista;
     	for(FacebookPost fbPost: lista) {
     		System.out.println(fbPost.getPostPreview());
