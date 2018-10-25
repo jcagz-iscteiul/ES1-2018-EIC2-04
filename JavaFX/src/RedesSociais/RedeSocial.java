@@ -5,5 +5,6 @@ public abstract class RedeSocial {
 	
 	public abstract void autenticarCliente();
 	
-	public abstract void refrescarConteudo();
+	//Possivel metodo futuro
+	//public abstract void refrescarConteudo();
 }

@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
    <children>
-      <Label layoutX="175.0" layoutY="154.0" text="AccessToken:" />
-      <Button fx:id="getAccessToken" layoutX="175.0" layoutY="216.0" mnemonicParsing="false" onAction="#getAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-      <TextArea fx:id="accessToken" layoutX="177.0" layoutY="171.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="setAccesstoken" layoutX="322.0" layoutY="216.0" mnemonicParsing="false" onAction="#setAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
-      <Label layoutX="175.0" layoutY="127.0" text="Facebook XML Editor" />
+      <Label layoutX="14.0" layoutY="41.0" text="AccessToken:" />
+      <Button fx:id="getAccessToken" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#getAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+      <TextArea fx:id="accessToken" layoutX="16.0" layoutY="58.0" prefHeight="38.0" prefWidth="277.0" />
+      <Button fx:id="setAccesstoken" layoutX="161.0" layoutY="103.0" mnemonicParsing="false" onAction="#setAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+      <Label layoutX="14.0" layoutY="14.0" text="Facebook XML Editor" />
    </children>
 </Pane>

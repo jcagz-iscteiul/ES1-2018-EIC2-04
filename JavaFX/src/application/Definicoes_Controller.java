@@ -44,11 +44,10 @@ public class Definicoes_Controller implements Initializable{
 	
     @FXML
     void getAccessTokenInfo(ActionEvent event) throws ParserConfigurationException, SAXException, IOException{
-    	//Facebook fb = new Facebook();
-    	//accessToken.appendText("benfica");
     	accessToken.appendText(fb.getXml().getAcessToken());
     }
     
+    //Facebook Token
     //EAAb1xNqnPAcBAFpC6yZCPtFvTZB22CV8RjitcWBHrUfWfMys0cFpaFcjbLtIggy3qqfC4Hgl1GnEVnh4I34xBzb2L0hsuQOZBB44rRkn8LphPLdvSulL0hF7pUXG2f5Cm6ZCwuLT1sPNIZBZAJkLQdkLNZAtOxddLJlpQ8rls0nZBmaLORsMZClHx
     @FXML
     void setAccessTokenInfo(ActionEvent event) throws ParserConfigurationException, SAXException, IOException{

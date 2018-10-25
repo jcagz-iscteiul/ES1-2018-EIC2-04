@@ -33,10 +33,10 @@ import com.restfb.Version;
  * @version
  *
  */
-public class Facebook implements Filtragem{  //implements interfaceFiltragem
+public class Facebook extends RedeSocial implements Filtragem{  //implements interfaceFiltragem
 	
 	private final Version version = Version.VERSION_2_11;
-	private final String accessToken;
+	private String accessToken;
 	private FacebookClient fbClient;
 	private XML xml = new XML();
 	private final User me;
@@ -45,8 +45,7 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	
 	public Facebook() throws ParserConfigurationException, SAXException, IOException {
 		
-		accessToken = xml.getAcessToken();
-		fbClient = new DefaultFacebookClient(accessToken, version);
+		autenticarCliente();
 		me = fbClient.fetchObject("me", User.class);
 		addPostsToArray();
 	}
@@ -64,10 +63,6 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 					fb_posts.add(new FacebookPost(aPost));
 			}
 		}
-		
-		
-		
-		
 	}
 	
 	
@@ -102,8 +97,6 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		return null;
 	}
 
-
-
 	@Override
 	public ArrayList<FacebookPost> palavraChave(String palavra, ArrayList<FacebookPost> fb_posts) {
 		// TODO Auto-generated method stub
@@ -115,8 +108,6 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		}
 		return novaListaPosts;
 	}
-
-
 
 	@Override
 	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
@@ -139,8 +130,6 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		return last24hours;
 	}
 
-
-
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
 		for(FacebookPost post: fb_posts) {
@@ -150,8 +139,14 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 		}
 		return null;
 	}
-	
 
-	
-
+	@Override
+	public void autenticarCliente() {
+		try {
+			accessToken = xml.getAcessToken();
+			fbClient = new DefaultFacebookClient(accessToken, version);
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

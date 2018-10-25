@@ -44,7 +44,6 @@ import javafx.stage.Stage;
  */
 
 public class Main_Controller implements Initializable{
-
 	
 	private Facebook fb;
 	private ArrayList<FacebookPost> fb_posts;
@@ -68,7 +67,6 @@ public class Main_Controller implements Initializable{
     
     @FXML
     private ListView<String> listFacebook;
-
     
     @FXML
     private TabPane tabPane;
@@ -98,11 +96,8 @@ public class Main_Controller implements Initializable{
 			fb = new Facebook();
 			fb_posts = fb.getPosts();
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
     
     
@@ -120,8 +115,6 @@ public class Main_Controller implements Initializable{
     	}
     }
     
-    
-
     @FXML
     void printa(ActionEvent event) {
     	System.out.println("printa");
@@ -232,21 +225,8 @@ public class Main_Controller implements Initializable{
 						if(newValue.equals(item)) {
 							System.out.println("Clickei neste item: " + item);
 						}
-						
 					}
 			    }
 		});
-		
-		
-		
 	}
-    
-    
-    
-    
-    
-    
-    
-   
-
 }
