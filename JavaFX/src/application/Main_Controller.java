@@ -99,7 +99,11 @@ public class Main_Controller implements Initializable{
 	}
     
     
-    
+    /**
+     * Atualiza a list view da interface gráfica com uma nova lista
+     * de posts que são das últimas 24 horas
+     * @param event
+     */
     @FXML
     public void filtragem24_facebook(ActionEvent event) {
     	listFacebook.getItems().clear();
@@ -117,9 +121,14 @@ public class Main_Controller implements Initializable{
     	area.appendText("benfica");	
     }
     
-    
+    /**
+     * Vai atualizar a list view da interface gráfica com uma nova 
+     * lista de posts com a palavra que o utilizador introduziu na
+     * barra de pesquisa
+     * @param event
+     */
     @FXML
-    public void searchButton(ActionEvent ae) {
+    public void searchButton(ActionEvent event) {
     	//Vai buscar a palavra que o utilizador escreveu
     	String palavra = searchBarFacebook.getText();
     	System.out.println("Palavra a procura: " + palavra);
@@ -139,9 +148,6 @@ public class Main_Controller implements Initializable{
     }
     
 
-    /**
-     * 
-     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Main:Controler ativo");

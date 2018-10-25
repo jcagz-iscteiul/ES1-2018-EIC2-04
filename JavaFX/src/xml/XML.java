@@ -31,7 +31,7 @@ public class XML {
 
 	/**
 	 * Altera o campo AppSecret no ficheiro xml com o novo valor pretendido
-	 * 
+	 * @param AppSecret
 	 */
 	public void setAppSecret(String AppSecret) {
 		
@@ -80,7 +80,7 @@ public class XML {
 	
 	/**
 	 * Altera o campo AppID no ficheiro xml com o novo valor pretendido
-	 * 
+	 * @param AppID
 	 */
 	public void setAppID(String AppID) {
 
@@ -126,7 +126,7 @@ public class XML {
 	
 	/**
 	 * Altera o campo AcessToken no ficheiro xml com o novo valor pretendido
-	 * 
+	 * @param AcessToken
 	 */
 	public void setAcessToken(String AcessToken) {
 
