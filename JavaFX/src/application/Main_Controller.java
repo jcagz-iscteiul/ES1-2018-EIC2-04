@@ -22,7 +22,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitMenuButton;
@@ -31,6 +34,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * É o controlador da interface gráfica. Vão ser inicializados
@@ -52,6 +56,9 @@ public class Main_Controller implements Initializable{
 
     @FXML
     private Button botao;
+    
+    @FXML
+    private Button definicoes;
     
     @FXML
     private TextArea textAreaFacebook_list;
@@ -145,6 +152,21 @@ public class Main_Controller implements Initializable{
     		listFacebook.getItems().add(fbPost.getPostPreview());
     	}
     	
+    }
+    
+    @FXML
+    void openSettingsScene(ActionEvent event) {
+    	try{
+    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Definicoes.fxml"));
+    		Parent root1 = (Parent) fxmlLoader.load();
+    		Stage stage = new Stage();
+    		stage.setTitle("Definicoes");
+    		stage.setScene(new Scene(root1));
+    		stage.show();
+    		}
+    		catch(Exception e){
+    		System.out.println("Cant load new window");
+    		}
     }
     
 

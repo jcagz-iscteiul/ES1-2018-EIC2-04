@@ -489,6 +489,7 @@
 						</GridPane>
 					</children>
 				</AnchorPane>
+            <Button layoutX="520.0" layoutY="60.0" mnemonicParsing="false" onAction="#openSettingsScene" text="Definicoes" />
 			</children>
 		</AnchorPane>
 	</top>
