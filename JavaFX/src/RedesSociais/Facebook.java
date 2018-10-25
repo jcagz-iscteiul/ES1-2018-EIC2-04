@@ -39,6 +39,10 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 	private final String accessToken;
 	private FacebookClient fbClient;
 	private XML xml = new XML();
+	
+
+
+
 	private final User me;
 	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
 	//pageID : 245783216099056
@@ -144,6 +148,10 @@ public class Facebook implements Filtragem{  //implements interfaceFiltragem
 			}
 		}
 		return null;
+	}
+	
+	public XML getXml() {
+		return xml;
 	}
 	
 
