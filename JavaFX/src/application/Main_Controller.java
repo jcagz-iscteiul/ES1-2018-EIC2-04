@@ -135,6 +135,12 @@ public class Main_Controller implements Initializable{
     	System.out.println("evento das 24h");
     	listEmail.getItems().clear();
     	textAreaGmail_list.clear();
+    	
+    	
+    	for(PostGeral post : gm.vinteQuatroHoras(gm.getEmails())){
+    		listEmail.getItems().add(((EmailPost)post).emailPostPreview());
+    	}
+    	
     }
     
     
