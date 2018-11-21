@@ -40,7 +40,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private FacebookClient fbClient;
 	private XML xml = new XML();
 	private final User me;
-	private ArrayList<FacebookPost> fb_posts = new ArrayList<FacebookPost>();
+	private ArrayList<PostGeral> fb_posts = new ArrayList<PostGeral>();
 	
 	
 	public Facebook() throws ParserConfigurationException, SAXException, IOException {
@@ -92,9 +92,9 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	
 	/**
 	 * Retorna o resptivo atributo ArrayList<FacebookPost> fb_posts 
-	 * @return ArrayList<FacebookPost>
+	 * @return ArrayList<PostGeral>
 	 */
-	public ArrayList<FacebookPost> getPosts(){
+	public ArrayList<PostGeral> getPosts(){
 		return fb_posts;
 	}
 	
@@ -102,7 +102,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	 * Altera o atributo fb_posts com uma lista nova
 	 * @param fb_posts
 	 */
-	public void setPosts(ArrayList<FacebookPost> fb_posts) {
+	public void setPosts(ArrayList<PostGeral> fb_posts) {
 		this.fb_posts = fb_posts;
 	}
 	
@@ -117,16 +117,16 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	
 	//Funções da Interface Filtragem
 	@Override
-	public ArrayList<PostGeral> origemMensagem(ArrayList<FacebookPost> fb_posts) {
+	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
 		return null;
 	}
 
 	@Override
-	public ArrayList<FacebookPost> palavraChave(String palavra, ArrayList<FacebookPost> fb_posts) {
+	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
 		// TODO Auto-generated method stub
-		ArrayList<FacebookPost> novaListaPosts = new ArrayList<FacebookPost>();
-		for(FacebookPost post: fb_posts) {
-			if(post.getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
+		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
+		for(PostGeral post: fb_posts) {
+			if(((FacebookPost)post).getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
 				novaListaPosts.add(post);
 			}
 		}
@@ -134,7 +134,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	}
 
 	@Override
-	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> fb_posts) {
 		ArrayList<PostGeral> last24hours = new ArrayList<PostGeral>();
 		
 		Calendar calendar = Calendar.getInstance(); 
@@ -145,8 +145,8 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		Date yesterday = calendar.getTime();
 		System.out.println("data hà 24h atrás: " + yesterday.toString());
 		
-		for(FacebookPost post : fb_posts) {
-			if(post.getDate().compareTo(yesterday) * post.getDate().compareTo(today)<=0){
+		for(PostGeral post : fb_posts) {
+			if(((FacebookPost)post).getDate().compareTo(yesterday) * ((FacebookPost)post).getDate().compareTo(today)<=0){
 				last24hours.add(post);
 			}
 		}
@@ -156,9 +156,9 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
-		for(FacebookPost post: fb_posts) {
-			if(post.getPostPreview().equals(titulo)) {
-				return post;
+		for(PostGeral post: fb_posts) {
+			if(((FacebookPost)post).getPostPreview().equals(titulo)) {
+				return (FacebookPost) post;
 			}
 		}
 		return null;

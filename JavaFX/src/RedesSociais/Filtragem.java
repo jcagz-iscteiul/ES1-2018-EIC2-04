@@ -2,7 +2,7 @@ package RedesSociais;
 
 import java.util.ArrayList;
 
-public interface Filtragem {
+public interface Filtragem{
 	
 	
 	/**
@@ -10,7 +10,7 @@ public interface Filtragem {
 	 * @param fb_posts
 	 * @return ArrayList<FacebookPost>
 	 */
-	public ArrayList<PostGeral> origemMensagem(ArrayList<FacebookPost> fb_posts);
+	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts);
 	
 	/**
 	 * Retorna uma nova lista de FacebookPost com as respetivas palavras escolhidas pelo utilizador
@@ -18,14 +18,14 @@ public interface Filtragem {
 	 * @param fb_posts
 	 * @return ArrayList<FacebookPost>
 	 */
-	public ArrayList<FacebookPost> palavraChave(String palavra, ArrayList<FacebookPost> fb_posts);
+	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts);
 	
 	/**
 	 * Retorna uma nova lista com os posts das últimas 24 horas
 	 * @param fb_posts
 	 * @return ArrayList<FacebookPost>
 	 */
-	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts);
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> fb_posts);
 	
 	/**
 	 * Retorna um FacebookPost passando o título desse post como argumento

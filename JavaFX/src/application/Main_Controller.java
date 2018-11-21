@@ -14,8 +14,10 @@ import org.xml.sax.SAXException;
 
 import com.restfb.types.Post;
 
+import RedesSociais.EmailPost;
 import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
+import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -47,7 +49,9 @@ import javafx.stage.Stage;
 public class Main_Controller implements Initializable{
 	
 	private Facebook fb;
-	private ArrayList<FacebookPost> fb_posts;
+	private ArrayList<PostGeral> fb_posts;
+	private Gmail gm;
+	private ArrayList<PostGeral> gm_posts;
 	private boolean fb_flag = false;
 	
 	
@@ -62,6 +66,9 @@ public class Main_Controller implements Initializable{
     
     @FXML
     private TextArea textAreaFacebook_list;
+    
+    @FXML
+    private TextArea textAreaGmail_list;
     
     @FXML
     private ListView<String> listEmail;
@@ -96,6 +103,8 @@ public class Main_Controller implements Initializable{
 		try {
 			fb = new Facebook();
 			fb_posts = fb.getPosts();
+			this.gm = new Gmail();
+			this.gm_posts = gm.getEmails();
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
@@ -137,13 +146,13 @@ public class Main_Controller implements Initializable{
     	listFacebook.getSelectionModel().clearSelection(index);
     	listFacebook.getItems().clear();
     	//Vai buscar a lista nova
-    	ArrayList<FacebookPost> listaFacebook = fb.getPosts();
-    	ArrayList<FacebookPost> lista = fb.palavraChave(palavra, listaFacebook);
+    	ArrayList<PostGeral> listaFacebook = fb.getPosts();
+    	ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaFacebook);
     	textAreaFacebook_list.clear();
     	this.fb_posts = lista;
-    	for(FacebookPost fbPost: lista) {
-    		System.out.println(fbPost.getPostPreview());
-    		listFacebook.getItems().add(fbPost.getPostPreview());
+    	for(PostGeral fbPost: lista) {
+    		System.out.println(((FacebookPost) fbPost).getPostPreview());
+    		listFacebook.getItems().add(((FacebookPost) fbPost).getPostPreview());
     	}
     	
     }
@@ -169,7 +178,11 @@ public class Main_Controller implements Initializable{
 		System.out.println("Main:Controler ativo");
 		
 		if(tabPane.getSelectionModel().getSelectedItem().equals(tabEmail)) {
-			System.out.println("twitter ja estava selecionado o email");
+			System.out.println("Ja estava selecionado o email");
+			System.out.println("Tamanho da lista posts gmail: " + gm_posts.size());
+			for(PostGeral post: gm_posts) {
+				listEmail.getItems().add(((EmailPost) post).emailPostPreview());
+			}
 		}
 		
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
@@ -179,8 +192,8 @@ public class Main_Controller implements Initializable{
 		        if(newTab == tabFacebook && !fb_flag) {
 		        	System.out.println("tab facebook aqui");
 		        	
-		        	for(FacebookPost post : fb_posts) {
-		        		listFacebook.getItems().add(post.getPostPreview());
+		        	for(PostGeral post : fb_posts) {
+		        		listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
 		    		}
 		        	
 		        	fb_flag=true;
@@ -219,14 +232,30 @@ public class Main_Controller implements Initializable{
 		
 		listEmail.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
+			private int currentSelection = -1;
+			
+			
 			@Override
 			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-			        
-					for(String item: listEmail.getItems()) {
-						if(newValue.equals(item)) {
-							System.out.println("Clickei neste item: " + item);
-						}
+					
+					int i = listEmail.getSelectionModel().getSelectedIndex();
+					System.out.println("i: " + i);
+					if(i != currentSelection) {
+						currentSelection = i;
+						String selectedItem = listEmail.getSelectionModel().getSelectedItem();
+						System.out.println("Selected Item: " + selectedItem);
+						EmailPost post = gm.getPostEspecifico(selectedItem);
+//						System.out.println("Post: " + post.getTitulo());
+						textAreaGmail_list.clear();
+//						System.out.println("Conteudo selecionado no gmail: " + post.getConteudo());
+//						if(post.getConteudo().equals(null)) {
+//							System.out.println("ESTA A DAR NULL");
+//						}
+						textAreaGmail_list.appendText(post.getConteudo());
+						
 					}
+					currentSelection = -1;
+				
 			    }
 		});
 	}
