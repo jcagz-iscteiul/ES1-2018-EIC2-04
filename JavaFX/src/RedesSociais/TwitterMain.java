@@ -161,6 +161,13 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 		this.tw_tweet = tw_tweet;
 	}
 	
+	public String createPost(TwitterPost post) {
+		
+		String str;
+		str = post.getConteudo();
+		return str;
+	}
+	
 	public String createPostPreview(TwitterPost post) {
 		String str;
 

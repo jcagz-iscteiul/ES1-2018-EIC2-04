@@ -24,7 +24,6 @@ public class FacebookPost extends PostGeral{
 	public FacebookPost(Date data, String conteudo, String titulo) {
 		super(data, conteudo, titulo);
 	}
-	
 
 
 

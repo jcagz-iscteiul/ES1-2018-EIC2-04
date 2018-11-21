@@ -117,7 +117,6 @@ public class Main_Controller implements Initializable{
     
     @FXML
     private SplitMenuButton twitterSplitMenu;
-    
     /**
      * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são inicializados através 
      * da criação do objeto Facebook
@@ -318,7 +317,7 @@ public class Main_Controller implements Initializable{
 		
 		
 		
-listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			private int currentSelection = -1;
 			
@@ -326,14 +325,14 @@ listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeLis
 			@Override
 			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 					
-					int i = listTwitter.getSelectionModel().getSelectedIndex();
+					int i = listEmail.getSelectionModel().getSelectedIndex();
 					if(i != currentSelection) {
 						currentSelection = i;
 						String selectedItem = listTwitter.getSelectionModel().getSelectedItem();
 						System.out.println("Selected Item: " + selectedItem);
-						TwitterPost post = (TwitterPost) tw.getPostEspecifico(selectedItem);
-						textAreaTwitter_list.clear();
-						textAreaTwitter_list.appendText(post.getFullPost());
+						EmailPost post = gm.getPostEspecifico(selectedItem);
+						textAreaGmail_list.clear();
+						textAreaGmail_list.appendText(post.getConteudo());
 						
 					}
 					currentSelection = -1;
