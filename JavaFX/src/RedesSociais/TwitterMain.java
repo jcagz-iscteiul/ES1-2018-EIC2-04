@@ -12,15 +12,15 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import xml.XML;
 
-public class Twitter2 extends RedeSocial {
+public class TwitterMain extends RedeSocial {
 
 	private static Twitter me;
 	private XML xml = new XML();
 	private static ArrayList<TwitterTweets> tw_tweet = new ArrayList<TwitterTweets>();
 
-	private static Twitter2 instance = new Twitter2();
+	private static TwitterMain instance = new TwitterMain();
 
-	private Twitter2() {
+	private TwitterMain() {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true).setOAuthConsumerKey("02uUxDelvrtGI6AsX84xvOIUt")
 				.setOAuthConsumerSecret("zpNE9qyTArI1DoPQ9TnIshokOJiXFgSwVjZy1ZGyDSFAJ8LbxT")
@@ -30,7 +30,7 @@ public class Twitter2 extends RedeSocial {
 		me = tf.getInstance();
 	}
 
-	public static Twitter2 getInstance() {
+	public static TwitterMain getInstance() {
 		return instance;
 	}
 
