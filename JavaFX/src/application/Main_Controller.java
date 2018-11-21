@@ -16,6 +16,7 @@ import com.restfb.types.Post;
 
 import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
+import RedesSociais.PostGeral;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -110,8 +111,8 @@ public class Main_Controller implements Initializable{
     public void filtragem24_facebook(ActionEvent event) {
     	listFacebook.getItems().clear();
     	textAreaFacebook_list.clear();
-    	for(FacebookPost post : fb.vinteQuatroHoras(fb.getPosts())){
-    		listFacebook.getItems().add(post.getPostPreview());
+    	for(PostGeral post : fb.vinteQuatroHoras(fb.getPosts())){
+    		listFacebook.getItems().add(post.getTitulo());
     	}
     }
     

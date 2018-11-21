@@ -10,50 +10,36 @@ import com.restfb.types.Post;
  *
  */
 
-public class FacebookPost {
+public class FacebookPost extends PostGeral{
 
 	
-	private String postPreview;
-	private Date date;
-	private String fullPost;
+//	private String postPreview;
+//	private Date date;
+//	private String fullPost;
 	
 	/**
 	 * É o construtor da classe que recebe como argumento um objeto Post que vem da API Facebook
 	 * @param post
 	 */
-	public FacebookPost(Post post) {
-		this.postPreview = createPostPreview(post);
-		this.date = post.getCreatedTime();
-		this.fullPost = post.getMessage();
+	public FacebookPost(Date data, String conteudo, String titulo) {
+		super(data, conteudo, titulo);
 	}
-		
+	
+
+
+
 	public String getPostPreview() {
-		return postPreview;
+		return super.titulo;
 	}
 
 	public Date getDate() {
-		return date;
+		return super.data;
 	}
 
 	public String getFullPost() {
-		return fullPost;
+		return super.conteudo;
 	}
 	
-	/**
-	 * Cria um título para o post de acordo com o tamanho do texto do post
-	 * @param post
-	 * @return String 
-	 */
-	public String createPostPreview(Post post) {
-		String str;
-		
-		if(post.getMessage().length() < 22) {
-			str = post.getCreatedTime().toString() + " - " + post.getMessage() + "... ";
-		}
-		else {
-			str = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22) + "... ";
-		}
-		return str;
-	}
+
 
 }
