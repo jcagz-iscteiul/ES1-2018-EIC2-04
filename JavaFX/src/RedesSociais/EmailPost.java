@@ -18,12 +18,12 @@ public class EmailPost extends PostGeral{
 
 	
 	public String getAssunto() {
-		return conteudo;
+		return titulo;
 	}
 
 
 	public Date getData() {
-		return data;
+		return super.getData();
 	}
 
 
@@ -45,7 +45,7 @@ public class EmailPost extends PostGeral{
 
 
 	public String emailPostPreview() {
-		String str = data.toString() + " - " + conteudo;
+		String str = data.toString() + " - " + titulo;
 		
 		return str;
 	}

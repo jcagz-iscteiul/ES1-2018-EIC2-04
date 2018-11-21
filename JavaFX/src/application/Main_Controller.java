@@ -94,6 +94,9 @@ public class Main_Controller implements Initializable{
     @FXML
     private SplitMenuButton facebookSplitMenu;
     
+    @FXML
+    private SplitMenuButton emailSplitMenu;
+    
     
     /**
      * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são inicializados através 
@@ -124,6 +127,16 @@ public class Main_Controller implements Initializable{
     		listFacebook.getItems().add(post.getTitulo());
     	}
     }
+    
+    
+    
+    @FXML
+    public void filtragem24_gmail(ActionEvent event) {
+    	System.out.println("evento das 24h");
+    	listEmail.getItems().clear();
+    	textAreaGmail_list.clear();
+    }
+    
     
     @FXML
     void printa(ActionEvent event) {
