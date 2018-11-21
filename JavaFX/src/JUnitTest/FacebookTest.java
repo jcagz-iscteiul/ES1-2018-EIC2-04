@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
+import RedesSociais.PostGeral;
 
 class FacebookTest {
 
@@ -20,7 +21,7 @@ class FacebookTest {
 	void test_addPostsToArray() throws ParserConfigurationException, SAXException, IOException {
 
 		Facebook fb1 = new Facebook();
-		ArrayList<FacebookPost> listPosts1 = fb1.getPosts();
+		ArrayList<PostGeral> listPosts1 = fb1.getPosts();
 		assertEquals(listPosts1.size(), fb1.getPosts().size());	
 		}
 }

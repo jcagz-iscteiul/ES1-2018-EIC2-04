@@ -4,43 +4,22 @@ import java.util.Date;
 
 import com.restfb.types.Post;
 
-public class EmailPost {
+public class EmailPost extends PostGeral{
 	
-	private String assunto;
-	private Date data;
-	private String conteudo;
 	private String from;
 	private String to;
 	
 	
-	
-	
-	
-	
 	public EmailPost(String assunto, Date data, String conteudo, String from, String to) {
-		this.assunto = assunto;
-		this.data = data;
-		this.conteudo = conteudo;
+		super(data, conteudo, assunto);
 		this.from = from;
 		this.to = to;
 	}
 
 	
-	
-
-
-
-
-
 	public String getAssunto() {
-		return assunto;
+		return conteudo;
 	}
-
-
-
-
-
-
 
 
 	public Date getData() {
@@ -48,31 +27,14 @@ public class EmailPost {
 	}
 
 
-
-
-
-
-
-
 	public String getConteudo() {
 		return conteudo;
 	}
 
 
-
-
-
-
-
-
 	public String getFrom() {
 		return from;
 	}
-
-
-
-
-
 
 
 
@@ -83,17 +45,11 @@ public class EmailPost {
 
 
 	public String emailPostPreview() {
-		String str = data.toString() + " - " + assunto;
+		String str = data.toString() + " - " + conteudo;
 		
 		return str;
 	}
 
 
-
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

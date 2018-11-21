@@ -16,19 +16,25 @@ import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
 
-public class Gmail extends RedeSocial{
+public class Gmail extends RedeSocial implements Filtragem{
 
 	private IMAPFolder folder;
 	private Store store;
 	private String subject;
 	private Flag flag;
 
-	private ArrayList<EmailPost> emails = new ArrayList<EmailPost>();
+	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
 
 
 	public Gmail() {
-		autenticarCliente();
+		try {
+			autenticarCliente();
+			addEmailsToArray();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
@@ -75,8 +81,8 @@ public class Gmail extends RedeSocial{
 
 			from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
 			to = msg.getAllRecipients()[0].toString();
-
-			emails.add(new EmailPost(assunto, data, conteudo , from, to));
+			EmailPost post = new EmailPost(assunto, data, conteudo, from, to);
+			emails.add(post);
 
 
 
@@ -92,10 +98,10 @@ public class Gmail extends RedeSocial{
 
 
 	public void mostraMailsDaLista() {
-		for(EmailPost e : emails) {
-			System.out.println("FROM: " + e.getFrom());
-			System.out.println("TO: " + e.getTo());
-			System.out.println("Assunto: " + e.getAssunto());
+		for(PostGeral e : emails) {
+			System.out.println("FROM: " + ((EmailPost) e).getFrom());
+			System.out.println("TO: " + ((EmailPost) e).getTo());
+			System.out.println("Assunto: " + ((EmailPost) e).getAssunto());
 			System.out.println("Conteudo: " + e.getConteudo());
 			System.out.println("Data: " + e.getData().toString());
 		}
@@ -127,17 +133,49 @@ public class Gmail extends RedeSocial{
 	}
 
 
-	public static void main(String[] args) {
-		Gmail g = new Gmail();
-		try {
-			g.addEmailsToArray();
-			g.mostraMailsDaLista();
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
+	public ArrayList<PostGeral> getEmails() {
+		return emails;
 	}
+
+
+	@Override
+	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> fb_posts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public EmailPost getPostEspecifico(String titulo) {
+		// TODO Auto-generated method stub
+		for(PostGeral post: emails) {
+			System.out.println("Post get titulo: " + post.getTitulo());
+			if(((EmailPost)post).emailPostPreview().equals(titulo)) {
+				return (EmailPost) post;
+			}
+		}
+		System.out.println("Estou a retornar null!");
+		return null;
+	}
+
+
+
+	
+
+
 
 }
