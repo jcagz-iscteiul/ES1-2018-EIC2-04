@@ -119,7 +119,7 @@
 													<top>
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
-																<TextField layoutX="156.0" layoutY="7.0" />
+																<TextField fx:id="searchBarGmail" layoutX="156.0" layoutY="7.0" onAction="#searchButtonGmail" />
 																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="SplitMenuButton" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" onAction="#filtragem24_gmail" text="Last 24h" />

@@ -92,6 +92,9 @@ public class Main_Controller implements Initializable{
     private TextField searchBarFacebook;
     
     @FXML
+    private TextField searchBarGmail;
+    
+    @FXML
     private SplitMenuButton facebookSplitMenu;
     
     @FXML
@@ -177,6 +180,23 @@ public class Main_Controller implements Initializable{
     }
     
     @FXML
+    public void searchButtonGmail(ActionEvent event) {
+    	String palavra = searchBarGmail.getText();
+    	System.out.println("Palavra a procurar: " + palavra);
+    	int index = listEmail.getSelectionModel().getSelectedIndex();
+    	listEmail.getSelectionModel().clearSelection(index);
+    	listEmail.getItems().clear();
+    	ArrayList<PostGeral> listaEmail = gm.getEmails();
+    	ArrayList<PostGeral> lista = gm.palavraChave(palavra, listaEmail);
+    	textAreaGmail_list.clear();
+    	this.gm_posts = lista;
+    	for(PostGeral post: lista) {
+    		System.out.println(((EmailPost)post).emailPostPreview());
+    		listEmail.getItems().add(((EmailPost)post).emailPostPreview());
+    	}
+    }
+    
+    @FXML
     void openSettingsScene(ActionEvent event) {
     	try{
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Definicoes.fxml"));
@@ -258,18 +278,12 @@ public class Main_Controller implements Initializable{
 			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 					
 					int i = listEmail.getSelectionModel().getSelectedIndex();
-					System.out.println("i: " + i);
 					if(i != currentSelection) {
 						currentSelection = i;
 						String selectedItem = listEmail.getSelectionModel().getSelectedItem();
 						System.out.println("Selected Item: " + selectedItem);
 						EmailPost post = gm.getPostEspecifico(selectedItem);
-//						System.out.println("Post: " + post.getTitulo());
 						textAreaGmail_list.clear();
-//						System.out.println("Conteudo selecionado no gmail: " + post.getConteudo());
-//						if(post.getConteudo().equals(null)) {
-//							System.out.println("ESTA A DAR NULL");
-//						}
 						textAreaGmail_list.appendText(post.getConteudo());
 						
 					}

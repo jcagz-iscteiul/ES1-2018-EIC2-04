@@ -149,7 +149,12 @@ public class Gmail extends RedeSocial implements Filtragem{
 	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
+		for(PostGeral post: emails) {
+			if(((EmailPost)post).getConteudo().toLowerCase().contains(palavra.toLowerCase()))
+				novaListaPosts.add(post);
+		}
+		return novaListaPosts;
 	}
 
 
@@ -179,12 +184,10 @@ public class Gmail extends RedeSocial implements Filtragem{
 	public EmailPost getPostEspecifico(String titulo) {
 		// TODO Auto-generated method stub
 		for(PostGeral post: emails) {
-			System.out.println("Post get titulo: " + post.getTitulo());
 			if(((EmailPost)post).emailPostPreview().equals(titulo)) {
 				return (EmailPost) post;
 			}
 		}
-		System.out.println("Estou a retornar null!");
 		return null;
 	}
 
