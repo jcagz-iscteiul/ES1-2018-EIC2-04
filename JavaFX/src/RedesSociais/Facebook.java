@@ -59,10 +59,34 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		
 		for(List<Post> page: result) {
 			for(Post aPost : page) {
-				if(aPost.getMessage() != null)
-					fb_posts.add(new FacebookPost(aPost));
+				if(aPost.getMessage() != null) {
+					Date data = aPost.getCreatedTime();
+					String conteudo = aPost.getMessage();
+					String titulo = createPostPreview(aPost);
+					
+					fb_posts.add(new FacebookPost(data, conteudo, titulo));
+					
+				}
+					
 			}
 		}
+	}
+	
+	/**
+	 * Cria um título para o post de acordo com o tamanho do texto do post
+	 * @param post
+	 * @return String 
+	 */
+	public String createPostPreview(Post post) {
+		String str;
+		
+		if(post.getMessage().length() < 22) {
+			str = post.getCreatedTime().toString() + " - " + post.getMessage() + "... ";
+		}
+		else {
+			str = post.getCreatedTime().toString() + " - " + post.getMessage().substring(0, 22) + "... ";
+		}
+		return str;
 	}
 	
 	
@@ -93,7 +117,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	
 	//Funções da Interface Filtragem
 	@Override
-	public ArrayList<FacebookPost> origemMensagem(ArrayList<FacebookPost> fb_posts) {
+	public ArrayList<PostGeral> origemMensagem(ArrayList<FacebookPost> fb_posts) {
 		return null;
 	}
 
@@ -110,8 +134,8 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	}
 
 	@Override
-	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
-		ArrayList<FacebookPost> last24hours = new ArrayList<FacebookPost>();
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts) {
+		ArrayList<PostGeral> last24hours = new ArrayList<PostGeral>();
 		
 		Calendar calendar = Calendar.getInstance(); 
 		Date today = calendar.getTime();

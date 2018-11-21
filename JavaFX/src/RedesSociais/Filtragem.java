@@ -10,7 +10,7 @@ public interface Filtragem {
 	 * @param fb_posts
 	 * @return ArrayList<FacebookPost>
 	 */
-	public ArrayList<FacebookPost> origemMensagem(ArrayList<FacebookPost> fb_posts);
+	public ArrayList<PostGeral> origemMensagem(ArrayList<FacebookPost> fb_posts);
 	
 	/**
 	 * Retorna uma nova lista de FacebookPost com as respetivas palavras escolhidas pelo utilizador
@@ -25,13 +25,13 @@ public interface Filtragem {
 	 * @param fb_posts
 	 * @return ArrayList<FacebookPost>
 	 */
-	public ArrayList<FacebookPost> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts);
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<FacebookPost> fb_posts);
 	
 	/**
 	 * Retorna um FacebookPost passando o título desse post como argumento
 	 * @param titulo
 	 * @return FacebookPost
 	 */
-	public FacebookPost getPostEspecifico(String titulo);
+	public PostGeral getPostEspecifico(String titulo);
 
 }
