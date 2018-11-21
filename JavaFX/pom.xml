@@ -48,10 +48,16 @@
 	</dependency>
 	
 	<dependency>
-      <groupId>com.google.apis</groupId>
-      <artifactId>google-api-services-gmail</artifactId>
-      <version>v1-rev96-1.25.0</version>
-    </dependency>
+    	<groupId>javax.mail</groupId>
+    	<artifactId>javax.mail-api</artifactId>
+    	<version>1.5.5</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.sun.mail</groupId>
+    	<artifactId>javax.mail</artifactId>
+    	<version>1.5.5</version>
+	</dependency>
+
     
     
   </dependencies>
