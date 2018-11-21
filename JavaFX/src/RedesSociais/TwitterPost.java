@@ -2,9 +2,11 @@ package RedesSociais;
 
 import java.util.Date;
 
-public class TwitterTweets extends PostGeral{
+import com.restfb.types.Post;
 
-	public TwitterTweets(Date data, String conteudo, String titulo) {
+public class TwitterPost extends PostGeral{
+
+	public TwitterPost(Date data, String conteudo, String titulo) {
 		super(data, conteudo, titulo);
 		// TODO Auto-generated constructor stub
 	}
@@ -21,6 +23,5 @@ public class TwitterTweets extends PostGeral{
 	public String getFullPost() {
 		return super.conteudo;
 	}
-	
 
 }

@@ -19,6 +19,8 @@ import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
 import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
+import RedesSociais.TwitterMain;
+import RedesSociais.TwitterPost;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -48,11 +50,14 @@ import javafx.stage.Stage;
 
 public class Main_Controller implements Initializable{
 	
+	
 	private Facebook fb;
 	private ArrayList<PostGeral> fb_posts;
 	private Gmail gm;
 	private ArrayList<PostGeral> gm_posts;
 	private boolean fb_flag = false;
+	private TwitterMain tw;
+	private ArrayList<PostGeral> tw_posts;
 	
 	
     @FXML
@@ -71,10 +76,16 @@ public class Main_Controller implements Initializable{
     private TextArea textAreaGmail_list;
     
     @FXML
+    private TextArea textAreaTwitter_list;
+    
+    @FXML
     private ListView<String> listEmail;
     
     @FXML
     private ListView<String> listFacebook;
+    
+    @FXML
+    private ListView<String> listTwitter;
     
     @FXML
     private TabPane tabPane;
@@ -95,11 +106,17 @@ public class Main_Controller implements Initializable{
     private TextField searchBarGmail;
     
     @FXML
+    private TextField searchBarTwitter;
+    
+    
+    @FXML
     private SplitMenuButton facebookSplitMenu;
     
     @FXML
     private SplitMenuButton emailSplitMenu;
     
+    @FXML
+    private SplitMenuButton twitterSplitMenu;
     
     /**
      * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são inicializados através 
@@ -111,6 +128,9 @@ public class Main_Controller implements Initializable{
 			fb_posts = fb.getPosts();
 			this.gm = new Gmail();
 			this.gm_posts = gm.getEmails();
+			this.tw = TwitterMain.getInstance();
+			this.tw_posts = tw.getTw_tweet();
+			
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
@@ -240,6 +260,10 @@ public class Main_Controller implements Initializable{
 		        }
 		        if(newTab == tabTwitter) {
 		        	System.out.println("tab twitter aqui");
+		        	
+		        	for(PostGeral post : tw_posts) {
+		        		listTwitter.getItems().add(tw.createPostPreview((TwitterPost) post));
+		        	}
 		        }
 		        if(newTab == tabEmail) {
 		        	System.out.println("tab email aqui");
@@ -285,6 +309,31 @@ public class Main_Controller implements Initializable{
 						EmailPost post = gm.getPostEspecifico(selectedItem);
 						textAreaGmail_list.clear();
 						textAreaGmail_list.appendText(post.getConteudo());
+						
+					}
+					currentSelection = -1;
+				
+			    }
+		});
+		
+		
+		
+listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			
+			private int currentSelection = -1;
+			
+			
+			@Override
+			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					
+					int i = listTwitter.getSelectionModel().getSelectedIndex();
+					if(i != currentSelection) {
+						currentSelection = i;
+						String selectedItem = listTwitter.getSelectionModel().getSelectedItem();
+						System.out.println("Selected Item: " + selectedItem);
+						TwitterPost post = (TwitterPost) tw.getPostEspecifico(selectedItem);
+						textAreaTwitter_list.clear();
+						textAreaTwitter_list.appendText(post.getFullPost());
 						
 					}
 					currentSelection = -1;
