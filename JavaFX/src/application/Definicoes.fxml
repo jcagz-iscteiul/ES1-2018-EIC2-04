@@ -5,12 +5,22 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
    <children>
-      <Label layoutX="14.0" layoutY="41.0" text="AccessToken:" />
-      <Button fx:id="getAccessToken" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#getAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-      <TextArea fx:id="accessToken" layoutX="16.0" layoutY="58.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="setAccesstoken" layoutX="161.0" layoutY="103.0" mnemonicParsing="false" onAction="#setAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+      <Label layoutX="14.0" layoutY="41.0" text="Facebook AccessToken:" />
+      <Button fx:id="getFacebookAccessToken" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#getFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+      <TextArea fx:id="facebookAccessToken" layoutX="16.0" layoutY="58.0" prefHeight="38.0" prefWidth="277.0" />
+      <Button fx:id="setFacebookAccessToken" layoutX="161.0" layoutY="103.0" mnemonicParsing="false" onAction="#setFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
       <Label layoutX="14.0" layoutY="14.0" text="Facebook XML Editor" />
+      <Label layoutX="16.0" layoutY="139.0" text="Twitter XML Editor:" />
+      <Label layoutX="16.0" layoutY="164.0" text="Twitter AccessToken:" />
+      <TextArea fx:id="twitterAccessToken" layoutX="16.0" layoutY="181.0" prefHeight="38.0" prefWidth="277.0" />
+      <Button fx:id="getTwitterAccessToken" layoutX="16.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+      <Button fx:id="setTwitterAccessToken" layoutX="161.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+      <Label layoutX="16.0" layoutY="260.0" text="Gmail XML Editor:" />
+      <Label layoutX="16.0" layoutY="285.0" text="Gmail AccessToken:" />
+      <TextArea fx:id="gmailAccessToken" layoutX="16.0" layoutY="302.0" prefHeight="38.0" prefWidth="277.0" />
+      <Button fx:id="getGmailAccessToken" layoutX="16.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+      <Button fx:id="setGmailAccessToken" layoutX="161.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
    </children>
 </Pane>

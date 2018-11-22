@@ -167,7 +167,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	@Override
 	public void autenticarCliente() {
 		try {
-			accessToken = xml.getAcessToken();
+			accessToken = xml.getFacebookAccessToken();
 			fbClient = new DefaultFacebookClient(accessToken, version);
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();

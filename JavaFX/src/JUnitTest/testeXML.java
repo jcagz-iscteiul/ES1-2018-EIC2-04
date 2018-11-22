@@ -18,12 +18,12 @@ public class testeXML {
 	@Test
 	public void testSetGetAcessToken() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
-		String AcessTokenAntesTest = teste.getAcessToken();
+		String AcessTokenAntesTest = teste.getFacebookAccessToken();
 		String nova = "teste";
-		teste.setAcessToken(nova);
-		String atualizada = teste.getAcessToken();
+		teste.setFacebookAccessToken(nova);
+		String atualizada = teste.getFacebookAccessToken();
 		assertEquals(nova, atualizada);	
-		teste.setAcessToken(AcessTokenAntesTest);
+		teste.setFacebookAccessToken(AcessTokenAntesTest);
 		System.out.println("AcessToken antes do teste reposto!");
 	}
 	
@@ -38,10 +38,10 @@ public class testeXML {
 		XML teste = new XML();
 		String GetAppIDAntesTest = teste.getAppID();
 		String nova = "teste";
-		teste.setAppID(nova);
+		teste.setFacebookAppID(nova);
 		String atualizada = teste.getAppID();
 		assertEquals(nova, atualizada);
-		teste.setAppID(GetAppIDAntesTest);
+		teste.setFacebookAppID(GetAppIDAntesTest);
 		System.out.println("AppID antes do teste reposto!");
 	}
 	
@@ -54,12 +54,12 @@ public class testeXML {
 	@Test
 	public void testSetGetAppSecret() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
-		String GetAppSecret = teste.getAppSecret();
+		String GetAppSecret = teste.getFacebookAppSecret();
 		String nova = "teste";
-		teste.setAppSecret(nova);
-		String atualizada = teste.getAppSecret();
+		teste.setFacebookAppSecret(nova);
+		String atualizada = teste.getFacebookAppSecret();
 		assertEquals(nova, atualizada);
-		teste.setAppSecret(GetAppSecret);
+		teste.setFacebookAppSecret(GetAppSecret);
 		System.out.println("AppSecret antes do teste reposto!");
 		
 	

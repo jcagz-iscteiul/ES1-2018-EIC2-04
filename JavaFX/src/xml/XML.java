@@ -26,16 +26,13 @@ import org.xml.sax.SAXException;
 
 public class XML {
 	
-	
 	// ------------------------------------- SETERS ------------------------------------------
 
 	/**
-	 * Altera o campo AppSecret no ficheiro xml com o novo valor pretendido
+	 * Altera o campo Facebook AppSecret no ficheiro xml com o novo valor pretendido
 	 * @param AppSecret
 	 */
-	public void setAppSecret(String AppSecret) {
-		
-
+	public void setFacebookAppSecret(String AppSecret) {
 		try {
 
 			String filepath = "src/xml/config.xml";
@@ -79,10 +76,10 @@ public class XML {
 	
 	
 	/**
-	 * Altera o campo AppID no ficheiro xml com o novo valor pretendido
+	 * Altera o campo AppID do Facebook no ficheiro xml com o novo valor pretendido
 	 * @param AppID
 	 */
-	public void setAppID(String AppID) {
+	public void setFacebookAppID(String AppID) {
 
 		try {
 
@@ -125,10 +122,10 @@ public class XML {
 	}
 	
 	/**
-	 * Altera o campo AcessToken no ficheiro xml com o novo valor pretendido
+	 * Altera o campo AcessToken do Facebook no ficheiro xml com o novo valor pretendido
 	 * @param AcessToken
 	 */
-	public void setAcessToken(String AcessToken) {
+	public void setFacebookAccessToken(String AcessToken) {
 
 		try {
 
@@ -177,10 +174,10 @@ public class XML {
 	
 	
 	/**
-	 * Returna o valor AppSecret do ficheiro xml
+	 * Returna o valor AppSecret do Facebook do ficheiro xml
 	 * @return O valor AppSecret
 	 */
-	public String getAppSecret() throws ParserConfigurationException, SAXException, IOException {
+	public String getFacebookAppSecret() throws ParserConfigurationException, SAXException, IOException {
 
 		
 		String filepath = "src/xml/config.xml";
@@ -206,13 +203,11 @@ public class XML {
 	}
 	
 	/**
-	 * Returna o valor AcessToken do ficheiro xml
+	 * Retorna o valor AcessToken do Facebook do ficheiro xml
 	 * @return O valor AcessToken
 	 */
-	public String getAcessToken() throws ParserConfigurationException, SAXException, IOException {
-		
+	public String getFacebookAccessToken() throws ParserConfigurationException, SAXException, IOException {
 
-		
 		String filepath = "src/xml/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
