@@ -279,6 +279,9 @@ public class Main_Controller implements Initializable {
 		if (tabPane.getSelectionModel().getSelectedItem().equals(tabEmail)) {
 			System.out.println("Ja estava selecionado o email");
 			System.out.println("Tamanho da lista posts gmail: " + gm_posts.size());
+			
+			gm.viraArraylist();
+			
 			for (PostGeral post : gm_posts) {
 				listEmail.getItems().add(((EmailPost) post).emailPostPreview());
 			}

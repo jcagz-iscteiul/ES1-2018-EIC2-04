@@ -39,6 +39,7 @@ public class Gmail extends RedeSocial implements Filtragem{
 		try {
 			autenticarCliente();
 			addEmailsToArray();
+			viraArraylist();
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +90,7 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 			//from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
 			
-			System.out.println("----------------------------->>>>>>>>>>> " + msg.getFrom()[0].toString());
+			
 			from = "garcez";
 			to = msg.getAllRecipients()[0].toString();
 			EmailPost post = new EmailPost(assunto, data, conteudo, from, to);
@@ -232,6 +233,25 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 	
 	}
+	
+	
+	public void viraArraylist() {
+		
+		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+		
+		for(int i = emails.size()-1 ; i >= 0 ; i--) {
+			emails_Aux.add((PostGeral) emails.toArray()[i]);
+		}
+		
+		emails = emails_Aux;
+	}
+	
+	
+//	public static void main(String[] args) {
+//		Gmail gm = new Gmail();
+//		
+//		gm.mostraMailsDaLista();
+//	}
 
 }
 
