@@ -40,6 +40,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import twitter4j.TwitterException;
 
 /**
  * É o controlador da interface gráfica. Vão ser inicializados os handlers dos
@@ -69,6 +70,8 @@ public class Main_Controller implements Initializable {
 	@FXML
 	private Button botaoSendEmail;
 	
+	@FXML 
+	private Button botaoSendTwitter;
 	
 	@FXML
 	private TextField emailTo;
@@ -79,6 +82,8 @@ public class Main_Controller implements Initializable {
 	@FXML
 	private TextArea conteudoEmail;
 	
+	@FXML
+	private TextArea conteudoTwitter;
 	
 	@FXML
 	private Button definicoes;
@@ -193,6 +198,20 @@ public class Main_Controller implements Initializable {
 		assunto.clear();
 		conteudoEmail.clear();
 		System.out.println("Email enviado com sucesso(acho eu, mano confirma no email)");
+		
+	}
+	
+	@FXML
+	public void sendTweetEvent(ActionEvent event) {
+		
+		try {
+			tw.fazertweet(conteudoTwitter.getText());
+			System.out.println("Foi feito o tweet: " + conteudoTwitter.getText());
+			conteudoTwitter.clear();
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -313,7 +332,8 @@ public class Main_Controller implements Initializable {
 			}
 
 		});
-
+		
+		this.textAreaGmail_list.setWrapText(true);
 		listEmail.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			private int currentSelection = -1;
@@ -335,7 +355,8 @@ public class Main_Controller implements Initializable {
 
 			}
 		});
-
+		
+		this.textAreaTwitter_list.setWrapText(true);
 		listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			private int currentSelection = -1;
