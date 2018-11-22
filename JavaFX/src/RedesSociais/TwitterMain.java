@@ -26,7 +26,6 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 			autenticarCliente();
 			getTimeLine();
 		} catch (TwitterException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -148,8 +147,12 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 	}
 
 	@Override
-	public PostGeral getPostEspecifico(String titulo) {
-		// TODO Auto-generated method stub
+	public TwitterPost getPostEspecifico(String titulo) {
+		for(PostGeral post: tw_tweet) {
+			if(createPostPreview((TwitterPost) post).equals(titulo)) { //getPostPreview retornava o autor e não o preview do conteúdo? ¯\_(O_p)_/¯
+				return (TwitterPost) post;
+			}
+		}
 		return null;
 	}
 	
@@ -179,12 +182,7 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 		return str;
 	}
 	
-	
-	
-	
-	
-	
 	public static void main(String[] args) throws TwitterException {
-		
+
 	}
 }

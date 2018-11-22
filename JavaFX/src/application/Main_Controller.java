@@ -319,24 +319,20 @@ public class Main_Controller implements Initializable{
 		
 			listTwitter.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
-			private int currentSelection = -1;
-			
-			
+			private int currentSelection = -1;	
 			@Override
 			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 					
-					int i = listEmail.getSelectionModel().getSelectedIndex();
+					int i = listTwitter.getSelectionModel().getSelectedIndex();
 					if(i != currentSelection) {
 						currentSelection = i;
 						String selectedItem = listTwitter.getSelectionModel().getSelectedItem();
 						System.out.println("Selected Item: " + selectedItem);
-						EmailPost post = gm.getPostEspecifico(selectedItem);
-						textAreaGmail_list.clear();
-						textAreaGmail_list.appendText(post.getConteudo());
-						
+						TwitterPost tweet = tw.getPostEspecifico(selectedItem); //Está a vir null
+						textAreaTwitter_list.clear();
+						textAreaTwitter_list.appendText(tweet.getConteudo());
 					}
 					currentSelection = -1;
-				
 			    }
 		});
 	}
