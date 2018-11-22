@@ -22,6 +22,11 @@ import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
 
+/**
+ * Simula o Gmail
+ * @author Afonso
+ *
+ */
 public class Gmail extends RedeSocial implements Filtragem{
 
 	private IMAPFolder folder;
@@ -34,7 +39,9 @@ public class Gmail extends RedeSocial implements Filtragem{
 	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
 
-
+	/**
+	 * 
+	 */
 	public Gmail() {
 		try {
 			autenticarCliente();
@@ -65,7 +72,10 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 	}
 
-
+	/**
+	 * Adiciona os emails da respetiva conta ao atributo emails
+	 * @throws MessagingException
+	 */
 	public void addEmailsToArray() throws MessagingException {
 		Message msg;
 		String assunto;
@@ -108,7 +118,10 @@ public class Gmail extends RedeSocial implements Filtragem{
 	}
 
 
-
+	/**
+	 * Usa um ciclo for para percorrer a ArrayList do atributo emails
+	 * e mostra na consola as informações de cada email
+	 */
 	public void mostraMailsDaLista() {
 		for(PostGeral e : emails) {
 			System.out.println("FROM: " + ((EmailPost) e).getFrom());
@@ -121,7 +134,13 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 
 
-
+	/**
+	 * Através do parâmetro message vai buscar o conteúdo da mensagem
+	 * e vai retorná-la em String.
+	 * @param message
+	 * @return String
+	 * @throws MessagingException
+	 */
 	private String getMessageContent(Message message) throws MessagingException {
 		try {
 			Object content = message.getContent();
@@ -144,7 +163,11 @@ public class Gmail extends RedeSocial implements Filtragem{
 		return "";
 	}
 
-
+	
+	/**
+	 * Retorna o respetivo atributo ArrayList<PostGeral> emails
+	 * @return ArrayList<PostGeral>
+	 */
 	public ArrayList<PostGeral> getEmails() {
 		return emails;
 	}
@@ -203,7 +226,12 @@ public class Gmail extends RedeSocial implements Filtragem{
 	}
 
 
-
+	/**
+	 * Vai enviar para o emailTo com o respetivo assunto e conteudo.
+	 * @param emailTo
+	 * @param assunto
+	 * @param conteudo
+	 */
 	public void sendEmail(String emailTo, String assunto, String conteudo) {
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
@@ -234,7 +262,9 @@ public class Gmail extends RedeSocial implements Filtragem{
 	
 	}
 	
-	
+	/**
+	 * Torna a ArrayList do atributo emails ascendente/descendente
+	 */
 	public void viraArraylist() {
 		
 		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();

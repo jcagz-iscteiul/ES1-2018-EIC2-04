@@ -73,7 +73,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	}
 	
 	/**
-	 * Cria um título para o post de acordo com o tamanho do texto do post
+	 * Cria um titulo para o post de acordo com o tamanho do texto do post
 	 * @param post
 	 * @return String 
 	 */
@@ -91,7 +91,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	
 	
 	/**
-	 * Retorna o resptivo atributo ArrayList<FacebookPost> fb_posts 
+	 * Retorna o respetivo atributo ArrayList<PostGeral> fb_posts 
 	 * @return ArrayList<PostGeral>
 	 */
 	public ArrayList<PostGeral> getPosts(){
