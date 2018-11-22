@@ -270,6 +270,23 @@ public class Main_Controller implements Initializable {
 			listEmail.getItems().add(((EmailPost) post).emailPostPreview());
 		}
 	}
+	
+	@FXML
+	public void searchButtonTwitter(ActionEvent event) {
+		String palavra = searchBarTwitter.getText();
+		System.out.println("Palavra a procurar: " + palavra);
+		int index = listTwitter.getSelectionModel().getSelectedIndex();
+		listTwitter.getSelectionModel().clearSelection(index);
+		listTwitter.getItems().clear();
+		ArrayList<PostGeral> listaTweet = tw.getTw_tweet();
+		ArrayList<PostGeral> lista = tw.palavraChave(palavra, listaTweet);
+		textAreaTwitter_list.clear();
+		this.tw_posts = lista;
+		for (PostGeral post : lista) {
+			System.out.println(((TwitterPost) post).getConteudo());
+			listTwitter.getItems().add(tw.createPostPreview((TwitterPost) post));
+		}
+	}
 
 	@FXML
 	void openSettingsScene(ActionEvent event) {
@@ -385,7 +402,7 @@ public class Main_Controller implements Initializable {
 					currentSelection = i;
 					String selectedItem = listTwitter.getSelectionModel().getSelectedItem();
 					System.out.println("Selected Item: " + selectedItem);
-					TwitterPost tweet = tw.getPostEspecifico(selectedItem); // Está a vir null
+					TwitterPost tweet = tw.getPostEspecifico(selectedItem);
 					textAreaTwitter_list.clear();
 					textAreaTwitter_list.appendText(tweet.getConteudo());
 				}

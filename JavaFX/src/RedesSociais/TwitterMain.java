@@ -191,9 +191,9 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 		String str;
 
 		if (post.getConteudo().length() < 22) {
-			str = post.getDate().toString() + " - " + post.getTitulo()  + " - " + post.getConteudo() + "... ";
+			str = post.getDate().toString() + " - " + post.getTitulo()  + ": " + post.getConteudo() + "... ";
 		} else {
-			str = post.getDate().toString()  + " - " + post.getConteudo().substring(0, 22) + "... ";
+			str = post.getDate().toString()  + " - " + post.getTitulo() + ": " + post.getConteudo().substring(0, 22) + "... ";
 		}
 		return str;
 	}
