@@ -11,8 +11,13 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.Part;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Authenticator;
 import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
@@ -23,6 +28,8 @@ public class Gmail extends RedeSocial implements Filtragem{
 	private Store store;
 	private String subject;
 	private Flag flag;
+	private Properties props;
+	private Session session;
 
 	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
@@ -41,10 +48,10 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 	@Override
 	public void autenticarCliente() {
-		Properties props = System.getProperties();
+		props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 
-		Session session = Session.getDefaultInstance(props, null);
+		session = Session.getDefaultInstance(props, null);
 
 		try {
 			store = session.getStore("imaps");
@@ -80,12 +87,15 @@ public class Gmail extends RedeSocial implements Filtragem{
 			data = msg.getReceivedDate();
 			conteudo = getMessageContent(msg);
 
-			from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
+			//from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
+			
+			System.out.println("----------------------------->>>>>>>>>>> " + msg.getFrom()[0].toString());
+			from = "garcez";
 			to = msg.getAllRecipients()[0].toString();
 			EmailPost post = new EmailPost(assunto, data, conteudo, from, to);
 			emails.add(post);
 
-
+			
 
 		}
 		if (folder != null && folder.isOpen()) { 
@@ -193,8 +203,39 @@ public class Gmail extends RedeSocial implements Filtragem{
 
 
 
+	public void sendEmail(String emailTo, String assunto, String conteudo) {
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable","true");
+		props.put("mail.smtp.auth", "true"); 
+		
+		try
+        {
+        Authenticator auth = new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("eic2.04.lei@gmail.com", "ISCTE2018lei");
+            }
+          };
+
+        Session session = Session.getInstance(props, auth);
+
+        MimeMessage msg = new MimeMessage(session);
+        msg.setText(conteudo);
+        msg.setSubject(assunto);
+        msg.setFrom(new InternetAddress("eic2.04.lei@gmail.com"));
+        msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailTo));
+        Transport.send(msg);
+
+        }catch (MessagingException mex) {
+           mex.printStackTrace();
+        }
+
 	
-
-
+	}
 
 }
+
+
+
+
+

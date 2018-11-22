@@ -64,7 +64,22 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private Button botao;
-
+	
+	
+	@FXML
+	private Button botaoSendEmail;
+	
+	
+	@FXML
+	private TextField emailTo;
+	
+	@FXML
+	private TextField assunto;
+	
+	@FXML
+	private TextArea conteudoEmail;
+	
+	
 	@FXML
 	private Button definicoes;
 
@@ -162,9 +177,23 @@ public class Main_Controller implements Initializable {
 	}
 
 	@FXML
-	void printa(ActionEvent event) {
+	public void printa(ActionEvent event) {
 		System.out.println("printa");
 		area.appendText("benfica");
+	}
+	
+	
+	
+	
+	@FXML
+	public void sendEmailEvent(ActionEvent event) {
+		
+		gm.sendEmail(emailTo.getText(), assunto.getText(), conteudoEmail.getText());
+		emailTo.clear();
+		assunto.clear();
+		conteudoEmail.clear();
+		System.out.println("Email enviado com sucesso(acho eu, mano confirma no email)");
+		
 	}
 
 	/**
