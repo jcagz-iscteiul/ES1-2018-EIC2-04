@@ -28,6 +28,8 @@ public class XML {
 	
 	// ------------------------------------- SETERS ------------------------------------------
 
+	
+	// ----------------------------- FACEBOOK ----------------------------
 	/**
 	 * Altera o campo Facebook AppSecret no ficheiro xml com o novo valor pretendido
 	 * @param AppSecret
@@ -167,11 +169,271 @@ public class XML {
 		}
 	}
 	
+	// -------------------------- TWITTER ----------------------------
+	
+	
+	public void setTwitterAcessToken(String AcessToken) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_acesstoken = Twitter.getAttributes();
+			Node nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken");
+			nodeAttr_acesstoken.setTextContent(AcessToken);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_acesstoken.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
+	public void setTwitterAcessTokenSecret(String AcessTokenSecret) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_acesstokensecret = Twitter.getAttributes();
+			Node nodeAttr_acesstokensecret = attr_acesstokensecret.getNamedItem("AcessToken");
+			nodeAttr_acesstokensecret.setTextContent(AcessTokenSecret);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_acesstokensecret.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
+	public void setTwitterConsumerSecret(String ConsumerSecret) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_consumersecret = Twitter.getAttributes();
+			Node nodeAttr_consumersecret = attr_consumersecret.getNamedItem("ConsumerSecret");
+			nodeAttr_consumersecret.setTextContent(ConsumerSecret);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_consumersecret.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
+	public void setTwitterDebugEnable(String DebugEnable) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_debugenable = Twitter.getAttributes();
+			Node nodeAttr_debugenable = attr_debugenable.getNamedItem("AcessToken");
+			nodeAttr_debugenable.setTextContent(DebugEnable);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_debugenable.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
+	
+	// ----------------------------- GMAIL --------------------------------------
+	
+	
+	public void setGmailEmail(String Email) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Gmail = doc.getElementsByTagName("Gmail").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_email = Gmail.getAttributes();
+			Node nodeAttr_email = attr_email.getNamedItem("AcessToken");
+			nodeAttr_email.setTextContent(Email);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_email.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
+	public void setGmailPassword(String Password) {
+		try {
+
+			String filepath = "src/xml/config.xml";
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(filepath);
+
+			System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+			Node Gmail = doc.getElementsByTagName("Gmail").item(0);
+
+			// Não mexer até aqui
+
+			NamedNodeMap attr_password = Gmail.getAttributes();
+			Node nodeAttr_password = attr_password.getNamedItem("AcessToken");
+			nodeAttr_password.setTextContent(Password);
+			
+			
+			// Print do novo AppSecret
+			System.out.print("AppSecret : ");
+			System.out.println(nodeAttr_password.getNodeValue());
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(filepath));
+			transformer.transform(source, result);
+
+			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (SAXException sae) {
+			sae.printStackTrace();
+		}
+	}
+	
 	
 
 // ----------------------------------- GETERS ----------------------------------------------------
 	
 	
+	// -------------------- FACEBOOK ----------------------
 	
 	/**
 	 * Returna o valor AppSecret do Facebook do ficheiro xml
@@ -257,6 +519,150 @@ public class XML {
 			return appid;
 
 	}
+	
+	// --------------------- TWITTER ------------------------
+	
+	public String getTwitterAccessToken() throws ParserConfigurationException, SAXException, IOException {
 
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+
+		// Não mexer até aqui
+
+		NamedNodeMap attr_acesstoken = Twitter.getAttributes();
+		String nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken").toString();
+		String result = nodeAttr_acesstoken.substring(nodeAttr_acesstoken.indexOf("=") + 1);
+		String acesstoken = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return acesstoken;
+	}
+		
+		
+	public String getTwitterAccessTokenSecret() throws ParserConfigurationException, SAXException, IOException {
+
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+		
+		// Não mexer até aqui
+
+		NamedNodeMap attr_acesstokensecret = Twitter.getAttributes();
+		String nodeAttr_acesstokensecret = attr_acesstokensecret.getNamedItem("AcessTokenSecret").toString();
+		String result = nodeAttr_acesstokensecret.substring(nodeAttr_acesstokensecret.indexOf("=") + 1);
+		String acesstokensecret = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return acesstokensecret;
+		
+			
+		
+	}
+	
+	public String getTwitterConsumerSecret() throws ParserConfigurationException, SAXException, IOException {
+
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+		
+		// Não mexer até aqui
+
+		NamedNodeMap attr_consumersecret = Twitter.getAttributes();
+		String nodeAttr_consumersecret = attr_consumersecret.getNamedItem("ConsumerSecret").toString();
+		String result = nodeAttr_consumersecret.substring(nodeAttr_consumersecret.indexOf("=") + 1);
+		String consumersecret = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return consumersecret;
+		
+			
+		
+	}
+	
+	public String getDebugEnable() throws ParserConfigurationException, SAXException, IOException {
+
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Twitter = doc.getElementsByTagName("Twitter").item(0);
+		
+		// Não mexer até aqui
+
+		NamedNodeMap attr_debugenabled = Twitter.getAttributes();
+		String nodeAttr_debugenabled = attr_debugenabled.getNamedItem("DebugEnabled").toString();
+		String result = nodeAttr_debugenabled.substring(nodeAttr_debugenabled.indexOf("=") + 1);
+		String debugenabled = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return debugenabled;
+	
+	}
+		
+		
+	// --------------------- GMAIL -------------------
+		
+	public String getGmailEmail() throws ParserConfigurationException, SAXException, IOException {
+
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Gmail = doc.getElementsByTagName("Gmail").item(0);
+			
+		// Não mexer até aqui
+
+		NamedNodeMap attr_email = Gmail.getAttributes();
+		String nodeAttr_email = attr_email.getNamedItem("Email").toString();
+		String result = nodeAttr_email.substring(nodeAttr_email.indexOf("=") + 1);
+		String email = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return email;
+	}
+		
+	public String getGmailPassword() throws ParserConfigurationException, SAXException, IOException {
+
+		String filepath = "src/xml/config.xml";
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(filepath);
+
+		//System.out.println("Leitura do ficheiro config.xml realizada com sucesso!");
+
+		Node Gmail = doc.getElementsByTagName("Gmail").item(0);
+				
+		// Não mexer até aqui
+
+		NamedNodeMap attr_password = Gmail.getAttributes();
+		String nodeAttr_password = attr_password.getNamedItem("Password").toString();
+		String result = nodeAttr_password.substring(nodeAttr_password.indexOf("=") + 1);
+		String password = result.substring(1, result.length()-1);
+		//System.out.println(acesstoken);
+		return password;
+	
+				
+			
+	}		
+			
+		
 }
+	
 

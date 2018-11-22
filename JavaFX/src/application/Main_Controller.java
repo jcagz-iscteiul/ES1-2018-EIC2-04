@@ -180,6 +180,19 @@ public class Main_Controller implements Initializable {
 		}
 
 	}
+	
+	@FXML
+	public void filtragem24_twitter(ActionEvent event) {
+		System.out.println("evento das 24h");
+		listTwitter.getItems().clear();
+		textAreaTwitter_list.clear();
+
+		for (PostGeral post : tw.vinteQuatroHoras(tw.getTw_tweet())) {
+			listTwitter.getItems().add((tw.createPostPreview((TwitterPost) post)));
+			
+		}
+		
+	}
 
 	@FXML
 	public void printa(ActionEvent event) {
