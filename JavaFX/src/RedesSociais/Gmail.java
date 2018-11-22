@@ -246,12 +246,6 @@ public class Gmail extends RedeSocial implements Filtragem{
 		emails = emails_Aux;
 	}
 	
-	
-//	public static void main(String[] args) {
-//		Gmail gm = new Gmail();
-//		
-//		gm.mostraMailsDaLista();
-//	}
 
 }
 
