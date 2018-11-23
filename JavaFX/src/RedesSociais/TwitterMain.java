@@ -1,10 +1,16 @@
 package RedesSociais;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -21,7 +27,7 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 
 	private static TwitterMain instance = new TwitterMain();
 
-	private TwitterMain() {
+	public TwitterMain() {
 		
 		try {
 			autenticarCliente();
@@ -44,7 +50,7 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 	public void getTimeLine() throws TwitterException {
 
 		List<Status> statuses = me.getHomeTimeline();
-		System.out.println("A mostrar timeline ");
+		System.out.println("A obter timeline...");
 		for (Status status : statuses) {
 			if (status.getText() != null) {
 				Date data = status.getCreatedAt();
@@ -110,12 +116,15 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 
 	@Override
 	public void autenticarCliente() {
-		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(true).setOAuthConsumerKey("02uUxDelvrtGI6AsX84xvOIUt")
-		.setOAuthConsumerSecret("zpNE9qyTArI1DoPQ9TnIshokOJiXFgSwVjZy1ZGyDSFAJ8LbxT")
-		.setOAuthAccessToken("1047106477910085633-GWY5PA98YwxX66JAHnQJb6wQV6hde4")
-		.setOAuthAccessTokenSecret("sXmpcwzaII4lB8FdQ5xOhU6lwYI1kP2GGIeMyO15or5tP");
+		try {
+			cb.setDebugEnabled(true).setOAuthConsumerKey(xml.getDebugEnable())
+			.setOAuthConsumerSecret(xml.getTwitterConsumerSecret())
+			.setOAuthAccessToken(xml.getTwitterAccessToken())
+			.setOAuthAccessTokenSecret(xml.getTwitterAccessTokenSecret());
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		me = tf.getInstance();
 	}
@@ -124,7 +133,6 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 
 	@Override
 	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -204,7 +212,6 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 
 	@Override
 	public void viraLista() {
-		// TODO Auto-generated method stub
 		
 	}
 }

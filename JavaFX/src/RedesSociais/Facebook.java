@@ -50,7 +50,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		addPostsToArray();
 	}
 	
-	
 	/**
 	 * Adiciona os posts do utilizador ao atributo fb_posts
 	 */
@@ -150,7 +149,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 				last24hours.add(post);
 			}
 		}
-		
 		return last24hours;
 	}
 
@@ -184,9 +182,5 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		
 		fb_posts = emails_Aux;
 	}
-
-
-
-	
 	
 }

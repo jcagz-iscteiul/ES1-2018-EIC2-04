@@ -162,7 +162,7 @@
 													<right>
 														<AnchorPane prefHeight="110.0" prefWidth="132.0" BorderPane.alignment="CENTER">
 															<children>
-																<Button fx:id="botaoSendEmail" mnemonicParsing="false" onAction="#sendEmailEvent" prefHeight="109.0" prefWidth="129.0" text="Button" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
+																<Button fx:id="botaoSendEmail" mnemonicParsing="false" onAction="#sendEmailEvent" prefHeight="109.0" prefWidth="129.0" text="Enviar" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
 															</children>
 														</AnchorPane>
 													</right>
@@ -261,7 +261,7 @@
 													<right>
 														<AnchorPane prefHeight="110.0" prefWidth="132.0" BorderPane.alignment="CENTER">
 															<children>
-																<Button mnemonicParsing="false" prefHeight="109.0" prefWidth="129.0" text="Button" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
+																<Button mnemonicParsing="false" prefHeight="109.0" prefWidth="129.0" text="Enviar" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
 															</children>
 														</AnchorPane>
 													</right>
@@ -431,7 +431,7 @@
 													<right>
 														<AnchorPane prefHeight="110.0" prefWidth="132.0" BorderPane.alignment="CENTER">
 															<children>
-																<Button fx:id="botaoSendTwitter" mnemonicParsing="false" onAction="#sendTweetEvent" prefHeight="109.0" prefWidth="129.0" text="Button" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
+																<Button fx:id="botaoSendTwitter" mnemonicParsing="false" onAction="#sendTweetEvent" prefHeight="109.0" prefWidth="129.0" text="Enviar" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0" />
 															</children>
 														</AnchorPane>
 													</right>

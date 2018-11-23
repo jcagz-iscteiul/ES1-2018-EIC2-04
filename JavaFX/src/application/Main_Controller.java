@@ -323,7 +323,7 @@ public class Main_Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Main:Controler ativo");
+		System.out.println("Main: Controlador ativo");
 
 		if (tabPane.getSelectionModel().getSelectedItem().equals(tabEmail)) {
 			System.out.println("Ja estava selecionado o email");
@@ -341,7 +341,7 @@ public class Main_Controller implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
 				if (newTab == tabFacebook && !fb_flag) {
-					System.out.println("tab facebook aqui");
+					System.out.println("- Aberta tab Facebook");
 
 					for (PostGeral post : fb_posts) {
 						listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
@@ -351,14 +351,14 @@ public class Main_Controller implements Initializable {
 
 				}
 				if (newTab == tabTwitter) {
-					System.out.println("tab twitter aqui");
+					System.out.println("- Aberta tab Twitter");
 
 					for (PostGeral post : tw_posts) {
 						listTwitter.getItems().add(tw.createPostPreview((TwitterPost) post));
 					}
 				}
 				if (newTab == tabEmail) {
-					System.out.println("tab email aqui");
+					System.out.println("- Aberta tab Email");
 				}
 			}
 		});

@@ -6,8 +6,6 @@
 package xml;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,11 +16,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 
 public class XML {
 	
@@ -172,7 +169,7 @@ public class XML {
 	// -------------------------- TWITTER ----------------------------
 	
 	
-	public void setTwitterAcessToken(String AcessToken) {
+	public void setTwitterAccessToken(String AccessToken) {
 		try {
 
 			String filepath = "src/xml/config.xml";
@@ -186,14 +183,14 @@ public class XML {
 
 			// Não mexer até aqui
 
-			NamedNodeMap attr_acesstoken = Twitter.getAttributes();
-			Node nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken");
-			nodeAttr_acesstoken.setTextContent(AcessToken);
+			NamedNodeMap attr_accesstoken = Twitter.getAttributes();
+			Node nodeAttr_accesstoken = attr_accesstoken.getNamedItem("AccessToken");
+			nodeAttr_accesstoken.setTextContent(AccessToken);
 			
 			
 			// Print do novo AppSecret
 			System.out.print("AppSecret : ");
-			System.out.println(nodeAttr_acesstoken.getNodeValue());
+			System.out.println(nodeAttr_accesstoken.getNodeValue());
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -201,7 +198,7 @@ public class XML {
 			StreamResult result = new StreamResult(new File(filepath));
 			transformer.transform(source, result);
 
-			System.out.println("Ficheiro xml salvo com as alterações pretendidas");
+			System.out.println("Ficheiro xml salvo com as altera��es pretendidas");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -359,12 +356,12 @@ public class XML {
 			// Não mexer até aqui
 
 			NamedNodeMap attr_email = Gmail.getAttributes();
-			Node nodeAttr_email = attr_email.getNamedItem("AcessToken");
+			Node nodeAttr_email = attr_email.getNamedItem("Email");
 			nodeAttr_email.setTextContent(Email);
 			
 			
 			// Print do novo AppSecret
-			System.out.print("AppSecret : ");
+			System.out.print("Email: ");
 			System.out.println(nodeAttr_email.getNodeValue());
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -401,7 +398,7 @@ public class XML {
 			// Não mexer até aqui
 
 			NamedNodeMap attr_password = Gmail.getAttributes();
-			Node nodeAttr_password = attr_password.getNamedItem("AcessToken");
+			Node nodeAttr_password = attr_password.getNamedItem("Password");
 			nodeAttr_password.setTextContent(Password);
 			
 			
@@ -536,7 +533,7 @@ public class XML {
 		// Não mexer até aqui
 
 		NamedNodeMap attr_acesstoken = Twitter.getAttributes();
-		String nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AcessToken").toString();
+		String nodeAttr_acesstoken = attr_acesstoken.getNamedItem("AccessToken").toString();
 		String result = nodeAttr_acesstoken.substring(nodeAttr_acesstoken.indexOf("=") + 1);
 		String acesstoken = result.substring(1, result.length()-1);
 		//System.out.println(acesstoken);
@@ -587,9 +584,6 @@ public class XML {
 		String consumersecret = result.substring(1, result.length()-1);
 		//System.out.println(acesstoken);
 		return consumersecret;
-		
-			
-		
 	}
 	
 	public String getDebugEnable() throws ParserConfigurationException, SAXException, IOException {
@@ -658,11 +652,7 @@ public class XML {
 		//System.out.println(acesstoken);
 		return password;
 	
-				
-			
-	}		
-			
-		
+	}
 }
 	
 
