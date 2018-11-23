@@ -124,6 +124,12 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private ToggleButton toggleFb;
+	
+	@FXML
+	private ToggleButton toggleGmail;
+	
+	@FXML
+	private ToggleButton toggleTwitter;
 
 	@FXML
 	private TextField searchBarGmail;
@@ -199,12 +205,9 @@ public class Main_Controller implements Initializable {
 	}
 
 	@FXML
-	public void printa(ActionEvent event) {
-		
-		
-		
-		fb.viraLista();
-		
+	public void toggleButtonFbEvent(ActionEvent event) {
+			
+		fb.viraLista();	
 		
 		this.fb_posts = fb.getPosts();
 		
@@ -216,6 +219,46 @@ public class Main_Controller implements Initializable {
 		
 		for (PostGeral post : fb_posts) {
 			listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
+		}
+	}
+	
+	
+	@FXML
+	public void toggleButtonGmailEvent(ActionEvent event) {
+		
+		gm.viraLista();
+		
+		this.gm_posts = gm.getEmails();
+		
+		int index = listEmail.getSelectionModel().getSelectedIndex();
+		listEmail.getSelectionModel().clearSelection(index);
+		listEmail.getItems().clear();
+	
+		textAreaGmail_list.clear();
+		
+		for (PostGeral post : gm_posts) {
+			listEmail.getItems().add(((EmailPost) post).emailPostPreview());
+		}
+	}
+	
+	
+	
+	
+	@FXML
+	public void toggleButtonTwitterEvent(ActionEvent event) {
+		
+		tw.viraLista();
+		
+		this.tw_posts = tw.getTw_tweet();
+		
+		int index = listTwitter.getSelectionModel().getSelectedIndex();
+		listTwitter.getSelectionModel().clearSelection(index);
+		listTwitter.getItems().clear();
+	
+		textAreaTwitter_list.clear();
+		
+		for (PostGeral post : tw_posts) {
+			listTwitter.getItems().add(tw.createPostPreview((TwitterPost) post));
 		}
 	}
 	

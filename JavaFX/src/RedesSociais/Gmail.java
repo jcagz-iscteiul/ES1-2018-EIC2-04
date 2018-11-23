@@ -182,9 +182,11 @@ public class Gmail extends RedeSocial implements Filtragem {
 
 	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
+		String str;
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for (PostGeral post : emails) {
-			if (((EmailPost) post).getConteudo().toLowerCase().contains(palavra.toLowerCase()))
+			str = ((EmailPost) post).getAssunto() + ((EmailPost) post).getConteudo();
+			if (str.toLowerCase().contains(palavra.toLowerCase()))
 				novaListaPosts.add(post);
 		}
 		return novaListaPosts;
@@ -284,6 +286,8 @@ public class Gmail extends RedeSocial implements Filtragem {
 		emails = emails_Aux;
 
 	}
+
+	
 
 	public XML getXml() {
 		return xml;

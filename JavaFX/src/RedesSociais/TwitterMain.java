@@ -199,19 +199,29 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 		String str;
 
 		if (post.getConteudo().length() < 22) {
-			str = post.getDate().toString() + " - " + post.getTitulo()  + ": " + post.getConteudo() + "... ";
+			str = post.getDate().toString() + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo() + "... ";
 		} else {
-			str = post.getDate().toString()  + " - " + post.getTitulo() + ": " + post.getConteudo().substring(0, 22) + "... ";
+			str = post.getDate().toString()  + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo().substring(0, 22) + "... ";
 		}
 		return str;
 	}
+	
+	@Override
+	public void viraLista() {
+		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+		
+		for(int i = tw_tweet.size()-1 ; i >= 0 ; i--) {
+			emails_Aux.add((PostGeral) tw_tweet.toArray()[i]);
+		}
+		
+		tw_tweet = emails_Aux;
+	}
+	
+	
 	
 	public static void main(String[] args) throws TwitterException {
 		
 	}
 
-	@Override
-	public void viraLista() {
-		
-	}
+	
 }
