@@ -174,6 +174,19 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		}
 	}
 	
+	@Override
+	public void viraLista() {
+		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+		
+		for(int i = fb_posts.size()-1 ; i >= 0 ; i--) {
+			emails_Aux.add((PostGeral) fb_posts.toArray()[i]);
+		}
+		
+		fb_posts = emails_Aux;
+	}
+
+
+
 	
 	
 }

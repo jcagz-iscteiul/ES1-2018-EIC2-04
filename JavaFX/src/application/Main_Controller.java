@@ -38,6 +38,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import twitter4j.TwitterException;
@@ -120,6 +121,9 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private TextField searchBarFacebook;
+	
+	@FXML
+	private ToggleButton toggleFb;
 
 	@FXML
 	private TextField searchBarGmail;
@@ -196,8 +200,23 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	public void printa(ActionEvent event) {
-		System.out.println("printa");
-		area.appendText("benfica");
+		
+		
+		
+		fb.viraLista();
+		
+		
+		this.fb_posts = fb.getPosts();
+		
+		int index = listFacebook.getSelectionModel().getSelectedIndex();
+		listFacebook.getSelectionModel().clearSelection(index);
+		listFacebook.getItems().clear();
+	
+		textAreaFacebook_list.clear();
+		
+		for (PostGeral post : fb_posts) {
+			listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
+		}
 	}
 	
 	

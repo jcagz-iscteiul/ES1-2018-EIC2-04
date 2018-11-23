@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -120,7 +121,7 @@
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
 																<TextField fx:id="searchBarGmail" layoutX="156.0" layoutY="7.0" onAction="#searchButtonGmail" />
-																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="SplitMenuButton" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
+																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" onAction="#filtragem24_gmail" text="Last 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
@@ -203,6 +204,7 @@
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
 																	</items>
 																</SplitMenuButton>
+                                                <ToggleButton fx:id="toggleFb" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#printa" text="+Recente / +Antigo" />
 															</children>
 														</AnchorPane>
 													</top>

@@ -267,13 +267,20 @@ public class Gmail extends RedeSocial implements Filtragem{
 	 */
 	public void viraArraylist() {
 		
-		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+		
+	}
+
+
+	@Override
+	public void viraLista() {
+ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
 		
 		for(int i = emails.size()-1 ; i >= 0 ; i--) {
 			emails_Aux.add((PostGeral) emails.toArray()[i]);
 		}
 		
 		emails = emails_Aux;
+		
 	}
 	
 

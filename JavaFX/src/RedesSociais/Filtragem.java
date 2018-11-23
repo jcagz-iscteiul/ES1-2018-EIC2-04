@@ -34,6 +34,8 @@ public interface Filtragem{
 	 */
 	public PostGeral getPostEspecifico(String titulo);
 	
+	public void viraLista();
+	
 	
 
 }
