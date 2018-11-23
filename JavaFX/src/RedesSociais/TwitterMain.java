@@ -133,7 +133,7 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 		
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: tweets) {
-			if(((TwitterPost)post).getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
+			if(createPostPreview((TwitterPost)post).toLowerCase().contains(palavra.toLowerCase())){
 				novaListaPosts.add(post);
 				System.out.println(post.conteudo);
 			}

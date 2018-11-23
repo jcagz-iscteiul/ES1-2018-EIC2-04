@@ -33,5 +33,7 @@ public interface Filtragem{
 	 * @return FacebookPost
 	 */
 	public PostGeral getPostEspecifico(String titulo);
+	
+	
 
 }
