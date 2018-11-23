@@ -199,6 +199,6 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 	}
 	
 	public static void main(String[] args) throws TwitterException {
-
+		
 	}
 }
