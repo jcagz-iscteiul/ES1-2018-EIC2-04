@@ -2,13 +2,16 @@ package RedesSociais;
 
 import java.util.Date;
 
-public abstract class PostGeral {
+public abstract class PostGeral implements Comparable<PostGeral>{
+	
 	
 	protected Date data;
 	protected String conteudo;
 	protected String titulo;
+	protected String redeSocial;
 	
-	public PostGeral(Date data, String conteudo, String titulo) {
+	public PostGeral(String redeSocial, Date data, String conteudo, String titulo) {
+		this.redeSocial = redeSocial;
 		this.data = data;
 		this.conteudo = conteudo;
 		this.titulo = titulo;
@@ -24,6 +27,17 @@ public abstract class PostGeral {
 
 	public String getTitulo() {
 		return titulo;
+	}
+	
+	
+	public String createTitulo() {
+		return "[" + redeSocial + "] " + data + " - " + titulo;
+	}
+	
+	
+	@Override
+	public int compareTo(PostGeral o) {
+		return getData().compareTo(o.getData());
 	}
 	
 	

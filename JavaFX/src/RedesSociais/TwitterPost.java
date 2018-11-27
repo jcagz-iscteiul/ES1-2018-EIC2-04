@@ -7,7 +7,7 @@ import com.restfb.types.Post;
 public class TwitterPost extends PostGeral{
 
 	public TwitterPost(Date data, String conteudo, String autor) {
-		super(data, conteudo, autor);
+		super("Twitter",data, conteudo, autor);
 	}
 	
 	

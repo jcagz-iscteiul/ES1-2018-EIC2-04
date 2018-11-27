@@ -43,7 +43,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private ArrayList<PostGeral> fb_posts = new ArrayList<PostGeral>();
 	
 	
-	public Facebook() throws ParserConfigurationException, SAXException, IOException {
+	public Facebook() {
 		
 		autenticarCliente();
 		me = fbClient.fetchObject("me", User.class);
@@ -125,7 +125,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		// TODO Auto-generated method stub
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: fb_posts) {
-			if(((FacebookPost)post).getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
+			if(((FacebookPost)post).getConteudo().toLowerCase().contains(palavra.toLowerCase())) {
 				novaListaPosts.add(post);
 			}
 		}
@@ -155,7 +155,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
 		for(PostGeral post: fb_posts) {
-			if(((FacebookPost)post).getPostPreview().equals(titulo)) {
+			if(((FacebookPost)post).getTitulo().equals(titulo)) {
 				return (FacebookPost) post;
 			}
 		}
@@ -164,12 +164,15 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 
 	@Override
 	public void autenticarCliente() {
-		try {
-			accessToken = xml.getFacebookAccessToken();
-			fbClient = new DefaultFacebookClient(accessToken, version);
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
+		
+			try {
+				accessToken = xml.getFacebookAccessToken();
+				fbClient = new DefaultFacebookClient(accessToken, version);
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				e.printStackTrace();
+			}
+			
+
 	}
 	
 	@Override

@@ -130,7 +130,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 		for (PostGeral e : emails) {
 			System.out.println("FROM: " + ((EmailPost) e).getFrom());
 			System.out.println("TO: " + ((EmailPost) e).getTo());
-			System.out.println("Assunto: " + ((EmailPost) e).getAssunto());
+			System.out.println("Assunto: " + ((EmailPost) e).getTitulo());
 			System.out.println("Conteudo: " + e.getConteudo());
 			System.out.println("Data: " + e.getData().toString());
 		}
@@ -185,7 +185,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 		String str;
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for (PostGeral post : emails) {
-			str = ((EmailPost) post).getAssunto() + ((EmailPost) post).getConteudo();
+			str = ((EmailPost) post).emailPostPreview() + ((EmailPost) post).getConteudo();
 			if (str.toLowerCase().contains(palavra.toLowerCase()))
 				novaListaPosts.add(post);
 		}
