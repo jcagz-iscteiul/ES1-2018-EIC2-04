@@ -38,14 +38,14 @@
                                        <top>
                                           <AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <TextField fx:id="searchBarFacebook1" layoutX="156.0" layoutY="7.0" onAction="#searchButton" />
+                                                <TextField fx:id="searchBarDestaques" layoutX="156.0" layoutY="7.0" onAction="#searchButtonDestaques" />
                                                 <SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
                                                    <items>
-                                                      <MenuItem fx:id="MenuItem1_Facebook1" mnemonicParsing="false" onAction="#filtragem24_facebook" text="Ultimas 24h" />
+                                                      <MenuItem fx:id="MenuItem1_Facebook1" mnemonicParsing="false" onAction="#filtragem24_destaques" text="Ultimas 24h" />
                                                       <MenuItem mnemonicParsing="false" text="Action 2" />
                                                    </items>
                                                 </SplitMenuButton>
-                                                <ToggleButton fx:id="toggleFb1" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonFbEvent" text="+Recente / +Antigo" />
+                                                <ToggleButton fx:id="toggleDestaques" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonDestaquesEvent" text="+Recente / +Antigo" />
                                              </children>
                                           </AnchorPane>
                                        </top>

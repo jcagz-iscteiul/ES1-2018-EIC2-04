@@ -146,12 +146,18 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private ToggleButton toggleTwitter;
+	
+	@FXML
+	private ToggleButton toggleDestaques;
 
 	@FXML
 	private TextField searchBarGmail;
 
 	@FXML
 	private TextField searchBarTwitter;
+	
+	@FXML
+	private TextField searchBarDestaques;
 
 	@FXML
 	private SplitMenuButton facebookSplitMenu;
@@ -186,6 +192,17 @@ public class Main_Controller implements Initializable {
 	 * 
 	 * @param event
 	 */
+	
+	
+	@FXML
+	public void filtragem24_destaques(ActionEvent event) {
+		listDestaques.getItems().clear();
+		textDestaques_list.clear();
+		for (PostGeral post : destaquesObject.vinteQuatroHoras(destaquesObject.getDestaques())) {
+			listDestaques.getItems().add(post.createTitulo());
+		}
+	}
+	
 	@FXML
 	public void filtragem24_facebook(ActionEvent event) {
 		listFacebook.getItems().clear();
@@ -217,7 +234,6 @@ public class Main_Controller implements Initializable {
 			listTwitter.getItems().add((tw.createPostPreview((TwitterPost) post)));
 			
 		}
-		
 	}
 
 	@FXML
@@ -279,6 +295,25 @@ public class Main_Controller implements Initializable {
 	}
 	
 	
+	@FXML
+	public void toggleButtonDestaquesEvent(ActionEvent event) {
+		
+		destaquesObject.viraLista();
+		
+		this.destaques = destaquesObject.getDestaques();
+		
+		int index = listDestaques.getSelectionModel().getSelectedIndex();
+		listDestaques.getSelectionModel().clearSelection(index);
+		listDestaques.getItems().clear();
+	
+		textDestaques_list.clear();
+		
+		for (PostGeral post : destaques) {
+			listDestaques.getItems().add(post.createTitulo());
+		}
+	}
+	
+	
 	
 	
 	@FXML
@@ -312,22 +347,44 @@ public class Main_Controller implements Initializable {
 	 * 
 	 * @param event
 	 */
+	
+	
+	@FXML
+	public void searchButtonDestaques(ActionEvent event) {
+		// Vai buscar a palavra que o utilizador escreveu
+		String palavra = searchBarDestaques.getText();
+		System.out.println("Palavra a procura: " + palavra);
+		int index = listDestaques.getSelectionModel().getSelectedIndex();
+		listDestaques.getSelectionModel().clearSelection(index);
+		listDestaques.getItems().clear();
+		// Vai buscar a lista nova
+		ArrayList<PostGeral> listaDestaques = destaquesObject.getDestaques();
+		ArrayList<PostGeral> lista = destaquesObject.palavraChave(palavra, listaDestaques);
+		textDestaques_list.clear();
+		this.destaques = lista;
+		for (PostGeral post : lista) {
+			System.out.println( post.createTitulo());
+			listDestaques.getItems().add(post.createTitulo());
+		}
+
+	}
+	
 	@FXML
 	public void searchButton(ActionEvent event) {
 		// Vai buscar a palavra que o utilizador escreveu
-		String palavra = searchBarFacebook.getText();
+		String palavra = searchBarDestaques.getText();
 		System.out.println("Palavra a procura: " + palavra);
-		int index = listFacebook.getSelectionModel().getSelectedIndex();
-		listFacebook.getSelectionModel().clearSelection(index);
-		listFacebook.getItems().clear();
+		int index = listDestaques.getSelectionModel().getSelectedIndex();
+		listDestaques.getSelectionModel().clearSelection(index);
+		listDestaques.getItems().clear();
 		// Vai buscar a lista nova
-		ArrayList<PostGeral> listaFacebook = fb.getPosts();
-		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaFacebook);
-		textAreaFacebook_list.clear();
-		this.fb_posts = lista;
-		for (PostGeral fbPost : lista) {
-			System.out.println(((FacebookPost) fbPost).getTitulo());
-			listFacebook.getItems().add(((FacebookPost) fbPost).getTitulo());
+		ArrayList<PostGeral> listaDestaques = destaquesObject.getDestaques();
+		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaDestaques);
+		textDestaques_list.clear();
+		this.destaques = lista;
+		for (PostGeral post : lista) {
+			System.out.println(((FacebookPost) post).getTitulo());
+			listDestaques.getItems().add(post.createTitulo());
 		}
 
 	}

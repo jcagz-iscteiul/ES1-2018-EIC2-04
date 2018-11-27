@@ -1,7 +1,9 @@
 package RedesSociais;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 
 public class Destaques implements Filtragem{
 
@@ -55,9 +57,15 @@ public class Destaques implements Filtragem{
 
 
 	@Override
-	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
+	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> destaques) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
+		for(PostGeral post: destaques) {
+			if(post.createTitulo().toLowerCase().contains(palavra.toLowerCase())) {
+				novaListaPosts.add(post);
+			}
+		}
+		return novaListaPosts;
 	}
 
 
@@ -65,9 +73,23 @@ public class Destaques implements Filtragem{
 
 
 	@Override
-	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> fb_posts) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> destaques) {
+		ArrayList<PostGeral> last24hours = new ArrayList<PostGeral>();
+		
+		Calendar calendar = Calendar.getInstance(); 
+		Date today = calendar.getTime();
+		System.out.println("Data de hoje: " + today.toString());
+		
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		Date yesterday = calendar.getTime();
+		System.out.println("data hà 24h atrás: " + yesterday.toString());
+		
+		for(PostGeral post : destaques) {
+			if(post.getData().compareTo(yesterday) * post.getData().compareTo(today)<=0){
+				last24hours.add(post);
+			}
+		}
+		return last24hours;
 	}
 
 
