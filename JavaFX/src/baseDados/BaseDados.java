@@ -1,13 +1,13 @@
 package baseDados;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import RedesSociais.EmailPost;
 import RedesSociais.Facebook;
@@ -183,7 +183,7 @@ public class BaseDados {
 		         String conteudo = rs.getString("CONTEUDO");
 		         String data = rs.getString("DATA");
 		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-		         java.util.Date data2 = formatter.parse(data);
+		         Date data2 = formatter.parse(data);
 		         lista.add(new FacebookPost(id, data2, conteudo, titulo));
 		      }
 		      rs.close();
@@ -216,7 +216,7 @@ public class BaseDados {
 		         String conteudo = rs.getString("CONTEUDO");
 		         String data = rs.getString("DATA");
 		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-		         java.util.Date data2 = formatter.parse(data);
+		         Date data2 = formatter.parse(data);
 		         lista.add(new TwitterPost(id, data2, conteudo, titulo));
 		      }
 		      rs.close();
@@ -251,7 +251,7 @@ public class BaseDados {
 		         String from = rs.getString("DE");
 		         String to = rs.getString("PARA");
 		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-		         java.util.Date data2 = formatter.parse(data);
+		         Date data2 = formatter.parse(data);
 		         lista.add(new EmailPost(id, titulo, data2, conteudo, from, to));
 		      }
 		      rs.close();
