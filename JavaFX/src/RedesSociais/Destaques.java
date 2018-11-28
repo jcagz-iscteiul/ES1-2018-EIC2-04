@@ -61,7 +61,9 @@ public class Destaques implements Filtragem{
 		// TODO Auto-generated method stub
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: destaques) {
-			if(post.createTitulo().toLowerCase().contains(palavra.toLowerCase())) {
+			if(post.getConteudo().toLowerCase().contains(palavra.toLowerCase())) {
+				novaListaPosts.add(post);
+			} else if (post.getTitulo().toLowerCase().contains(palavra.toLowerCase())) {
 				novaListaPosts.add(post);
 			}
 		}

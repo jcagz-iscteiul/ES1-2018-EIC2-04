@@ -175,11 +175,11 @@ public class Main_Controller implements Initializable {
 	public Main_Controller() {
 		fb = new Facebook();
 		fb_posts = fb.getPosts();
-		this.gm = new Gmail();
-		this.gm_posts = gm.getEmails();
 		this.tw = TwitterMain.getInstance();
 		this.tw_posts = tw.getTw_tweet();
-		
+		this.gm = new Gmail();
+		this.gm_posts = gm.getEmails();
+
 		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
 		this.destaques = destaquesObject.getDestaques();
 		
@@ -372,19 +372,19 @@ public class Main_Controller implements Initializable {
 	@FXML
 	public void searchButton(ActionEvent event) {
 		// Vai buscar a palavra que o utilizador escreveu
-		String palavra = searchBarDestaques.getText();
+		String palavra = searchBarFacebook.getText();
 		System.out.println("Palavra a procura: " + palavra);
-		int index = listDestaques.getSelectionModel().getSelectedIndex();
-		listDestaques.getSelectionModel().clearSelection(index);
-		listDestaques.getItems().clear();
+		int index = listFacebook.getSelectionModel().getSelectedIndex();
+		listFacebook.getSelectionModel().clearSelection(index);
+		listFacebook.getItems().clear();
 		// Vai buscar a lista nova
-		ArrayList<PostGeral> listaDestaques = destaquesObject.getDestaques();
-		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaDestaques);
-		textDestaques_list.clear();
-		this.destaques = lista;
+		ArrayList<PostGeral> listaFacebook = fb.getPosts();
+		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaFacebook);
+		textAreaFacebook_list.clear();
+		this.fb_posts = lista;
 		for (PostGeral post : lista) {
 			System.out.println(((FacebookPost) post).getTitulo());
-			listDestaques.getItems().add(post.createTitulo());
+			listFacebook.getItems().add(post.getTitulo());
 		}
 
 	}

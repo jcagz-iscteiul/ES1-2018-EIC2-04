@@ -10,8 +10,8 @@ public class EmailPost extends PostGeral{
 	private String to;
 	
 	
-	public EmailPost(String assunto, Date data, String conteudo, String from, String to) {
-		super("Email",data, conteudo, assunto);
+	public EmailPost(int id,String assunto, Date data, String conteudo, String from, String to) {
+		super(id, "Email",data, conteudo, assunto);
 		this.from = from;
 		this.to = to;
 	}

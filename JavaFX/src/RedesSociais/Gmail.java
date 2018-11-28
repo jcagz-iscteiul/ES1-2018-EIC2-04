@@ -26,6 +26,7 @@ import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
 
+import baseDados.BaseDados;
 import xml.XML;
 
 /**
@@ -43,6 +44,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 	private Properties props;
 	private Session session;
 	private XML xml = new XML();
+	private BaseDados db;
 
 	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
@@ -54,9 +56,10 @@ public class Gmail extends RedeSocial implements Filtragem {
 			autenticarCliente();
 			addEmailsToArray();
 			viraArraylist();
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Nao foi possivel ligar-se ao email");
+			db = new BaseDados();
+			emails = db.getGmailPosts();
 		}
 	}
 
@@ -76,6 +79,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 			}
 			folder = (IMAPFolder) store.getFolder("inbox");
 		} catch (MessagingException e) {
+			System.out.println("Nao foi possivel autenticar-se ao Gmail");
 			e.printStackTrace();
 		}
 
@@ -110,7 +114,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 
 			from = "garcez";
 			to = msg.getAllRecipients()[0].toString();
-			EmailPost post = new EmailPost(assunto, data, conteudo, from, to);
+			EmailPost post = new EmailPost(i,assunto, data, conteudo, from, to);
 			emails.add(post);
 
 		}

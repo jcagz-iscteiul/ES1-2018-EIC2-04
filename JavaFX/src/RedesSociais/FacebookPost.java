@@ -21,8 +21,8 @@ public class FacebookPost extends PostGeral{
 	 * É o construtor da classe que recebe como argumento um objeto Post que vem da API Facebook
 	 * @param post
 	 */
-	public FacebookPost(Date data, String conteudo, String titulo) {
-		super("Facebook", data, conteudo, titulo);
+	public FacebookPost(int id, Date data, String conteudo, String titulo) {
+		super(id,"Facebook", data, conteudo, titulo);
 	}
 
 
