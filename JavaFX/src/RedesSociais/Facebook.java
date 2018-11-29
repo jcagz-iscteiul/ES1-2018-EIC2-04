@@ -22,6 +22,7 @@ import com.restfb.types.Page;
 import com.restfb.types.Post;
 import com.restfb.types.User;
 
+import baseDados.BaseDados;
 import xml.XML;
 
 import com.restfb.Version;
@@ -39,15 +40,22 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private String accessToken;
 	private FacebookClient fbClient;
 	private XML xml = new XML();
-	private final User me;
 	private ArrayList<PostGeral> fb_posts = new ArrayList<PostGeral>();
+	private BaseDados db;
 	
 	
-	public Facebook() throws ParserConfigurationException, SAXException, IOException {
-		
-		autenticarCliente();
-		me = fbClient.fetchObject("me", User.class);
-		addPostsToArray();
+	public Facebook() {
+		try {
+			autenticarCliente();
+			addPostsToArray();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Nao foi possivel ligar-se ao Facebook");
+			BaseDados db = new BaseDados();
+			this.fb_posts = db.getFacebookPosts();
+		}
+
+	
 	}
 	
 	/**
@@ -55,7 +63,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	 */
 	public void addPostsToArray() {
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
-		
+		int i=1;
 		for(List<Post> page: result) {
 			for(Post aPost : page) {
 				if(aPost.getMessage() != null) {
@@ -63,8 +71,8 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 					String conteudo = aPost.getMessage();
 					String titulo = createPostPreview(aPost);
 					
-					fb_posts.add(new FacebookPost(data, conteudo, titulo));
-					
+					fb_posts.add(new FacebookPost(i,data, conteudo, titulo));
+					i++;
 				}
 					
 			}
@@ -125,7 +133,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		// TODO Auto-generated method stub
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: fb_posts) {
-			if(((FacebookPost)post).getFullPost().toLowerCase().contains(palavra.toLowerCase())) {
+			if(((FacebookPost)post).getConteudo().toLowerCase().contains(palavra.toLowerCase())) {
 				novaListaPosts.add(post);
 			}
 		}
@@ -155,7 +163,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
 		for(PostGeral post: fb_posts) {
-			if(((FacebookPost)post).getPostPreview().equals(titulo)) {
+			if(((FacebookPost)post).getTitulo().equals(titulo)) {
 				return (FacebookPost) post;
 			}
 		}
@@ -164,12 +172,18 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 
 	@Override
 	public void autenticarCliente() {
+		
 		try {
 			accessToken = xml.getFacebookAccessToken();
 			fbClient = new DefaultFacebookClient(accessToken, version);
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
+			// TODO Auto-generated catch block
+			System.out.println("O FACEBOOK ESTA DESLIGADO [Excepção]");
 		}
+		
+
+			
+
 	}
 	
 	@Override

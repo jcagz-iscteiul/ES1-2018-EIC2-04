@@ -26,6 +26,7 @@ import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
 
+import baseDados.BaseDados;
 import xml.XML;
 
 /**
@@ -43,6 +44,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 	private Properties props;
 	private Session session;
 	private XML xml = new XML();
+	private BaseDados db;
 
 	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
@@ -54,9 +56,10 @@ public class Gmail extends RedeSocial implements Filtragem {
 			autenticarCliente();
 			addEmailsToArray();
 			viraArraylist();
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Nao foi possivel ligar-se ao email");
+			db = new BaseDados();
+			emails = db.getGmailPosts();
 		}
 	}
 
@@ -76,7 +79,8 @@ public class Gmail extends RedeSocial implements Filtragem {
 			}
 			folder = (IMAPFolder) store.getFolder("inbox");
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			
+			System.out.println("O GMAIL ESTA DESLIGADO [Excepção]");
 		}
 
 	}
@@ -110,7 +114,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 
 			from = "garcez";
 			to = msg.getAllRecipients()[0].toString();
-			EmailPost post = new EmailPost(assunto, data, conteudo, from, to);
+			EmailPost post = new EmailPost(i,assunto, data, conteudo, from, to);
 			emails.add(post);
 
 		}
@@ -130,7 +134,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 		for (PostGeral e : emails) {
 			System.out.println("FROM: " + ((EmailPost) e).getFrom());
 			System.out.println("TO: " + ((EmailPost) e).getTo());
-			System.out.println("Assunto: " + ((EmailPost) e).getAssunto());
+			System.out.println("Assunto: " + ((EmailPost) e).getTitulo());
 			System.out.println("Conteudo: " + e.getConteudo());
 			System.out.println("Data: " + e.getData().toString());
 		}
@@ -185,7 +189,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 		String str;
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for (PostGeral post : emails) {
-			str = ((EmailPost) post).getAssunto() + ((EmailPost) post).getConteudo();
+			str = ((EmailPost) post).emailPostPreview() + ((EmailPost) post).getConteudo();
 			if (str.toLowerCase().contains(palavra.toLowerCase()))
 				novaListaPosts.add(post);
 		}

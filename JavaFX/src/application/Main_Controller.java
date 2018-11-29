@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -14,12 +16,13 @@ import org.xml.sax.SAXException;
 
 import com.restfb.types.Post;
 
+import RedesSociais.Destaques;
 import RedesSociais.EmailPost;
 import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
 import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
-import RedesSociais.TwitterMain;
+import RedesSociais.TwitterObject;
 import RedesSociais.TwitterPost;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -58,14 +61,18 @@ public class Main_Controller implements Initializable {
 	private Gmail gm;
 	private ArrayList<PostGeral> gm_posts;
 	private boolean fb_flag = false;
-	private TwitterMain tw;
+	private TwitterObject tw;
 	private ArrayList<PostGeral> tw_posts;
+	private ArrayList<PostGeral> destaques;
 
 	@FXML
 	private TextArea area;
 
 	@FXML
 	private Button botao;
+	
+	@FXML
+	Destaques destaquesObject;
 	
 	
 	@FXML
@@ -97,6 +104,9 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private TextArea textAreaTwitter_list;
+	
+	@FXML
+	private TextArea textDestaques_list;
 
 	@FXML
 	private ListView<String> listEmail;
@@ -106,6 +116,9 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private ListView<String> listTwitter;
+	
+	@FXML
+	private ListView<String> listDestaques;
 
 	@FXML
 	private TabPane tabPane;
@@ -118,6 +131,9 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private Tab tabTwitter;
+	
+	@FXML
+	private Tab tabDestaques;
 
 	@FXML
 	private TextField searchBarFacebook;
@@ -130,12 +146,18 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private ToggleButton toggleTwitter;
+	
+	@FXML
+	private ToggleButton toggleDestaques;
 
 	@FXML
 	private TextField searchBarGmail;
 
 	@FXML
 	private TextField searchBarTwitter;
+	
+	@FXML
+	private TextField searchBarDestaques;
 
 	@FXML
 	private SplitMenuButton facebookSplitMenu;
@@ -151,17 +173,17 @@ public class Main_Controller implements Initializable {
 	 * inicializados através da criação do objeto Facebook
 	 */
 	public Main_Controller() {
-		try {
-			fb = new Facebook();
-			fb_posts = fb.getPosts();
-			this.gm = new Gmail();
-			this.gm_posts = gm.getEmails();
-			this.tw = TwitterMain.getInstance();
-			this.tw_posts = tw.getTw_tweet();
+		fb = new Facebook();
+		fb_posts = fb.getPosts();
+		this.tw = TwitterObject.getInstance();
+		this.tw_posts = tw.getTw_tweet();
+		this.gm = new Gmail();
+		this.gm_posts = gm.getEmails();
 
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
+		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
+		this.destaques = destaquesObject.getDestaques();
+		
+		
 	}
 
 	/**
@@ -170,6 +192,17 @@ public class Main_Controller implements Initializable {
 	 * 
 	 * @param event
 	 */
+	
+	
+	@FXML
+	public void filtragem24_destaques(ActionEvent event) {
+		listDestaques.getItems().clear();
+		textDestaques_list.clear();
+		for (PostGeral post : destaquesObject.vinteQuatroHoras(destaquesObject.getDestaques())) {
+			listDestaques.getItems().add(post.createTitulo());
+		}
+	}
+	
 	@FXML
 	public void filtragem24_facebook(ActionEvent event) {
 		listFacebook.getItems().clear();
@@ -201,7 +234,6 @@ public class Main_Controller implements Initializable {
 			listTwitter.getItems().add((tw.createPostPreview((TwitterPost) post)));
 			
 		}
-		
 	}
 
 	@FXML
@@ -218,7 +250,7 @@ public class Main_Controller implements Initializable {
 		textAreaFacebook_list.clear();
 		
 		for (PostGeral post : fb_posts) {
-			listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
+			listFacebook.getItems().add(((FacebookPost) post).getTitulo());
 		}
 	}
 	
@@ -263,6 +295,25 @@ public class Main_Controller implements Initializable {
 	}
 	
 	
+	@FXML
+	public void toggleButtonDestaquesEvent(ActionEvent event) {
+		
+		destaquesObject.viraLista();
+		
+		this.destaques = destaquesObject.getDestaques();
+		
+		int index = listDestaques.getSelectionModel().getSelectedIndex();
+		listDestaques.getSelectionModel().clearSelection(index);
+		listDestaques.getItems().clear();
+	
+		textDestaques_list.clear();
+		
+		for (PostGeral post : destaques) {
+			listDestaques.getItems().add(post.createTitulo());
+		}
+	}
+	
+	
 	
 	
 	@FXML
@@ -296,6 +347,28 @@ public class Main_Controller implements Initializable {
 	 * 
 	 * @param event
 	 */
+	
+	
+	@FXML
+	public void searchButtonDestaques(ActionEvent event) {
+		// Vai buscar a palavra que o utilizador escreveu
+		String palavra = searchBarDestaques.getText();
+		System.out.println("Palavra a procura: " + palavra);
+		int index = listDestaques.getSelectionModel().getSelectedIndex();
+		listDestaques.getSelectionModel().clearSelection(index);
+		listDestaques.getItems().clear();
+		// Vai buscar a lista nova
+		ArrayList<PostGeral> listaDestaques = destaquesObject.getDestaques();
+		ArrayList<PostGeral> lista = destaquesObject.palavraChave(palavra, listaDestaques);
+		textDestaques_list.clear();
+		this.destaques = lista;
+		for (PostGeral post : lista) {
+			System.out.println( post.createTitulo());
+			listDestaques.getItems().add(post.createTitulo());
+		}
+
+	}
+	
 	@FXML
 	public void searchButton(ActionEvent event) {
 		// Vai buscar a palavra que o utilizador escreveu
@@ -309,9 +382,9 @@ public class Main_Controller implements Initializable {
 		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaFacebook);
 		textAreaFacebook_list.clear();
 		this.fb_posts = lista;
-		for (PostGeral fbPost : lista) {
-			System.out.println(((FacebookPost) fbPost).getPostPreview());
-			listFacebook.getItems().add(((FacebookPost) fbPost).getPostPreview());
+		for (PostGeral post : lista) {
+			System.out.println(((FacebookPost) post).getTitulo());
+			listFacebook.getItems().add(post.getTitulo());
 		}
 
 	}
@@ -368,15 +441,15 @@ public class Main_Controller implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Main: Controlador ativo");
 
-		if (tabPane.getSelectionModel().getSelectedItem().equals(tabEmail)) {
-			System.out.println("Ja estava selecionado o email");
-			System.out.println("Tamanho da lista posts gmail: " + gm_posts.size());
+		if (tabPane.getSelectionModel().getSelectedItem().equals(tabDestaques)) {
+			System.out.println("Ja estava selecionado o tab de destaques");
 			
-			gm.viraArraylist();
+		
 			
-			for (PostGeral post : gm_posts) {
-				listEmail.getItems().add(((EmailPost) post).emailPostPreview());
+			for (PostGeral destaque : destaques) {
+				listDestaques.getItems().add(destaque.createTitulo());
 			}
+			
 		}
 
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
@@ -387,7 +460,7 @@ public class Main_Controller implements Initializable {
 					System.out.println("- Aberta tab Facebook");
 
 					for (PostGeral post : fb_posts) {
-						listFacebook.getItems().add(((FacebookPost) post).getPostPreview());
+						listFacebook.getItems().add(((FacebookPost) post).getTitulo());
 					}
 
 					fb_flag = true;
@@ -402,6 +475,13 @@ public class Main_Controller implements Initializable {
 				}
 				if (newTab == tabEmail) {
 					System.out.println("- Aberta tab Email");
+					gm.viraArraylist();
+					
+					for (PostGeral post : gm_posts) {
+						listEmail.getItems().add(((EmailPost) post).emailPostPreview());
+					}
+					
+					
 				}
 			}
 		});
@@ -421,7 +501,7 @@ public class Main_Controller implements Initializable {
 					System.out.println(selectedItem);
 					FacebookPost post = fb.getPostEspecifico(selectedItem);
 					textAreaFacebook_list.clear();
-					textAreaFacebook_list.appendText(post.getFullPost());
+					textAreaFacebook_list.appendText(post.getConteudo());
 				}
 				currentSelection = -1;
 			}
@@ -471,5 +551,27 @@ public class Main_Controller implements Initializable {
 				currentSelection = -1;
 			}
 		});
-	}
+		
+		this.textDestaques_list.setWrapText(true);
+		listDestaques.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+			private int currentSelection = -1;
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+				int i = listDestaques.getSelectionModel().getSelectedIndex();
+				if (i != currentSelection) {
+					currentSelection = i;
+					String selectedItem = listDestaques.getSelectionModel().getSelectedItem();
+					System.out.println("Selected Item: " + selectedItem);
+					PostGeral pg = destaquesObject.getPostEspecifico(selectedItem);
+					textDestaques_list.clear();
+					textDestaques_list.appendText(pg.getConteudo());
+				}
+				currentSelection = -1;
+			}
+		});
+		
+		}
 }

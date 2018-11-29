@@ -10,8 +10,8 @@ public class EmailPost extends PostGeral{
 	private String to;
 	
 	
-	public EmailPost(String assunto, Date data, String conteudo, String from, String to) {
-		super(data, conteudo, assunto);
+	public EmailPost(int id,String assunto, Date data, String conteudo, String from, String to) {
+		super(id, "Email",data, conteudo, assunto);
 		this.from = from;
 		this.to = to;
 	}
@@ -20,8 +20,8 @@ public class EmailPost extends PostGeral{
 	 * Retorna o atributo da superclasse titulo
 	 * @return String
 	 */
-	public String getAssunto() {
-		return titulo;
+	public String getTitulo() {
+		return super.titulo;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class EmailPost extends PostGeral{
 	 * @return String
 	 */
 	public String getConteudo() {
-		return conteudo;
+		return super.conteudo;
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class EmailPost extends PostGeral{
 		return to;
 	}
 
-
+	
 	/**
 	 * Retorna uma string concatenado com a data do email mais o titulo
 	 * @return String
@@ -67,7 +67,5 @@ public class EmailPost extends PostGeral{
 		
 		return str;
 	}
-
-
 
 }

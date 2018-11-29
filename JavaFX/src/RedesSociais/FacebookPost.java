@@ -13,21 +13,21 @@ import com.restfb.types.Post;
 public class FacebookPost extends PostGeral{
 
 	
-//	private String postPreview;
-//	private Date date;
-//	private String fullPost;
+	private String postPreview;
+	private Date date;
+	private String fullPost;
 	
 	/**
 	 * É o construtor da classe que recebe como argumento um objeto Post que vem da API Facebook
 	 * @param post
 	 */
-	public FacebookPost(Date data, String conteudo, String titulo) {
-		super(data, conteudo, titulo);
+	public FacebookPost(int id, Date data, String conteudo, String titulo) {
+		super(id,"Facebook", data, conteudo, titulo);
 	}
 
 
 
-	public String getPostPreview() {
+	public String getTitulo() {
 		return super.titulo;
 	}
 
@@ -35,9 +35,13 @@ public class FacebookPost extends PostGeral{
 		return super.data;
 	}
 
-	public String getFullPost() {
+	public String getConteudo() {
 		return super.conteudo;
 	}
+	
+
+	
+	
 	
 
 

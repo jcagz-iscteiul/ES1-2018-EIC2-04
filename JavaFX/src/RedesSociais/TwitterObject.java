@@ -11,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import baseDados.BaseDados;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -19,25 +20,28 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import xml.XML;
 
-public class TwitterMain extends RedeSocial implements Filtragem{
+public class TwitterObject extends RedeSocial implements Filtragem{
 
 	private Twitter me;
 	private XML xml = new XML();
 	private ArrayList<PostGeral> tw_tweet = new ArrayList<PostGeral>();
+	private BaseDados db;
+	
+	private static TwitterObject instance = new TwitterObject();
 
-	private static TwitterMain instance = new TwitterMain();
-
-	public TwitterMain() {
+	public TwitterObject() {
 		
 		try {
 			autenticarCliente();
 			getTimeLine();
 		} catch (TwitterException e) {
-			e.printStackTrace();
+			System.out.println("O Twitter ESTA DESLIGADO [Excepção]");
+			this.db = new BaseDados();
+			this.tw_tweet = db.getTwitterPosts();
 		}
 	}
 
-	public static TwitterMain getInstance() {
+	public static TwitterObject getInstance() {
 		return instance;
 	}
 
@@ -50,40 +54,41 @@ public class TwitterMain extends RedeSocial implements Filtragem{
 	public void getTimeLine() throws TwitterException {
 
 		List<Status> statuses = me.getHomeTimeline();
-		System.out.println("A obter timeline...");
+		int i = 0;
 		for (Status status : statuses) {
 			if (status.getText() != null) {
 				Date data = status.getCreatedAt();
 				String conteudo = status.getText();
 				String titulo = status.getUser().getName();
 
-				tw_tweet.add(new TwitterPost(data, conteudo, titulo));
+				tw_tweet.add(new TwitterPost(i,data, conteudo, titulo));
+				i++;
 				//System.out.println(data + " " + titulo + " : " + conteudo);
 			}
 			
 		}
 	}
 
-	public void pesquisar(String palavra) throws TwitterException {
-		
-		List<Status> statuses = me.getHomeTimeline();
-		System.out.println("A mostrar timeline ");
-		for (Status status : statuses) {
-			if (status.getText() != null) {
-				if (status.getText().toLowerCase().contains(palavra.toLowerCase())) {
-					Date data = status.getCreatedAt();
-					String conteudo = status.getText();
-					String titulo = status.getUser().getName();
-			
-					tw_tweet.add(new TwitterPost(data, conteudo, titulo));
-					
-					
-					System.out.println(status.getUser().getName() + ":" + status.getText());
-				}
-				
-			}
-		}
-	}
+//	public void pesquisar(String palavra) throws TwitterException {
+//		
+//		List<Status> statuses = me.getHomeTimeline();
+//		System.out.println("A mostrar timeline ");
+//		for (Status status : statuses) {
+//			if (status.getText() != null) {
+//				if (status.getText().toLowerCase().contains(palavra.toLowerCase())) {
+//					Date data = status.getCreatedAt();
+//					String conteudo = status.getText();
+//					String titulo = status.getUser().getName();
+//			
+//					tw_tweet.add(new TwitterPost(data, conteudo, titulo));
+//					
+//					
+//					System.out.println(status.getUser().getName() + ":" + status.getText());
+//				}
+//				
+//			}
+//		}
+//	}
 	
 	@SuppressWarnings("unchecked")
 	public int another_profile_tweets(int pagina, String user) {

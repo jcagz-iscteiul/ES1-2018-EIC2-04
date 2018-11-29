@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 
 import RedesSociais.Facebook;
 import RedesSociais.Gmail;
-import RedesSociais.TwitterMain;
+import RedesSociais.TwitterObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
