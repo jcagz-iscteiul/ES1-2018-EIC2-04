@@ -178,7 +178,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 			fbClient = new DefaultFacebookClient(accessToken, version);
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("O FACEBOOK ESTA DESLIGADO");
+			System.out.println("O FACEBOOK ESTA DESLIGADO [Excepção]");
 		}
 		
 
