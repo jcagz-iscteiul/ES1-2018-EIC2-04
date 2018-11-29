@@ -301,14 +301,37 @@ public class BaseDados {
 //		db.connectToDB();
 //		db.createTable("Twitter");
 //		db.insertOperationGmail("Gmail", gm.getEmails());
-		Facebook fb = new Facebook();
-		BaseDados db = new BaseDados();
-		db.connectToDB();
-		ArrayList<PostGeral> lista = db.getFacebookPosts();
-		for(PostGeral post: lista) {
-			System.out.println("ID: " + post.id);
-			System.out.println("Conteudo: " + post.getConteudo() + "\n");
-		}
+//		Facebook fb = new Facebook();
+//		TwitterObject tw = new TwitterObject();
+//		Gmail gm = new Gmail();
+//		BaseDados db = new BaseDados();
+//		db.connectToDB();
+//		db.createTable("Facebook");
+//		db.insertOperation("Facebook", fb.getPosts());
+//		ArrayList<PostGeral> lista = db.getFacebookPosts();
+//		System.out.println("FACEBOOK\n");
+//		for(PostGeral post: lista) {
+//			System.out.println("ID: " + post.id);
+//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
+//		}
+//	
+//		db.createTable("Twitter");
+//		db.insertOperation("Twitter", tw.getTw_tweet());
+//		System.out.println("TWITTER\n");
+//		ArrayList<PostGeral> lista2 = db.getTwitterPosts();
+//		for(PostGeral post: lista2) {
+//			System.out.println("ID: " + post.id);
+//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
+//		}
+		
+//		db.createTableGmail("Gmail");
+//		db.insertOperationGmail("Gmail", gm.getEmails());
+//		System.out.println("Gmail: " + gm.getEmails());
+//		ArrayList<PostGeral> lista3 = db.getGmailPosts();
+//		for(PostGeral post: lista3) {
+//			System.out.println("ID: " + post.id);
+//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
+//		}
 		
 	}
 	
