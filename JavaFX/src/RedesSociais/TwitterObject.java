@@ -20,28 +20,28 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import xml.XML;
 
-public class TwitterMain extends RedeSocial implements Filtragem{
+public class TwitterObject extends RedeSocial implements Filtragem{
 
 	private Twitter me;
 	private XML xml = new XML();
 	private ArrayList<PostGeral> tw_tweet = new ArrayList<PostGeral>();
 	private BaseDados db;
 	
-	private static TwitterMain instance = new TwitterMain();
+	private static TwitterObject instance = new TwitterObject();
 
-	public TwitterMain() {
+	public TwitterObject() {
 		
 		try {
 			autenticarCliente();
 			getTimeLine();
 		} catch (TwitterException e) {
-			System.out.println("Nao foi possivel ligar-se ao twitter");
+			System.out.println("O Twitter ESTA DESLIGADO [Excepção]");
 			this.db = new BaseDados();
 			this.tw_tweet = db.getTwitterPosts();
 		}
 	}
 
-	public static TwitterMain getInstance() {
+	public static TwitterObject getInstance() {
 		return instance;
 	}
 

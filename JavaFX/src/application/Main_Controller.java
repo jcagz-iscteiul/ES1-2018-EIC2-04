@@ -22,7 +22,7 @@ import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
 import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
-import RedesSociais.TwitterMain;
+import RedesSociais.TwitterObject;
 import RedesSociais.TwitterPost;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -61,7 +61,7 @@ public class Main_Controller implements Initializable {
 	private Gmail gm;
 	private ArrayList<PostGeral> gm_posts;
 	private boolean fb_flag = false;
-	private TwitterMain tw;
+	private TwitterObject tw;
 	private ArrayList<PostGeral> tw_posts;
 	private ArrayList<PostGeral> destaques;
 
@@ -175,7 +175,7 @@ public class Main_Controller implements Initializable {
 	public Main_Controller() {
 		fb = new Facebook();
 		fb_posts = fb.getPosts();
-		this.tw = TwitterMain.getInstance();
+		this.tw = TwitterObject.getInstance();
 		this.tw_posts = tw.getTw_tweet();
 		this.gm = new Gmail();
 		this.gm_posts = gm.getEmails();

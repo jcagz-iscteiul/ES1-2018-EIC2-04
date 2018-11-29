@@ -8,13 +8,14 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import RedesSociais.EmailPost;
 import RedesSociais.Facebook;
 import RedesSociais.FacebookPost;
 import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
-import RedesSociais.TwitterMain;
+import RedesSociais.TwitterObject;
 import RedesSociais.TwitterPost;
 
 public class BaseDados {
@@ -182,7 +183,7 @@ public class BaseDados {
 		         String titulo = rs.getString("TITULO");
 		         String conteudo = rs.getString("CONTEUDO");
 		         String data = rs.getString("DATA");
-		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
 		         Date data2 = formatter.parse(data);
 		         lista.add(new FacebookPost(id, data2, conteudo, titulo));
 		      }
@@ -215,7 +216,10 @@ public class BaseDados {
 		         String titulo = rs.getString("TITULO");
 		         String conteudo = rs.getString("CONTEUDO");
 		         String data = rs.getString("DATA");
-		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
+		         
+		         
+		         
 		         Date data2 = formatter.parse(data);
 		         lista.add(new TwitterPost(id, data2, conteudo, titulo));
 		      }
@@ -250,7 +254,7 @@ public class BaseDados {
 		         String data = rs.getString("DATA");
 		         String from = rs.getString("DE");
 		         String to = rs.getString("PARA");
-		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
 		         Date data2 = formatter.parse(data);
 		         lista.add(new EmailPost(id, titulo, data2, conteudo, from, to));
 		      }
@@ -297,7 +301,14 @@ public class BaseDados {
 //		db.connectToDB();
 //		db.createTable("Twitter");
 //		db.insertOperationGmail("Gmail", gm.getEmails());
-		
+		Facebook fb = new Facebook();
+		BaseDados db = new BaseDados();
+		db.connectToDB();
+		ArrayList<PostGeral> lista = db.getFacebookPosts();
+		for(PostGeral post: lista) {
+			System.out.println("ID: " + post.id);
+			System.out.println("Conteudo: " + post.getConteudo() + "\n");
+		}
 		
 	}
 	

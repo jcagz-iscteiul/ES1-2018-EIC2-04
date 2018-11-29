@@ -12,15 +12,15 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import RedesSociais.PostGeral;
-import RedesSociais.TwitterMain;
+import RedesSociais.TwitterObject;
 
 public class TwitterTest {
 
-	private TwitterMain tw;
+	private TwitterObject tw;
 	
 	@Before
 	public void setUp() throws ParserConfigurationException, SAXException, IOException {
-		this.tw = new TwitterMain();
+		this.tw = new TwitterObject();
 	}
 	
 	@Test

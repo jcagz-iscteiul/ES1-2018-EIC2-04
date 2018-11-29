@@ -79,8 +79,8 @@ public class Gmail extends RedeSocial implements Filtragem {
 			}
 			folder = (IMAPFolder) store.getFolder("inbox");
 		} catch (MessagingException e) {
-			System.out.println("Nao foi possivel autenticar-se ao Gmail");
-			e.printStackTrace();
+			
+			System.out.println("O GMAIL ESTA DESLIGADO [Excepção]");
 		}
 
 	}
