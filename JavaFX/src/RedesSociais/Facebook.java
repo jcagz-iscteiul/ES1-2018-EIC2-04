@@ -21,6 +21,7 @@ import com.restfb.types.FacebookType;
 import com.restfb.types.Page;
 import com.restfb.types.Post;
 import com.restfb.types.User;
+import com.restfb.types.send.SendResponse;
 
 import baseDados.BaseDados;
 import xml.XML;
@@ -196,5 +197,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		
 		fb_posts = emails_Aux;
 	}
+	
 	
 }
