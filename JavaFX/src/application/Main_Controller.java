@@ -72,14 +72,25 @@ public class Main_Controller implements Initializable {
 	private Button botao;
 	
 	@FXML
-	Destaques destaquesObject;
-	
+	private Destaques destaquesObject;
 	
 	@FXML
 	private Button botaoSendEmail;
 	
 	@FXML 
 	private Button botaoSendTwitter;
+	
+	@FXML
+	private Button botaoRefreshDestaques;
+	
+	@FXML
+	private Button botaoRefreshFacebook;
+	
+	@FXML
+	private Button botaoRefreshTwitter;
+	
+	@FXML
+	private Button botaoRefreshEmail;
 	
 	@FXML
 	private TextField emailTo;
@@ -339,6 +350,70 @@ public class Main_Controller implements Initializable {
 		}
 		
 	}
+	
+	@FXML
+	public void buttonRefreshDestaques(ActionEvent event) {
+		//Os atributos ficam atualizados
+		listDestaques.getItems().clear();
+		textDestaques_list.clear();
+		destaques.clear();
+		fb.refrescarConteudo();
+		gm.refrescarConteudo();
+		tw.refrescarConteudo();
+
+		this.fb_posts = fb.getLista_posts();
+		this.gm_posts = gm.getLista_posts();
+		this.tw_posts = tw.getLista_posts();
+		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
+		this.destaques = destaquesObject.getDestaques();
+		
+		//Transpor a lista para a Interface Gráfica
+		for(PostGeral post: destaques) {
+//			System.out.println("Estou a percorrer a lista dos Destaques");
+			listDestaques.getItems().add(post.createTitulo());
+		}
+		
+	}
+	
+	@FXML
+	public void buttonRefreshFacebook(ActionEvent event) {
+		listFacebook.getItems().clear();
+		textAreaFacebook_list.clear();
+		fb.refrescarConteudo();
+		this.fb_posts = fb.getLista_posts();
+		
+		for(PostGeral post: fb_posts) {
+			listFacebook.getItems().add(((FacebookPost)post).getTitulo());
+		}
+	}
+	
+	@FXML
+	public void buttonRefreshTwitter(ActionEvent event) {
+		listTwitter.getItems().clear();
+		textAreaTwitter_list.clear();
+		tw.refrescarConteudo();
+		this.tw_posts = tw.getLista_posts();
+		
+		for(PostGeral post: tw_posts) {
+//			System.out.println("Estou no buttonRefreshTwitter");
+			listTwitter.getItems().add(tw.createPostPreview((TwitterPost)post));
+//			System.out.println("ID: " + post.getId());
+//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
+		}
+	}
+	
+	@FXML
+	public void buttonRefreshEmail(ActionEvent event) {
+		listEmail.getItems().clear();
+		textAreaGmail_list.clear();
+		gm.refrescarConteudo();
+		this.gm_posts.clear();
+		
+		for(PostGeral post: gm_posts) {
+			listEmail.getItems().add(((EmailPost)post).emailPostPreview());
+		}
+	}
+	
 
 	/**
 	 * Vai atualizar a list view da interface gráfica com uma nova lista de posts

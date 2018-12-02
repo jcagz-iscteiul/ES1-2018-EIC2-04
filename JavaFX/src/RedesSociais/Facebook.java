@@ -38,8 +38,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private final Version version = Version.VERSION_2_11;
 	private String accessToken;
 	private FacebookClient fbClient;
-//	private XML xml = new XML();
-//	private BaseDados db;
 	
 	/**
 	 * Construtor
@@ -155,8 +153,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		}
 		
 
-			
-
 	}
 	
 	@Override
@@ -168,6 +164,26 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		}
 		
 		lista_posts = emails_Aux;
+	}
+
+	@Override
+	public void refrescarConteudo() {
+		lista_posts.clear();
+		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
+		int i=1;
+		for(List<Post> page: result) {
+			for(Post aPost : page) {
+				if(aPost.getMessage() != null) {
+					Date data = aPost.getCreatedTime();
+					String conteudo = aPost.getMessage();
+					String titulo = createPostPreview(aPost);
+					
+					lista_posts.add(new FacebookPost(i,data, conteudo, titulo));
+					i++;
+				}
+					
+			}
+		}
 	}
 	
 	

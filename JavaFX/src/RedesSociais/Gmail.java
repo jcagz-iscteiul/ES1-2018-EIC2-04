@@ -32,7 +32,6 @@ import xml.XML;
 /**
  * Simula o Gmail
  * 
- *
  */
 public class Gmail extends RedeSocial implements Filtragem {
 
@@ -42,7 +41,6 @@ public class Gmail extends RedeSocial implements Filtragem {
 	private Flag flag;
 	private Properties props;
 	private Session session;
-//	private BaseDados db;
 
 
 	/**
@@ -274,6 +272,56 @@ public class Gmail extends RedeSocial implements Filtragem {
 			System.out.println("O GMAIL ESTA DESLIGADO [Excepção]");
 		}
 
+	}
+
+
+	@Override
+	public void refrescarConteudo() {
+		try {
+			lista_posts.clear();
+			Message msg;
+			String assunto;
+			Date data;
+			String conteudo;
+			String from;
+			String to;
+	
+			if (!folder.isOpen())
+				folder.open(Folder.READ_WRITE);
+			Message[] messages = folder.getMessages();
+	
+			for (int i = 0; i < messages.length; i++) {
+	
+				msg = messages[i];
+	
+				assunto = msg.getSubject();
+				data = msg.getReceivedDate();
+				conteudo = getMessageContent(msg);
+	
+				// from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
+	
+				from = "garcez";
+				to = msg.getAllRecipients()[0].toString();
+				EmailPost post = new EmailPost(i,assunto, data, conteudo, from, to);
+				lista_posts.add(post);
+	
+			}
+			
+			if (folder != null && folder.isOpen()) {
+				folder.close(true);
+			}
+			
+			if (store != null) {
+				store.close();
+			}
+			
+		} catch (MessagingException e) {
+			System.out.println("Nao foi possivel dar refresh no conteudo do Gmail");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+		
+
+		
 	}
 
 

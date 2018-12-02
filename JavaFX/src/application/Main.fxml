@@ -46,6 +46,7 @@
                                                    </items>
                                                 </SplitMenuButton>
                                                 <ToggleButton fx:id="toggleDestaques" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonDestaquesEvent" text="+Recente / +Antigo" />
+                                                <Button fx:id="botaoRefreshDestaques" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshDestaques" text="Refresh" AnchorPane.leftAnchor="14.0" />
                                              </children>
                                           </AnchorPane>
                                        </top>
@@ -217,6 +218,7 @@
 																	</items>
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleGmail" layoutX="471.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonGmailEvent" text="+Recente / +Antigo" />
+                                                <Button fx:id="botaoRefreshEmail" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshEmail" text="Refresh" AnchorPane.leftAnchor="14.0" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -295,6 +297,7 @@
 																	</items>
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleFb" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonFbEvent" text="+Recente / +Antigo" />
+                                                <Button fx:id="botaoRefreshFacebook" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshFacebook" text="Refresh" AnchorPane.leftAnchor="14.0" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -466,6 +469,7 @@
 																	</items>
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleTwitter" layoutX="467.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonTwitterEvent" text="+Recente / +Antigo" />
+                                                <Button fx:id="botaoRefreshTwitter" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshTwitter" text="Refresh" AnchorPane.leftAnchor="14.0" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -571,7 +575,7 @@
 						</GridPane>
 					</children>
 				</AnchorPane>
-            <Button layoutX="504.0" layoutY="38.0" mnemonicParsing="false" onAction="#openSettingsScene" text="Definicoes" AnchorPane.rightAnchor="25.0" />
+            <Button layoutX="505.0" layoutY="38.0" mnemonicParsing="false" onAction="#openSettingsScene" text="Definicoes" AnchorPane.rightAnchor="24.0" />
 			</children>
 		</AnchorPane>
 	</top>

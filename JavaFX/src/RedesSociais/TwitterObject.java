@@ -20,12 +20,21 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import xml.XML;
 
+
+/**
+ * Simula a rede social Twitter implementando Singleton
+ *
+ */
 public class TwitterObject extends RedeSocial implements Filtragem{
 
 	private Twitter me;
 	
 	private static TwitterObject instance = new TwitterObject();
-
+	
+	/**
+	 * Construtor da classe 
+	 * 
+	 */
 	public TwitterObject() {
 		
 		try {
@@ -42,16 +51,25 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return instance;
 	}
 
+	/**
+	 * 
+	 * @param tweet
+	 * @throws TwitterException
+	 */
 	public void fazertweet(String tweet) throws TwitterException {
 
 		me.updateStatus(tweet);
 
 	}
-
+	
+	/**
+	 * Obtem os tweets da timeline 
+	 * @throws TwitterException
+	 */
 	public void getTimeLine() throws TwitterException {
 
 		List<Status> statuses = me.getHomeTimeline();
-		int i = 0;
+		int i = 1;
 		for (Status status : statuses) {
 			if (status.getText() != null) {
 				Date data = status.getCreatedAt();
@@ -60,7 +78,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 
 				lista_posts.add(new TwitterPost(i,data, conteudo, titulo));
 				i++;
-				//System.out.println(data + " " + titulo + " : " + conteudo);
 			}
 			
 		}
@@ -92,13 +109,11 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	}
 		
 	
-	public String createPost(TwitterPost post) {
-		
-		String str;
-		str = post.getConteudo();
-		return str;
-	}
-	
+	/**
+	 * Retorna uma String com a data,título e conteúdo do post passado como parâmetro
+	 * @param post
+	 * @return String
+	 */
 	public String createPostPreview(TwitterPost post) {
 		String str;
 
@@ -195,9 +210,44 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	}
 	
 	
+
+	@Override
+	public void refrescarConteudo() {
+		List<Status> statuses;
+		try {
+			statuses = me.getHomeTimeline();
+			int i = 1;
+			lista_posts.clear();
+			for (Status status : statuses) {
+				if (status.getText() != null) {
+					Date data = status.getCreatedAt();
+					String conteudo = status.getText();
+					String titulo = status.getUser().getName();
+
+					lista_posts.add(new TwitterPost(i,data, conteudo, titulo));
+					i++;
+				}
+			}
+		} catch (TwitterException e) {
+			System.out.println("Ocorreu um erro ao tentar dar refresh no conteudo do Twitter");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+	}
 	
-	public static void main(String[] args) throws TwitterException {
-		
+	public static void main(String[] args) {
+		TwitterObject tw = new TwitterObject();
+		System.out.println("ANTES DO REFRESH");
+		for(PostGeral post: tw.getLista_posts()) {
+			System.out.println("ID: " + post.getId());
+			System.out.println("Conteudo: " + post.getConteudo());
+		}
+		System.out.println("\n");
+		tw.refrescarConteudo();
+		System.out.println("DEPOIS DO REFRESH");
+		for(PostGeral post: tw.getLista_posts()) {
+			System.out.println("ID: " + post.getId());
+			System.out.println("Conteudo: " + post.getConteudo());
+		}
 	}
 
 	

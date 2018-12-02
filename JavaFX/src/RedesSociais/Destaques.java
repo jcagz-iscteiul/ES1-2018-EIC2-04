@@ -14,7 +14,12 @@ public class Destaques implements Filtragem{
 	
 	ArrayList<PostGeral> destaques = new ArrayList<PostGeral>();
 	
-	
+	/**
+	 * Construtor da classe
+	 * @param emails
+	 * @param facebookPosts
+	 * @param listaDeTweets
+	 */
 	public Destaques(ArrayList<PostGeral> emails, ArrayList<PostGeral> facebookPosts, ArrayList<PostGeral> listaDeTweets) {
 		destaques.addAll(emails);
 		destaques.addAll(facebookPosts);
@@ -73,9 +78,6 @@ public class Destaques implements Filtragem{
 	}
 
 
-
-
-
 	@Override
 	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> destaques) {
 		ArrayList<PostGeral> last24hours = new ArrayList<PostGeral>();
@@ -97,9 +99,6 @@ public class Destaques implements Filtragem{
 	}
 
 
-
-
-
 	@Override
 	public PostGeral getPostEspecifico(String titulo) {
 		for(PostGeral post: destaques) {
@@ -109,9 +108,6 @@ public class Destaques implements Filtragem{
 		}
 		return null;
 	}
-
-
-
 
 
 	@Override

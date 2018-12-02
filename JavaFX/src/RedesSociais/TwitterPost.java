@@ -10,17 +10,5 @@ public class TwitterPost extends PostGeral{
 		super(id, "Twitter",data, conteudo, autor);
 	}
 	
-	
-//	public String getPostPreview() {
-//		return super.titulo;
-//	}
-//
-//	public Date getDate() {
-//		return super.data;
-//	}
-//
-//	public String getFullPost() {
-//		return super.conteudo;
-//	}
 
 }

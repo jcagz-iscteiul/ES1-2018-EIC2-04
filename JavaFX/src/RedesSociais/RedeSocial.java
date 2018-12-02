@@ -17,6 +17,13 @@ public abstract class RedeSocial {
 	protected ArrayList<PostGeral> lista_posts = new ArrayList<PostGeral>();
 	protected BaseDados db;
 	
+	
+	/**
+	 * Utiliza a informação que está no xml para autenticar o cliente
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public abstract void autenticarCliente() throws ParserConfigurationException, SAXException, IOException;
 
 	/**
@@ -68,12 +75,6 @@ public abstract class RedeSocial {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
 	//Possivel metodo futuro
-	//public abstract void refrescarConteudo();
+	public abstract void refrescarConteudo();
 }
