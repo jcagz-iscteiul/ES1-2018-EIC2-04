@@ -109,8 +109,8 @@ public class BaseDados {
 	         String sql = "INSERT INTO " + redeSocial + " (ID,REDESOCIAL,TITULO,CONTEUDO,DATA) ";
 	         String sqlValues = "";
 	         for(PostGeral post: posts) {
-	        	 sqlValues = sql + createSqlValues(post.id, redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString());
-	        	 System.out.println("SQL Value ID: " + post.id + " \n");
+	        	 sqlValues = sql + createSqlValues(post.getId(), redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString());
+	        	 System.out.println("SQL Value ID: " + post.getId() + " \n");
 	        	 System.out.println(sqlValues);
 	        	 stmt.executeUpdate(sqlValues);
 	         }
@@ -147,8 +147,8 @@ public class BaseDados {
 	         String sql = "INSERT INTO " + redeSocial + " (ID,REDESOCIAL,TITULO,CONTEUDO,DATA,DE,PARA) ";
 	         String sqlValues = "";
 	         for(PostGeral post: posts) {
-	        	 sqlValues = sql + createSqlValuesGmail(post.id, redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString(), ((EmailPost)post).getFrom(), ((EmailPost)post).getTo());
-	        	 System.out.println("SQL Value ID: " + post.id + " \n");
+	        	 sqlValues = sql + createSqlValuesGmail(post.getId(), redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString(), ((EmailPost)post).getFrom(), ((EmailPost)post).getTo());
+	        	 System.out.println("SQL Value ID: " + post.getId() + " \n");
 	        	 System.out.println(sqlValues);
 	        	 stmt.executeUpdate(sqlValues);
 	         }
@@ -294,45 +294,5 @@ public class BaseDados {
 	      System.out.println("Operation delete TABLE " + redeSocial + " done successfully");
 	}
 	
-	public static void main(String[] args) {
-//		TwitterMain tw = new TwitterMain();
-//		Gmail gm = new Gmail();
-//		BaseDados db = new BaseDados();
-//		db.connectToDB();
-//		db.createTable("Twitter");
-//		db.insertOperationGmail("Gmail", gm.getEmails());
-//		Facebook fb = new Facebook();
-//		TwitterObject tw = new TwitterObject();
-//		Gmail gm = new Gmail();
-//		BaseDados db = new BaseDados();
-//		db.connectToDB();
-//		db.createTable("Facebook");
-//		db.insertOperation("Facebook", fb.getPosts());
-//		ArrayList<PostGeral> lista = db.getFacebookPosts();
-//		System.out.println("FACEBOOK\n");
-//		for(PostGeral post: lista) {
-//			System.out.println("ID: " + post.id);
-//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
-//		}
-//	
-//		db.createTable("Twitter");
-//		db.insertOperation("Twitter", tw.getTw_tweet());
-//		System.out.println("TWITTER\n");
-//		ArrayList<PostGeral> lista2 = db.getTwitterPosts();
-//		for(PostGeral post: lista2) {
-//			System.out.println("ID: " + post.id);
-//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
-//		}
-		
-//		db.createTableGmail("Gmail");
-//		db.insertOperationGmail("Gmail", gm.getEmails());
-//		System.out.println("Gmail: " + gm.getEmails());
-//		ArrayList<PostGeral> lista3 = db.getGmailPosts();
-//		for(PostGeral post: lista3) {
-//			System.out.println("ID: " + post.id);
-//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
-//		}
-		
-	}
 	
 }

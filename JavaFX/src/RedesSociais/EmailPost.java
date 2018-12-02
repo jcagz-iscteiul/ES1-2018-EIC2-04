@@ -4,40 +4,28 @@ import java.util.Date;
 
 import com.restfb.types.Post;
 
+/**
+ * Representa os posts do email, extende da classe PostGeral.
+ *
+ */
 public class EmailPost extends PostGeral{
 	
 	private String from;
 	private String to;
 	
-	
+	/**
+	 * Construtor da classe
+	 * @param id
+	 * @param assunto
+	 * @param data
+	 * @param conteudo
+	 * @param from
+	 * @param to
+	 */
 	public EmailPost(int id,String assunto, Date data, String conteudo, String from, String to) {
 		super(id, "Email",data, conteudo, assunto);
 		this.from = from;
 		this.to = to;
-	}
-
-	/**
-	 * Retorna o atributo da superclasse titulo
-	 * @return String
-	 */
-	public String getTitulo() {
-		return super.titulo;
-	}
-
-	/**
-	 * Retorna o atributo da superclasse data
-	 * @return Date
-	 */
-	public Date getData() {
-		return super.getData();
-	}
-
-	/**
-	 * Retorna o atributo da superclasse conteudo
-	 * @return String
-	 */
-	public String getConteudo() {
-		return super.conteudo;
 	}
 
 	/**

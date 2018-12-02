@@ -26,7 +26,7 @@ public class FacebookTest {
 	@Test
 	public void test_addPostsToArray() throws ParserConfigurationException, SAXException, IOException {
 
-		for(PostGeral post: fb.getPosts()) {
+		for(PostGeral post: fb.getLista_posts()) {
 			assertFalse("Existe um post null", post.equals(null));
 		}
 		
@@ -34,7 +34,7 @@ public class FacebookTest {
 	
 	@Test
 	public void test_createPostPreview() {
-		for(PostGeral post: fb.getPosts()) {
+		for(PostGeral post: fb.getLista_posts()) {
 			assertFalse("Existe um post com titulo null!", post.getTitulo().equals(null));
 		}
 	}
@@ -42,7 +42,7 @@ public class FacebookTest {
 	@Test
 	public void test_getPosts() {
 		boolean flag = false;
-		if(!(fb.getPosts().equals(null))) {
+		if(!(fb.getLista_posts().equals(null))) {
 			flag = true;
 		} else {
 			flag = false;
@@ -53,8 +53,8 @@ public class FacebookTest {
 	@Test
 	public void test_setPosts() {
 		ArrayList<PostGeral> lista = new ArrayList<PostGeral>();
-		fb.setPosts(lista);
-		assertTrue(fb.getPosts().size() == 0);
+		fb.setLista_posts(lista);
+		assertTrue(fb.getLista_posts().size() == 0);
 	}
 	
 	@Test

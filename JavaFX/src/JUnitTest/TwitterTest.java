@@ -25,14 +25,14 @@ public class TwitterTest {
 	
 	@Test
 	public void test_addPostsToArray() throws ParserConfigurationException, SAXException, IOException {
-		for(PostGeral post: tw.getTw_tweet()) {
+		for(PostGeral post: tw.getLista_posts()) {
 			assertFalse("Existe um post null", post.equals(null));
 		}
 	}
 	
 	@Test
 	public void test_createPostPreview() {
-		for(PostGeral post: tw.getTw_tweet()) {
+		for(PostGeral post: tw.getLista_posts()) {
 			assertFalse("Existe um post com titulo null!", post.getTitulo().equals(null));
 		}
 	}
@@ -40,7 +40,7 @@ public class TwitterTest {
 	@Test
 	public void test_getPosts() {
 		boolean flag = false;
-		if(!(tw.getTw_tweet().equals(null))) {
+		if(!(tw.getLista_posts().equals(null))) {
 			flag = true;
 		} else {
 			flag = false;
@@ -51,8 +51,8 @@ public class TwitterTest {
 	@Test
 	public void test_setPosts() {
 		ArrayList<PostGeral> lista = new ArrayList<PostGeral>();
-		tw.setTw_tweet(lista);;
-		assertTrue(tw.getTw_tweet().size() == 0);
+		tw.setLista_posts(lista);
+		assertTrue(tw.getLista_posts().size() == 0);
 	}
 	
 	@Test

@@ -174,11 +174,11 @@ public class Main_Controller implements Initializable {
 	 */
 	public Main_Controller() {
 		fb = new Facebook();
-		fb_posts = fb.getPosts();
+		fb_posts = fb.getLista_posts();
 		this.tw = TwitterObject.getInstance();
-		this.tw_posts = tw.getTw_tweet();
+		this.tw_posts = tw.getLista_posts();
 		this.gm = new Gmail();
-		this.gm_posts = gm.getEmails();
+		this.gm_posts = gm.getLista_posts();
 
 		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
 		this.destaques = destaquesObject.getDestaques();
@@ -207,7 +207,7 @@ public class Main_Controller implements Initializable {
 	public void filtragem24_facebook(ActionEvent event) {
 		listFacebook.getItems().clear();
 		textAreaFacebook_list.clear();
-		for (PostGeral post : fb.vinteQuatroHoras(fb.getPosts())) {
+		for (PostGeral post : fb.vinteQuatroHoras(fb.getLista_posts())) {
 			listFacebook.getItems().add(post.getTitulo());
 		}
 	}
@@ -218,7 +218,7 @@ public class Main_Controller implements Initializable {
 		listEmail.getItems().clear();
 		textAreaGmail_list.clear();
 
-		for (PostGeral post : gm.vinteQuatroHoras(gm.getEmails())) {
+		for (PostGeral post : gm.vinteQuatroHoras(gm.getLista_posts())) {
 			listEmail.getItems().add(((EmailPost) post).emailPostPreview());
 		}
 
@@ -230,7 +230,7 @@ public class Main_Controller implements Initializable {
 		listTwitter.getItems().clear();
 		textAreaTwitter_list.clear();
 
-		for (PostGeral post : tw.vinteQuatroHoras(tw.getTw_tweet())) {
+		for (PostGeral post : tw.vinteQuatroHoras(tw.getLista_posts())) {
 			listTwitter.getItems().add((tw.createPostPreview((TwitterPost) post)));
 			
 		}
@@ -241,7 +241,7 @@ public class Main_Controller implements Initializable {
 			
 		fb.viraLista();	
 		
-		this.fb_posts = fb.getPosts();
+		this.fb_posts = fb.getLista_posts();
 		
 		int index = listFacebook.getSelectionModel().getSelectedIndex();
 		listFacebook.getSelectionModel().clearSelection(index);
@@ -260,7 +260,7 @@ public class Main_Controller implements Initializable {
 		
 		gm.viraLista();
 		
-		this.gm_posts = gm.getEmails();
+		this.gm_posts = gm.getLista_posts();
 		
 		int index = listEmail.getSelectionModel().getSelectedIndex();
 		listEmail.getSelectionModel().clearSelection(index);
@@ -281,7 +281,7 @@ public class Main_Controller implements Initializable {
 		
 		tw.viraLista();
 		
-		this.tw_posts = tw.getTw_tweet();
+		this.tw_posts = tw.getLista_posts();
 		
 		int index = listTwitter.getSelectionModel().getSelectedIndex();
 		listTwitter.getSelectionModel().clearSelection(index);
@@ -335,7 +335,6 @@ public class Main_Controller implements Initializable {
 			System.out.println("Foi feito o tweet: " + conteudoTwitter.getText());
 			conteudoTwitter.clear();
 		} catch (TwitterException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -378,7 +377,7 @@ public class Main_Controller implements Initializable {
 		listFacebook.getSelectionModel().clearSelection(index);
 		listFacebook.getItems().clear();
 		// Vai buscar a lista nova
-		ArrayList<PostGeral> listaFacebook = fb.getPosts();
+		ArrayList<PostGeral> listaFacebook = fb.getLista_posts();
 		ArrayList<PostGeral> lista = fb.palavraChave(palavra, listaFacebook);
 		textAreaFacebook_list.clear();
 		this.fb_posts = lista;
@@ -396,7 +395,7 @@ public class Main_Controller implements Initializable {
 		int index = listEmail.getSelectionModel().getSelectedIndex();
 		listEmail.getSelectionModel().clearSelection(index);
 		listEmail.getItems().clear();
-		ArrayList<PostGeral> listaEmail = gm.getEmails();
+		ArrayList<PostGeral> listaEmail = gm.getLista_posts();
 		ArrayList<PostGeral> lista = gm.palavraChave(palavra, listaEmail);
 		textAreaGmail_list.clear();
 		this.gm_posts = lista;
@@ -413,7 +412,7 @@ public class Main_Controller implements Initializable {
 		int index = listTwitter.getSelectionModel().getSelectedIndex();
 		listTwitter.getSelectionModel().clearSelection(index);
 		listTwitter.getItems().clear();
-		ArrayList<PostGeral> listaTweet = tw.getTw_tweet();
+		ArrayList<PostGeral> listaTweet = tw.getLista_posts();
 		ArrayList<PostGeral> lista = tw.palavraChave(palavra, listaTweet);
 		textAreaTwitter_list.clear();
 		this.tw_posts = lista;
@@ -475,7 +474,7 @@ public class Main_Controller implements Initializable {
 				}
 				if (newTab == tabEmail) {
 					System.out.println("- Aberta tab Email");
-					gm.viraArraylist();
+					gm.viraLista();
 					
 					for (PostGeral post : gm_posts) {
 						listEmail.getItems().add(((EmailPost) post).emailPostPreview());

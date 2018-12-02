@@ -6,34 +6,38 @@ public interface Filtragem{
 	
 	
 	/**
-	 * Retorna uma ArrayList<FacebookPost> organizado por utilizadores
+	 * Retorna uma ArrayList<PostGeral> organizado por utilizadores
 	 * @param fb_posts
-	 * @return ArrayList<FacebookPost>
+	 * @return ArrayList<PostGeral>
 	 */
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts);
+	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> lista);
 	
 	/**
-	 * Retorna uma nova lista de FacebookPost com as respetivas palavras escolhidas pelo utilizador
+	 * Retorna uma nova lista de PostGeral com as respetivas palavras escolhidas pelo utilizador
 	 * @param palavra
-	 * @param fb_posts
-	 * @return ArrayList<FacebookPost>
+	 * @param lista
+	 * @return ArrayList<PostGeral>
 	 */
-	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts);
+	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> lista);
 	
 	/**
 	 * Retorna uma nova lista com os posts das últimas 24 horas
 	 * @param fb_posts
-	 * @return ArrayList<FacebookPost>
+	 * @return ArrayList<PostGeral>
 	 */
-	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> fb_posts);
+	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> lista);
 	
 	/**
-	 * Retorna um FacebookPost passando o título desse post como argumento
+	 * Retorna um PostGeral passando o título desse post como argumento
 	 * @param titulo
-	 * @return FacebookPost
+	 * @return PostGeral
 	 */
 	public PostGeral getPostEspecifico(String titulo);
 	
+	
+	/**
+	 * Vira a lista de PostGeral (ascendente ou descente) de acordo com a data de cada PostGeral
+	 */
 	public void viraLista();
 	
 	

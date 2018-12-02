@@ -23,9 +23,6 @@ import xml.XML;
 public class TwitterObject extends RedeSocial implements Filtragem{
 
 	private Twitter me;
-	private XML xml = new XML();
-	private ArrayList<PostGeral> tw_tweet = new ArrayList<PostGeral>();
-	private BaseDados db;
 	
 	private static TwitterObject instance = new TwitterObject();
 
@@ -37,7 +34,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		} catch (TwitterException e) {
 			System.out.println("O Twitter ESTA DESLIGADO [Excepção]");
 			this.db = new BaseDados();
-			this.tw_tweet = db.getTwitterPosts();
+			this.lista_posts = db.getTwitterPosts();
 		}
 	}
 
@@ -61,7 +58,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 				String conteudo = status.getText();
 				String titulo = status.getUser().getName();
 
-				tw_tweet.add(new TwitterPost(i,data, conteudo, titulo));
+				lista_posts.add(new TwitterPost(i,data, conteudo, titulo));
 				i++;
 				//System.out.println(data + " " + titulo + " : " + conteudo);
 			}
@@ -69,26 +66,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		}
 	}
 
-//	public void pesquisar(String palavra) throws TwitterException {
-//		
-//		List<Status> statuses = me.getHomeTimeline();
-//		System.out.println("A mostrar timeline ");
-//		for (Status status : statuses) {
-//			if (status.getText() != null) {
-//				if (status.getText().toLowerCase().contains(palavra.toLowerCase())) {
-//					Date data = status.getCreatedAt();
-//					String conteudo = status.getText();
-//					String titulo = status.getUser().getName();
-//			
-//					tw_tweet.add(new TwitterPost(data, conteudo, titulo));
-//					
-//					
-//					System.out.println(status.getUser().getName() + ":" + status.getText());
-//				}
-//				
-//			}
-//		}
-//	}
 	
 	@SuppressWarnings("unchecked")
 	public int another_profile_tweets(int pagina, String user) {
@@ -114,25 +91,26 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	    return (statuses.size());
 	}
 		
-
-	public XML getXml() {
-		return xml;
+	
+	public String createPost(TwitterPost post) {
+		
+		String str;
+		str = post.getConteudo();
+		return str;
 	}
+	
+	public String createPostPreview(TwitterPost post) {
+		String str;
 
-	@Override
-	public void autenticarCliente() {
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-		try {
-			cb.setDebugEnabled(true).setOAuthConsumerKey(xml.getDebugEnable())
-			.setOAuthConsumerSecret(xml.getTwitterConsumerSecret())
-			.setOAuthAccessToken(xml.getTwitterAccessToken())
-			.setOAuthAccessTokenSecret(xml.getTwitterAccessTokenSecret());
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
+		if (post.getConteudo().length() < 22) {
+			str = post.getData().toString() + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo() + "... ";
+		} else {
+			str = post.getData().toString()  + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo().substring(0, 22) + "... ";
 		}
-		TwitterFactory tf = new TwitterFactory(cb.build());
-		me = tf.getInstance();
+		return str;
 	}
+
+
 
 	
 
@@ -141,6 +119,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return null;
 	}
 
+	
 	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> tweets) {
 		
@@ -154,6 +133,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return novaListaPosts;
 	}
 
+	
 	@Override
 	public ArrayList<PostGeral> vinteQuatroHoras(ArrayList<PostGeral> tweets) {
 		ArrayList<PostGeral> last24hours = new ArrayList<PostGeral>();
@@ -167,7 +147,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		System.out.println("data hà 24h atrás: " + yesterday.toString());
 		
 		for(PostGeral post : tweets) {
-			if(((TwitterPost)post).getDate().compareTo(yesterday) * ((TwitterPost)post).getDate().compareTo(today)<=0){
+			if(((TwitterPost)post).getData().compareTo(yesterday) * ((TwitterPost)post).getData().compareTo(today)<=0){
 				last24hours.add(post);
 			}
 		}
@@ -175,9 +155,10 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return last24hours;
 	}
 
+	
 	@Override
 	public TwitterPost getPostEspecifico(String titulo) {
-		for(PostGeral post: tw_tweet) {
+		for(PostGeral post: lista_posts) {
 			if(createPostPreview((TwitterPost) post).equals(titulo)) { //getPostPreview retornava o autor e não o preview do conteúdo? ¯\_(O_p)_/¯
 				return (TwitterPost) post;
 			}
@@ -185,41 +166,32 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return null;
 	}
 	
-	public ArrayList<PostGeral> getTw_tweet() {
-		return tw_tweet;
-	}
-
-	public void setTw_tweet(ArrayList<PostGeral> tw_tweet) {
-		this.tw_tweet = tw_tweet;
-	}
-	
-	public String createPost(TwitterPost post) {
-		
-		String str;
-		str = post.getConteudo();
-		return str;
-	}
-	
-	public String createPostPreview(TwitterPost post) {
-		String str;
-
-		if (post.getConteudo().length() < 22) {
-			str = post.getDate().toString() + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo() + "... ";
-		} else {
-			str = post.getDate().toString()  + " - " + "[" +  post.getTitulo() + "]" + ": " + post.getConteudo().substring(0, 22) + "... ";
-		}
-		return str;
-	}
 	
 	@Override
 	public void viraLista() {
 		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
 		
-		for(int i = tw_tweet.size()-1 ; i >= 0 ; i--) {
-			emails_Aux.add((PostGeral) tw_tweet.toArray()[i]);
+		for(int i = lista_posts.size()-1 ; i >= 0 ; i--) {
+			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
 		}
 		
-		tw_tweet = emails_Aux;
+		lista_posts = emails_Aux;
+	}
+	
+	
+	@Override
+	public void autenticarCliente() {
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		try {
+			cb.setDebugEnabled(true).setOAuthConsumerKey(xml.getDebugEnable())
+			.setOAuthConsumerSecret(xml.getTwitterConsumerSecret())
+			.setOAuthAccessToken(xml.getTwitterAccessToken())
+			.setOAuthAccessTokenSecret(xml.getTwitterAccessTokenSecret());
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
+		TwitterFactory tf = new TwitterFactory(cb.build());
+		me = tf.getInstance();
 	}
 	
 	

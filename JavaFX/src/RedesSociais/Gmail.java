@@ -32,7 +32,6 @@ import xml.XML;
 /**
  * Simula o Gmail
  * 
- * @author Afonso
  *
  */
 public class Gmail extends RedeSocial implements Filtragem {
@@ -43,47 +42,25 @@ public class Gmail extends RedeSocial implements Filtragem {
 	private Flag flag;
 	private Properties props;
 	private Session session;
-	private XML xml = new XML();
-	private BaseDados db;
+//	private BaseDados db;
 
-	private ArrayList<PostGeral> emails = new ArrayList<PostGeral>();
 
 	/**
-	 * 
+	 * Construtor da classe Gmail 
 	 */
 	public Gmail() {
 		try {
 			autenticarCliente();
 			addEmailsToArray();
-			viraArraylist();
+			viraLista();
 		} catch (Exception e) {
 			System.out.println("Nao foi possivel ligar-se ao email");
 			db = new BaseDados();
-			emails = db.getGmailPosts();
+			lista_posts = db.getGmailPosts();
 		}
 	}
 
-	@Override
-	public void autenticarCliente() {
-		props = System.getProperties();
-		props.setProperty("mail.store.protocol", "imaps");
-
-		session = Session.getDefaultInstance(props, null);
-
-		try {
-			store = session.getStore("imaps");
-			try {
-				store.connect("imap.googlemail.com", xml.getGmailEmail(), xml.getGmailPassword());
-			} catch (ParserConfigurationException | SAXException | IOException e) {
-				e.printStackTrace();
-			}
-			folder = (IMAPFolder) store.getFolder("inbox");
-		} catch (MessagingException e) {
-			
-			System.out.println("O GMAIL ESTA DESLIGADO [Excepção]");
-		}
-
-	}
+	
 
 	/**
 	 * Adiciona os emails da respetiva conta ao atributo emails
@@ -115,7 +92,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 			from = "garcez";
 			to = msg.getAllRecipients()[0].toString();
 			EmailPost post = new EmailPost(i,assunto, data, conteudo, from, to);
-			emails.add(post);
+			lista_posts.add(post);
 
 		}
 		if (folder != null && folder.isOpen()) {
@@ -131,7 +108,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 	 * consola as informações de cada email
 	 */
 	public void mostraMailsDaLista() {
-		for (PostGeral e : emails) {
+		for (PostGeral e : lista_posts) {
 			System.out.println("FROM: " + ((EmailPost) e).getFrom());
 			System.out.println("TO: " + ((EmailPost) e).getTo());
 			System.out.println("Assunto: " + ((EmailPost) e).getTitulo());
@@ -169,16 +146,54 @@ public class Gmail extends RedeSocial implements Filtragem {
 		}
 		return "";
 	}
+	
 
 	/**
-	 * Retorna o respetivo atributo ArrayList<PostGeral> emails
+	 * Vai enviar para o emailTo com o respetivo assunto e conteudo.
 	 * 
-	 * @return ArrayList<PostGeral>
+	 * @param emailTo
+	 * @param assunto
+	 * @param conteudo
 	 */
-	public ArrayList<PostGeral> getEmails() {
-		return emails;
+	public void sendEmail(String emailTo, String assunto, String conteudo) {
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+	
+		try {
+			Authenticator auth = new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					try {
+						return new PasswordAuthentication(xml.getGmailEmail(), xml.getGmailPassword());
+					} catch (ParserConfigurationException | SAXException | IOException e) {
+						e.printStackTrace();
+					}
+					return null;
+				}
+			};
+	
+			Session session = Session.getInstance(props, auth);
+	
+			MimeMessage msg = new MimeMessage(session);
+			msg.setText(conteudo);
+			msg.setSubject(assunto);
+			try {
+				msg.setFrom(new InternetAddress(xml.getGmailEmail()));
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				e.printStackTrace();
+			}
+			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailTo));
+			Transport.send(msg);
+	
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+	
 	}
 
+
+	//Funções interface filtragem
 	@Override
 	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
 		return null;
@@ -188,7 +203,7 @@ public class Gmail extends RedeSocial implements Filtragem {
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
 		String str;
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
-		for (PostGeral post : emails) {
+		for (PostGeral post : lista_posts) {
 			str = ((EmailPost) post).emailPostPreview() + ((EmailPost) post).getConteudo();
 			if (str.toLowerCase().contains(palavra.toLowerCase()))
 				novaListaPosts.add(post);
@@ -220,80 +235,46 @@ public class Gmail extends RedeSocial implements Filtragem {
 
 	@Override
 	public EmailPost getPostEspecifico(String titulo) {
-		for (PostGeral post : emails) {
+		for (PostGeral post : lista_posts) {
 			if (((EmailPost) post).emailPostPreview().equals(titulo)) {
 				return (EmailPost) post;
 			}
 		}
 		return null;
 	}
-
-	/**
-	 * Vai enviar para o emailTo com o respetivo assunto e conteudo.
-	 * 
-	 * @param emailTo
-	 * @param assunto
-	 * @param conteudo
-	 */
-	public void sendEmail(String emailTo, String assunto, String conteudo) {
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.auth", "true");
-
-		try {
-			Authenticator auth = new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					try {
-						return new PasswordAuthentication(xml.getGmailEmail(), xml.getGmailPassword());
-					} catch (ParserConfigurationException | SAXException | IOException e) {
-						e.printStackTrace();
-					}
-					return null;
-				}
-			};
-
-			Session session = Session.getInstance(props, auth);
-
-			MimeMessage msg = new MimeMessage(session);
-			msg.setText(conteudo);
-			msg.setSubject(assunto);
-			try {
-				msg.setFrom(new InternetAddress(xml.getGmailEmail()));
-			} catch (ParserConfigurationException | SAXException | IOException e) {
-				e.printStackTrace();
-			}
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(emailTo));
-			Transport.send(msg);
-
-		} catch (MessagingException mex) {
-			mex.printStackTrace();
-		}
-
-	}
-
-	/**
-	 * Torna a ArrayList do atributo emails ascendente/descendente
-	 */
-	public void viraArraylist() {
-
-	}
-
+	
 	@Override
 	public void viraLista() {
 		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
 
-		for (int i = emails.size() - 1; i >= 0; i--) {
-			emails_Aux.add((PostGeral) emails.toArray()[i]);
+		for (int i = lista_posts.size() - 1; i >= 0; i--) {
+			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
 		}
 
-		emails = emails_Aux;
-
+		lista_posts = emails_Aux;
 	}
-
 	
+	@Override
+	public void autenticarCliente() {
+		props = System.getProperties();
+		props.setProperty("mail.store.protocol", "imaps");
 
-	public XML getXml() {
-		return xml;
+		session = Session.getDefaultInstance(props, null);
+
+		try {
+			store = session.getStore("imaps");
+			try {
+				store.connect("imap.googlemail.com", xml.getGmailEmail(), xml.getGmailPassword());
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				e.printStackTrace();
+			}
+			folder = (IMAPFolder) store.getFolder("inbox");
+		} catch (MessagingException e) {
+			
+			System.out.println("O GMAIL ESTA DESLIGADO [Excepção]");
+		}
+
 	}
+
+
 }

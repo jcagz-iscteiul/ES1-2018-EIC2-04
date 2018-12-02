@@ -31,8 +31,6 @@ import com.restfb.Version;
 
 /**
  * Simula a rede social facebook
- * @author
- * @version
  *
  */
 public class Facebook extends RedeSocial implements Filtragem{  //implements interfaceFiltragem
@@ -40,20 +38,20 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private final Version version = Version.VERSION_2_11;
 	private String accessToken;
 	private FacebookClient fbClient;
-	private XML xml = new XML();
-	private ArrayList<PostGeral> fb_posts = new ArrayList<PostGeral>();
-	private BaseDados db;
+//	private XML xml = new XML();
+//	private BaseDados db;
 	
-	
+	/**
+	 * Construtor
+	 */
 	public Facebook() {
 		try {
 			autenticarCliente();
 			addPostsToArray();
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("Nao foi possivel ligar-se ao Facebook");
-			BaseDados db = new BaseDados();
-			this.fb_posts = db.getFacebookPosts();
+			db = new BaseDados();
+			this.lista_posts = db.getFacebookPosts();
 		}
 
 	
@@ -72,7 +70,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 					String conteudo = aPost.getMessage();
 					String titulo = createPostPreview(aPost);
 					
-					fb_posts.add(new FacebookPost(i,data, conteudo, titulo));
+					lista_posts.add(new FacebookPost(i,data, conteudo, titulo));
 					i++;
 				}
 					
@@ -98,30 +96,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	}
 	
 	
-	/**
-	 * Retorna o respetivo atributo ArrayList<PostGeral> fb_posts 
-	 * @return ArrayList<PostGeral>
-	 */
-	public ArrayList<PostGeral> getPosts(){
-		return fb_posts;
-	}
-	
-	/**
-	 * Altera o atributo fb_posts com uma lista nova
-	 * @param fb_posts
-	 */
-	public void setPosts(ArrayList<PostGeral> fb_posts) {
-		this.fb_posts = fb_posts;
-	}
-	
-	/**
-	 * Retorna o atributo xml da classe Facebook
-	 * @return XML
-	 */
-	public XML getXml() {
-		return xml;
-	}
-
 	
 	//Funções da Interface Filtragem
 	@Override
@@ -131,7 +105,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 
 	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
-		// TODO Auto-generated method stub
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: fb_posts) {
 			if(((FacebookPost)post).getConteudo().toLowerCase().contains(palavra.toLowerCase())) {
@@ -154,7 +127,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		System.out.println("data hà 24h atrás: " + yesterday.toString());
 		
 		for(PostGeral post : fb_posts) {
-			if(((FacebookPost)post).getDate().compareTo(yesterday) * ((FacebookPost)post).getDate().compareTo(today)<=0){
+			if(((FacebookPost)post).getData().compareTo(yesterday) * ((FacebookPost)post).getData().compareTo(today)<=0){
 				last24hours.add(post);
 			}
 		}
@@ -163,7 +136,7 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 
 	@Override
 	public FacebookPost getPostEspecifico(String titulo) {
-		for(PostGeral post: fb_posts) {
+		for(PostGeral post: lista_posts) {
 			if(((FacebookPost)post).getTitulo().equals(titulo)) {
 				return (FacebookPost) post;
 			}
@@ -178,7 +151,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 			accessToken = xml.getFacebookAccessToken();
 			fbClient = new DefaultFacebookClient(accessToken, version);
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("O FACEBOOK ESTA DESLIGADO [Excepção]");
 		}
 		
@@ -191,11 +163,11 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	public void viraLista() {
 		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
 		
-		for(int i = fb_posts.size()-1 ; i >= 0 ; i--) {
-			emails_Aux.add((PostGeral) fb_posts.toArray()[i]);
+		for(int i = lista_posts.size()-1 ; i >= 0 ; i--) {
+			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
 		}
 		
-		fb_posts = emails_Aux;
+		lista_posts = emails_Aux;
 	}
 	
 	

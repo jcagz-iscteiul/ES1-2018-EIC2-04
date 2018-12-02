@@ -20,14 +20,14 @@ public class GmailTest {
 	
 	@Test
 	public void test_addEmailsToArray() {
-		for(PostGeral post: gm.getEmails()) {
+		for(PostGeral post: gm.getLista_posts()) {
 			assertFalse("Existe um email a null!", post.equals(null));
 		}
 	}
 	
 	@Test
 	public void test_getMessageContent() {
-		for(PostGeral post: gm.getEmails()) {
+		for(PostGeral post: gm.getLista_posts()) {
 			assertFalse("Conteudo null!", post.getConteudo().equals(null));
 		}
 	}
@@ -35,7 +35,7 @@ public class GmailTest {
 	@Test
 	public void test_getEmails() {
 		boolean flag = false;
-		if((gm.getEmails().equals(null))) {
+		if((gm.getLista_posts().equals(null))) {
 			flag = false;
 		} else {
 			flag = true;
@@ -45,8 +45,8 @@ public class GmailTest {
 	
 	@Test
 	public void viraArrayList() {
-		gm.viraArraylist();
-		for(PostGeral post: gm.getEmails()) {
+		gm.viraLista();
+		for(PostGeral post: gm.getLista_posts()) {
 			assertNotNull(post);
 		}
 	}

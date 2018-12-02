@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ * Objeto que contém todos os posts das redes sociais
+ */
 public class Destaques implements Filtragem{
 
 	
@@ -23,7 +26,10 @@ public class Destaques implements Filtragem{
 	
 	
 	
-	
+	/**
+	 * Retorna o atributo ArrayList<PostGeral> destaques
+	 * @return ArrayList<PostGeral>
+	 */
 	public ArrayList<PostGeral> getDestaques() {
 		return destaques;
 	}
@@ -31,21 +37,17 @@ public class Destaques implements Filtragem{
 
 
 
-
+	/**
+	 * Altera o atributo ArrayList<PostGeral> destaques por uma nova lista de PostGeral
+	 * @param destaques
+	 */
 	public void setDestaques(ArrayList<PostGeral> destaques) {
 		this.destaques = destaques;
 		
 	}
 
 
-
-
-
-
-
-
-
-
+	//Funções da interface filtragem
 	@Override
 	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
 		// TODO Auto-generated method stub
@@ -124,14 +126,6 @@ public class Destaques implements Filtragem{
 		
 		destaques = destaques_Aux;
 	}
-
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
-
 
 
 }
