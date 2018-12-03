@@ -185,6 +185,7 @@ public class Main_Controller implements Initializable {
 	
 	private String emailTo_string;
 
+	
 	/**
 	 * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são
 	 * inicializados através da criação do objeto Facebook

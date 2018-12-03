@@ -122,6 +122,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return str;
 	}
 
+	
 
 
 	

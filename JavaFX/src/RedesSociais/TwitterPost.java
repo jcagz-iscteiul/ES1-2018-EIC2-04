@@ -24,9 +24,11 @@ public class TwitterPost extends PostGeral{
 		this.postID=postID;
 		
 	}
+	
 	public long getPostID() {
 		return postID;
 	}
+	
 	public void setPostID(long postID) {
 		this.postID = postID;
 	}
