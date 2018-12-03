@@ -233,12 +233,12 @@ public class XML {
 			// Não mexer até aqui
 
 			NamedNodeMap attr_acesstokensecret = Twitter.getAttributes();
-			Node nodeAttr_acesstokensecret = attr_acesstokensecret.getNamedItem("AcessToken");
+			Node nodeAttr_acesstokensecret = attr_acesstokensecret.getNamedItem("AcessTokenSecret");
 			nodeAttr_acesstokensecret.setTextContent(AcessTokenSecret);
 			
 			
 			// Print do novo AppSecret
-			System.out.print("AppSecret : ");
+			System.out.print("AppTokenSecret : ");
 			System.out.println(nodeAttr_acesstokensecret.getNodeValue());
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -310,7 +310,7 @@ public class XML {
 	 * Altera o campo DebugEnable do Twitter no ficheiro xml com o novo valor prentendido
 	 * @param DebugEnable
 	 */
-	public void setTwitterDebugEnable(String DebugEnable) {
+	public void setTwitterDebugEnable(String DebugEnabled) {
 		try {
 
 			String filepath = "src/xml/config.xml";
@@ -325,12 +325,12 @@ public class XML {
 			// Não mexer até aqui
 
 			NamedNodeMap attr_debugenable = Twitter.getAttributes();
-			Node nodeAttr_debugenable = attr_debugenable.getNamedItem("AcessToken");
-			nodeAttr_debugenable.setTextContent(DebugEnable);
+			Node nodeAttr_debugenable = attr_debugenable.getNamedItem("DebugEnabled");
+			nodeAttr_debugenable.setTextContent(DebugEnabled);
 			
 			
 			// Print do novo AppSecret
-			System.out.print("AppSecret : ");
+			System.out.print("DebugEnable : ");
 			System.out.println(nodeAttr_debugenable.getNodeValue());
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();

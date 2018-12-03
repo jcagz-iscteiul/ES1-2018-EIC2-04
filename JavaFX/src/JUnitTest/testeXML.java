@@ -88,7 +88,7 @@ public class testeXML {
 		teste.setTwitterAcessTokenSecret(nova);
 		String atualizada = teste.getTwitterAccessTokenSecret();
 		assertEquals(nova, atualizada);	
-		teste.setFacebookAccessToken(AcessTokenAntesTestSecret);
+		teste.setTwitterAcessTokenSecret(AcessTokenAntesTestSecret);
 		System.out.println("Twitter: AcessTokenSecret antes do teste reposto!");
 	}
 	
@@ -100,7 +100,7 @@ public class testeXML {
 		teste.setTwitterConsumerSecret(nova);
 		String atualizada = teste.getTwitterConsumerSecret();
 		assertEquals(nova, atualizada);	
-		teste.setFacebookAccessToken(ConsumerSecretAntesTestSecret);
+		teste.setTwitterConsumerSecret(ConsumerSecretAntesTestSecret);
 		System.out.println("Twitter: ConsumerSecret antes do teste reposto!");
 	}
 	
@@ -112,7 +112,7 @@ public class testeXML {
 		teste.setTwitterDebugEnable(nova);
 		String atualizada = teste.getTwitterDebugEnable();
 		assertEquals(nova, atualizada);	
-		teste.setFacebookAccessToken(DebugAntesTestSecret);
+		teste.setTwitterDebugEnable(DebugAntesTestSecret);
 		System.out.println("Twitter: DebugEnable antes do teste reposto!");
 	}
 	
@@ -125,7 +125,7 @@ public class testeXML {
 		teste.setGmailEmail(nova);
 		String atualizada = teste.getGmailEmail();
 		assertEquals(nova, atualizada);	
-		teste.setFacebookAccessToken(GmailEmailAntesTestSecret);
+		teste.setGmailEmail(GmailEmailAntesTestSecret);
 		System.out.println("Gmail: Email antes do teste reposto!");
 	}
 	
@@ -138,7 +138,7 @@ public class testeXML {
 		teste.setGmailPassword(nova);
 		String atualizada = teste.getGmailPassword();
 		assertEquals(nova, atualizada);	
-		teste.setFacebookAccessToken(GmailPasswordAntesTestSecret);
+		teste.setGmailPassword(GmailPasswordAntesTestSecret);
 		System.out.println("Gmail: Password antes do teste reposto!");
 	}
 	
