@@ -634,7 +634,7 @@ public class XML {
 	 * @throws SAXException
 	 * @throws IOException
 	 */
-	public String getDebugEnable() throws ParserConfigurationException, SAXException, IOException {
+	public String getTwitterDebugEnable() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
