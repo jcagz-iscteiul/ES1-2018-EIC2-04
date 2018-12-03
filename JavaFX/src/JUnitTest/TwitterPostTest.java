@@ -32,6 +32,7 @@ public class TwitterPostTest {
 		assertTrue(post.getTitulo().equals("ISCTE"));
 	}
 	
+	
 	@Test
 	public void test_getId() {
 		assertTrue(post.getId() == 1);
