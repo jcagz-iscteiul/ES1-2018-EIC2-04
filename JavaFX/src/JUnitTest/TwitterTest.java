@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -74,9 +76,53 @@ public class TwitterTest {
 //	}
 	
 	
-	//
+	@Test
+	public void test_vinteQuatroHoras() {
+		Calendar calendar = Calendar.getInstance(); 
+		Date today = calendar.getTime();
+		
+		calendar.add(Calendar.DAY_OF_MONTH, -7);
+		Date lastweek = calendar.getTime();
+		
+		TwitterPost tw_post1 = new TwitterPost(1, today, "este post do facebook é um teste, um", "Teste1",11);
+		TwitterPost tw_post2 = new TwitterPost(1, lastweek, "este post do facebook é um teste, dois", "Teste2",22);
+		
+		ArrayList<PostGeral> listaTotal = new ArrayList<PostGeral>();
+		listaTotal.add(tw_post1);
+		listaTotal.add(tw_post2);
+		
+		ArrayList<PostGeral> listaComResultados = tw.vinteQuatroHoras(listaTotal);
+		
+		assertTrue(1 == listaComResultados.size());	
+		
+	}
+	
+//	@Test
+//	public void test_getPostEspecifico() {
+//		TwitterPost tw_post1 = new TwitterPost(1, null, "este post do facebook é um teste, um", "Teste1",11);
+//		TwitterPost tw_post2 = new TwitterPost(1, null, "este post do facebook é um teste, dois", "Teste2",22);
+//		ArrayList<PostGeral> listaTotal = new ArrayList<PostGeral>();
+//		listaTotal.add(tw_post1);
+//		listaTotal.add(tw_post2);
+//		
+//		tw.setLista_posts(listaTotal);
+//
+//		assertTrue(tw_post2.equals(tw.getPostEspecifico("Teste2")));	
+//	}
 	
 
+	@Test
+	public void test_viraLista() {
+		TwitterPost tw_post1 = new TwitterPost(1, null, "este post do facebook é um teste, um", "Teste1",11);
+		TwitterPost tw_post2 = new TwitterPost(1, null, "este post do facebook é um teste, dois", "Teste2",22);
+		ArrayList<PostGeral> listaTotal = new ArrayList<PostGeral>();
+		listaTotal.add(tw_post1);
+		listaTotal.add(tw_post2);
+		
+		ArrayList<PostGeral> listaComResultados = tw.viraLista(listaTotal);
+
+		assertTrue(tw_post2.equals(listaComResultados.get(0)));	
+	}
 	
 	
 	@Test
@@ -91,8 +137,13 @@ public class TwitterTest {
 	}
 	
 	
-	
-	
+	@Test
+	public void test_refrescarConteudo() {
+		tw.refrescarConteudo();
+		for(PostGeral post: tw.getLista_posts()) {
+			assertNotNull(post);
+		}
+	}
 	
 	
 }
