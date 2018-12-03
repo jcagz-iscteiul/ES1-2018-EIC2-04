@@ -19,20 +19,6 @@ import RedesSociais.TwitterObject;
 import RedesSociais.TwitterPost;
 
 public class BaseDados {
-	
-	/**
-	 * Conecta-se a base de dados
-	 */
-	public void connectToDB() {
-		Connection c = null;
-		try {
-			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:dadosBDA.db");
-		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("Nao foi possivel conectar-se a base de dados");
-		}
-		System.out.println("Opened database successfully");
-	}
 
 	/**
 	 * Cria uma nova tabela na base de dados. Passa uma string para 
