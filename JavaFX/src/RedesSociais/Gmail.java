@@ -105,20 +105,6 @@ public class Gmail extends RedeSocial implements Filtragem {
 	}
 
 	/**
-	 * Usa um ciclo for para percorrer a ArrayList do atributo emails e mostra na
-	 * consola as informações de cada email
-	 */
-	public void mostraMailsDaLista() {
-		for (PostGeral e : lista_posts) {
-			System.out.println("FROM: " + ((EmailPost) e).getFrom());
-			System.out.println("TO: " + ((EmailPost) e).getTo());
-			System.out.println("Assunto: " + ((EmailPost) e).getTitulo());
-			System.out.println("Conteudo: " + e.getConteudo());
-			System.out.println("Data: " + e.getData().toString());
-		}
-	}
-
-	/**
 	 * Através do parâmetro message vai buscar o conteúdo da mensagem e vai
 	 * retorná-la em String.
 	 * 
