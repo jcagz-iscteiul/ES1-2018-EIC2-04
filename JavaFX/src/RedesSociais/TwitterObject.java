@@ -196,7 +196,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	public void autenticarCliente() {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		try {
-			cb.setDebugEnabled(true).setOAuthConsumerKey(xml.getDebugEnable())
+			cb.setDebugEnabled(true).setOAuthConsumerKey(xml.getTwitterDebugEnable())
 			.setOAuthConsumerSecret(xml.getTwitterConsumerSecret())
 			.setOAuthAccessToken(xml.getTwitterAccessToken())
 			.setOAuthAccessTokenSecret(xml.getTwitterAccessTokenSecret());

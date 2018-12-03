@@ -16,7 +16,7 @@ public class testeXML {
 	 * @throws IOException
 	 */
 	@Test
-	public void testSetGetAcessToken() throws ParserConfigurationException, SAXException, IOException {
+	public void testSetGetFacebookAcessToken() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
 		String AcessTokenAntesTest = teste.getFacebookAccessToken();
 		String nova = "teste";
@@ -34,7 +34,7 @@ public class testeXML {
 	 * @throws IOException
 	 */
 	@Test
-	public void testSetGetAppID() throws ParserConfigurationException, SAXException, IOException {
+	public void testSetGetFacebookAppID() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
 		String GetAppIDAntesTest = teste.getAppID();
 		String nova = "teste";
@@ -52,7 +52,7 @@ public class testeXML {
 	 * @throws IOException
 	 */
 	@Test
-	public void testSetGetAppSecret() throws ParserConfigurationException, SAXException, IOException {
+	public void testSetGetFacebookAppSecret() throws ParserConfigurationException, SAXException, IOException {
 		XML teste = new XML();
 		String GetAppSecret = teste.getFacebookAppSecret();
 		String nova = "teste";
@@ -65,6 +65,84 @@ public class testeXML {
 	
 		
 	}
+	
+	
+	@Test
+	public void testSetGetTwitterAcessToken() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String AcessTokenAntesTest = teste.getTwitterAccessToken();
+		String nova = "teste";
+		teste.setTwitterAccessToken(nova);
+		String atualizada = teste.getTwitterAccessToken();
+		assertEquals(nova, atualizada);	
+		teste.setTwitterAccessToken(AcessTokenAntesTest);
+		System.out.println("Twitter: AcessToken antes do teste reposto!");
+	}
+	
+	
+	@Test
+	public void testSetGetTwitterAcessTokenSecret() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String AcessTokenAntesTestSecret = teste.getTwitterAccessTokenSecret();
+		String nova = "teste";
+		teste.setTwitterAcessTokenSecret(nova);
+		String atualizada = teste.getTwitterAccessTokenSecret();
+		assertEquals(nova, atualizada);	
+		teste.setFacebookAccessToken(AcessTokenAntesTestSecret);
+		System.out.println("Twitter: AcessTokenSecret antes do teste reposto!");
+	}
+	
+	@Test
+	public void testSetGetTwitterConsumerSecret() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String ConsumerSecretAntesTestSecret = teste.getTwitterConsumerSecret();
+		String nova = "teste";
+		teste.setTwitterConsumerSecret(nova);
+		String atualizada = teste.getTwitterConsumerSecret();
+		assertEquals(nova, atualizada);	
+		teste.setFacebookAccessToken(ConsumerSecretAntesTestSecret);
+		System.out.println("Twitter: ConsumerSecret antes do teste reposto!");
+	}
+	
+	@Test
+	public void testSetGetTwitterDebug() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String DebugAntesTestSecret = teste.getTwitterDebugEnable();
+		String nova = "teste";
+		teste.setTwitterDebugEnable(nova);
+		String atualizada = teste.getTwitterDebugEnable();
+		assertEquals(nova, atualizada);	
+		teste.setFacebookAccessToken(DebugAntesTestSecret);
+		System.out.println("Twitter: DebugEnable antes do teste reposto!");
+	}
+	
+	
+	@Test
+	public void testgetGmailEmail() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String GmailEmailAntesTestSecret = teste.getGmailEmail();
+		String nova = "teste";
+		teste.setGmailEmail(nova);
+		String atualizada = teste.getGmailEmail();
+		assertEquals(nova, atualizada);	
+		teste.setFacebookAccessToken(GmailEmailAntesTestSecret);
+		System.out.println("Gmail: Email antes do teste reposto!");
+	}
+	
+	
+	@Test
+	public void testgetGmailPassword() throws ParserConfigurationException, SAXException, IOException {
+		XML teste = new XML();
+		String GmailPasswordAntesTestSecret = teste.getGmailPassword();
+		String nova = "teste";
+		teste.setGmailPassword(nova);
+		String atualizada = teste.getGmailPassword();
+		assertEquals(nova, atualizada);	
+		teste.setFacebookAccessToken(GmailPasswordAntesTestSecret);
+		System.out.println("Gmail: Password antes do teste reposto!");
+	}
+	
+	
 	
 
 }
