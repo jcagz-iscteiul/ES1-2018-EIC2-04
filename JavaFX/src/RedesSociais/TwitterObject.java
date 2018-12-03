@@ -66,10 +66,23 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 
 	}
 	
+	/**
+	 * 
+	 * @param tweet
+	 * @throws TwitterException
+	 */
+	
+	//Falta testar
 	 public void retweet(Status tweet) throws TwitterException {
 		 me.retweetStatus(tweet.getId());
 	       
-	    }
+	 }
+	 
+	//Falta testar
+	 public void like(Status tweet) throws TwitterException {
+		 me.createFavorite(tweet.getId());
+	 }
+
 	
 	/**
 	 * Obtem os tweets da timeline 
