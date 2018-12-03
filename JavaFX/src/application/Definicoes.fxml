@@ -3,28 +3,39 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
-   <children>
-      <Label layoutX="14.0" layoutY="41.0" text="Facebook AccessToken:" />
-      <Button fx:id="getFacebookAccessToken" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#getFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-      <TextArea fx:id="facebookAccessToken" layoutX="16.0" layoutY="58.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="setFacebookAccessToken" layoutX="161.0" layoutY="103.0" mnemonicParsing="false" onAction="#setFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
-      <Label layoutX="14.0" layoutY="14.0" text="Facebook XML Editor" />
-      <Label layoutX="16.0" layoutY="139.0" text="Twitter XML Editor:" />
-      <Label layoutX="16.0" layoutY="164.0" text="Twitter AccessToken:" />
-      <TextArea fx:id="twitterAccessToken" layoutX="16.0" layoutY="181.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="getTwitterAccessToken" layoutX="16.0" layoutY="226.0" mnemonicParsing="false" onAction="#getTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-      <Button fx:id="setTwitterAccessToken" layoutX="161.0" layoutY="226.0" mnemonicParsing="false" onAction="#setTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
-      <Label layoutX="16.0" layoutY="260.0" text="Gmail XML Editor:" />
-      <Label layoutX="16.0" layoutY="285.0" text="Gmail Email:" />
-      <TextArea fx:id="gmailEmail" layoutX="16.0" layoutY="302.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="getGmailEmail" layoutX="16.0" layoutY="350.0" mnemonicParsing="false" onAction="#getGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailEmail" />
-      <Button fx:id="setGmailEmail" layoutX="161.0" layoutY="350.0" mnemonicParsing="false" onAction="#setGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailEmail" />
-      <Label layoutX="16.0" layoutY="384.0" text="GmailPassword:" />
-      <TextArea fx:id="gmailPassword" layoutX="16.0" layoutY="401.0" prefHeight="38.0" prefWidth="277.0" />
-      <Button fx:id="getGmailPassword" layoutX="16.0" layoutY="449.0" mnemonicParsing="false" onAction="#getGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailPassword" />
-      <Button fx:id="setGmailPassword" layoutX="161.0" layoutY="449.0" mnemonicParsing="false" onAction="#setGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailPassword" />
-   </children>
-</Pane>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="296.0">
+         <children>
+            <AnchorPane prefHeight="446.0" prefWidth="296.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="28.0" text="Facebook AccessToken:" />
+                  <Button fx:id="getFacebookAccessToken" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#getFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+                  <TextArea fx:id="facebookAccessToken" layoutX="10.0" layoutY="49.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="setFacebookAccessToken" layoutX="156.0" layoutY="90.0" mnemonicParsing="false" onAction="#setFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+                  <Label layoutX="10.0" layoutY="7.0" text="Facebook XML Editor" />
+                  <Label layoutX="11.0" layoutY="327.0" text="Twitter XML Editor:" />
+                  <Label layoutX="11.0" layoutY="347.0" text="Twitter AccessToken:" />
+                  <TextArea fx:id="twitterAccessToken" layoutX="11.0" layoutY="369.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getTwitterAccessToken" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" onAction="#getTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+                  <Button fx:id="setTwitterAccessToken" layoutX="157.0" layoutY="411.0" mnemonicParsing="false" onAction="#setTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+                  <Label layoutX="10.0" layoutY="118.0" text="Gmail XML Editor:" />
+                  <Label layoutX="10.0" layoutY="139.0" text="Gmail Email:" />
+                  <TextArea fx:id="gmailEmail" layoutX="10.0" layoutY="159.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getGmailEmail" layoutX="10.0" layoutY="201.0" mnemonicParsing="false" onAction="#getGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailEmail" />
+                  <Button fx:id="setGmailEmail" layoutX="156.0" layoutY="201.0" mnemonicParsing="false" onAction="#setGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailEmail" />
+                  <Label layoutX="10.0" layoutY="230.0" text="GmailPassword:" />
+                  <TextArea fx:id="gmailPassword" layoutX="10.0" layoutY="250.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getGmailPassword" layoutX="10.0" layoutY="292.0" mnemonicParsing="false" onAction="#getGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailPassword" />
+                  <Button fx:id="setGmailPassword" layoutX="156.0" layoutY="292.0" mnemonicParsing="false" onAction="#setGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailPassword" />
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

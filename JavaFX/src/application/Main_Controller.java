@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -193,6 +195,21 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private Label assuntoLabel;
+	
+	@FXML
+	private Label pesquisarDestaques;
+	
+	@FXML
+	private Label pesquisarGmail;
+	
+	@FXML
+	private Label pesquisarFacebook;
+	
+	@FXML
+	private Label pesquisarTwitter;
+	
+	@FXML
+	private Label getDate;
 		
 	private long tweetSelecionado;
 	
@@ -215,8 +232,6 @@ public class Main_Controller implements Initializable {
 		
 		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
 		this.destaques = destaquesObject.getDestaques();
-		
-		
 	}
 
 	/**
@@ -622,6 +637,13 @@ public class Main_Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Main: Controlador ativo");
+		
+		
+		//Get Data de Hoje
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate localDate = LocalDate.now();
+		System.out.println(dtf.format(localDate));
+		getDate.setText("Hoje: " + localDate.toString());
 		
 		if(online) {
 			inicializarGUI();

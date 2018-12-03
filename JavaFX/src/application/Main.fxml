@@ -38,15 +38,16 @@
                                        <top>
                                           <AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <TextField fx:id="searchBarDestaques" layoutX="156.0" layoutY="7.0" onAction="#searchButtonDestaques" />
-                                                <SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
+                                                <TextField fx:id="searchBarDestaques" layoutX="73.0" layoutY="7.0" onAction="#searchButtonDestaques" />
+                                                <SplitMenuButton layoutX="389.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="389.0" AnchorPane.topAnchor="7.0">
                                                    <items>
                                                       <MenuItem fx:id="MenuItem1_Facebook1" mnemonicParsing="false" onAction="#filtragem24_destaques" text="Ultimas 24h" />
                                                       <MenuItem mnemonicParsing="false" text="Action 2" />
                                                    </items>
                                                 </SplitMenuButton>
                                                 <ToggleButton fx:id="toggleDestaques" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonDestaquesEvent" text="+Recente / +Antigo" />
-                                                <Button fx:id="botaoRefreshDestaques" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshDestaques" text="Refresh" AnchorPane.leftAnchor="14.0" />
+                                                <Button fx:id="botaoRefreshDestaques" layoutX="228.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshDestaques" text="Refresh" AnchorPane.leftAnchor="228.0" />
+                                                <Label fx:id="pesquisarDestaques" layoutX="14.0" layoutY="11.0" text="Pesquisar:" />
                                              </children>
                                           </AnchorPane>
                                        </top>
@@ -173,15 +174,16 @@
 													<top>
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
-																<TextField fx:id="searchBarGmail" layoutX="156.0" layoutY="7.0" onAction="#searchButtonGmail" />
-																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
+																<TextField fx:id="searchBarGmail" layoutX="73.0" layoutY="7.0" onAction="#searchButtonGmail" />
+																<SplitMenuButton layoutX="393.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" onAction="#filtragem24_gmail" text="Last 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
 																	</items>
 																</SplitMenuButton>
-                                                <ToggleButton fx:id="toggleGmail" layoutX="471.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonGmailEvent" text="+Recente / +Antigo" />
-                                                <Button fx:id="botaoRefreshEmail" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshEmail" text="Refresh" AnchorPane.leftAnchor="14.0" />
+                                                <ToggleButton fx:id="toggleGmail" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonGmailEvent" text="+Recente / +Antigo" />
+                                                <Button fx:id="botaoRefreshEmail" layoutX="228.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshEmail" text="Refresh" AnchorPane.leftAnchor="228.0" />
+                                                <Label fx:id="pesquisarGmail" layoutX="14.0" layoutY="11.0" text="Pesquisar:" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -252,15 +254,16 @@
 													<top>
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
-																<TextField fx:id="searchBarFacebook" layoutX="156.0" layoutY="7.0" onAction="#searchButton" />
-																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
+																<TextField fx:id="searchBarFacebook" layoutX="74.0" layoutY="7.0" onAction="#searchButton" />
+																<SplitMenuButton layoutX="394.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="394.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem fx:id="MenuItem1_Facebook" mnemonicParsing="false" onAction="#filtragem24_facebook" text="Ultimas 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
 																	</items>
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleFb" layoutX="474.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonFbEvent" text="+Recente / +Antigo" />
-                                                <Button fx:id="botaoRefreshFacebook" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshFacebook" text="Refresh" AnchorPane.leftAnchor="14.0" />
+                                                <Button fx:id="botaoRefreshFacebook" layoutX="229.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshFacebook" text="Refresh" AnchorPane.leftAnchor="229.0" />
+                                                <Label fx:id="pesquisarFacebook" layoutX="14.0" layoutY="11.0" text="Pesquisar:" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -387,16 +390,17 @@
 													<top>
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
-																<TextField fx:id="searchBarTwitter" layoutX="156.0" layoutY="7.0" onAction="#searchButtonTwitter" />
-																<SplitMenuButton layoutX="352.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="352.0" AnchorPane.topAnchor="7.0">
+																<TextField fx:id="searchBarTwitter" layoutX="75.0" layoutY="7.0" onAction="#searchButtonTwitter" />
+																<SplitMenuButton layoutX="381.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="381.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" text="Ultimas 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
 																	</items>
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleTwitter" layoutX="467.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonTwitterEvent" text="+Recente / +Antigo" />
-                                                <Button fx:id="botaoRefreshTwitter" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshTwitter" text="Refresh" AnchorPane.leftAnchor="14.0" />
-                                                <Button fx:id="retweetButton" layoutX="85.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRetweetEvent" text="Retweet" />
+                                                <Button fx:id="botaoRefreshTwitter" layoutX="231.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshTwitter" text="Refresh" AnchorPane.leftAnchor="231.0" />
+                                                <Button fx:id="retweetButton" layoutX="316.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRetweetEvent" text="Retweet" />
+                                                <Label fx:id="pesquisarTwitter" layoutX="14.0" layoutY="11.0" text="Pesquisar:" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -429,7 +433,7 @@
 													<top>
 														<MenuBar fx:id="menuBarTwitter" BorderPane.alignment="CENTER">
 															<menus>
-																<Menu mnemonicParsing="false" text="Escreva um tweet em baixo" />
+																<Menu mnemonicParsing="false" text="Escrever Tweet:" />
 															</menus>
 														</MenuBar>
 													</top>
@@ -483,7 +487,7 @@
 							</rowConstraints>
 							<children>
 								<Label alignment="CENTER" prefHeight="17.0" prefWidth="195.0" text="Bem-vindo!" textAlignment="CENTER" />
-								<Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="17.0" prefWidth="195.0" text="23.11.2018" textAlignment="CENTER" GridPane.rowIndex="1" />
+								<Label fx:id="getDate" alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="17.0" prefWidth="195.0" text="null" textAlignment="CENTER" GridPane.rowIndex="1" />
 							</children>
 						</GridPane>
 					</children>
