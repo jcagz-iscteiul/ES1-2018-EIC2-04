@@ -166,7 +166,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 			posts_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-//		lista_posts = emails_Aux;
 		return posts_Aux;
 	}
 

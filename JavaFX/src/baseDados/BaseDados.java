@@ -20,6 +20,9 @@ import RedesSociais.TwitterPost;
 
 public class BaseDados {
 	
+	/**
+	 * Conecta-se a base de dados
+	 */
 	public void connectToDB() {
 		Connection c = null;
 		try {
@@ -31,7 +34,11 @@ public class BaseDados {
 		System.out.println("Opened database successfully");
 	}
 
-	//Só dá para os posts do Facebook e do Twitter
+	/**
+	 * Cria uma nova tabela na base de dados. Passa uma string para 
+	 * designar o nome da nova tabela
+	 * @param redeSocial
+	 */
 	public void createTable(String redeSocial) {
 		 Connection c = null;
 	     Statement stmt = null;
@@ -57,7 +64,10 @@ public class BaseDados {
 	      System.out.println("Table created " + redeSocial + " successfully");
 	}
 	
-	public void createTableGmail(String redeSocial) {
+	/**
+	 * Cria uma nova tabela para o Gmail na base de dados
+	 */
+	public void createTableGmail() {
 		 Connection c = null;
 	     Statement stmt = null;
 	      
@@ -67,7 +77,7 @@ public class BaseDados {
 	         System.out.println("Opened database successfully");
 
 	         stmt = c.createStatement();
-	         String sql = "CREATE TABLE " + redeSocial +
+	         String sql = "CREATE TABLE " + "Gmail" +
 	                        "(ID INT PRIMARY KEY     NOT NULL," +
 	                        " REDESOCIAL            TEXT    NOT NULL, " + 
 	                        " TITULO                TEXT    NOT NULL, " + 
@@ -84,6 +94,15 @@ public class BaseDados {
 	      System.out.println("Table created GMAIL successfully");
 	}
 	
+	/**
+	 * Retorna uma String com os valores passados como parâmetros
+	 * @param Id
+	 * @param redeSocial
+	 * @param titulo
+	 * @param conteudo
+	 * @param data
+	 * @return String
+	 */
 	public String createSqlValues(int Id, String redeSocial, String titulo, String conteudo, String data) {
 		String sqlValues = "VALUES (" + Id + ", '" + redeSocial + "', '" +
 							titulo + "', '" + conteudo + "', '" +
@@ -91,7 +110,11 @@ public class BaseDados {
 		return sqlValues;
 	}
 	
-	//So da para o facebook e para o twitter
+	/**
+	 * Insere os posts na tabela designada pelo parâmetro redeSocial
+	 * @param redeSocial
+	 * @param posts
+	 */
 	public void insertOperation(String redeSocial, ArrayList<PostGeral> posts) {
 		System.out.println("====>INSERT OPERATION<====");
 		Connection c = null;
@@ -120,14 +143,30 @@ public class BaseDados {
 	      System.out.println("Records created in " + redeSocial + " successfully");
 	}
 	
-	public String createSqlValuesGmail(int Id, String redeSocial, String titulo, String conteudo, String data, String from, String to) {
-		String sqlValues = "VALUES (" + Id + ", '" + redeSocial + "', '" +
+	/**
+	 * Retorna uma String com os valores passados como parâmetros
+	 * @param Id
+	 * @param redeSocial
+	 * @param titulo
+	 * @param conteudo
+	 * @param data
+	 * @param from
+	 * @param to
+	 * @return String
+	 */
+	public String createSqlValuesGmail(int Id, String titulo, String conteudo, String data, String from, String to) {
+		String sqlValues = "VALUES (" + Id + ", '" + "Gmail" + "', '" +
 							titulo + "', '" + conteudo + "', '" +
 							data + "', '" + from + "', '" + to + "' );";
 		return sqlValues;
 	}
 	
-	public void insertOperationGmail(String redeSocial, ArrayList<PostGeral> posts) {
+	/**
+	 * Insere os posts na tabela Gmail
+	 * @param redeSocial
+	 * @param posts
+	 */
+	public void insertOperationGmail(ArrayList<PostGeral> posts) {
 		Connection c = null;
 	      Statement stmt = null;
 	      
@@ -138,10 +177,10 @@ public class BaseDados {
 	         System.out.println("Opened database successfully");
 
 	         stmt = c.createStatement();
-	         String sql = "INSERT INTO " + redeSocial + " (ID,REDESOCIAL,TITULO,CONTEUDO,DATA,DE,PARA) ";
+	         String sql = "INSERT INTO " + "Gmail" + " (ID,REDESOCIAL,TITULO,CONTEUDO,DATA,DE,PARA) ";
 	         String sqlValues = "";
 	         for(PostGeral post: posts) {
-	        	 sqlValues = sql + createSqlValuesGmail(post.getId(), redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString(), ((EmailPost)post).getFrom(), ((EmailPost)post).getTo());
+	        	 sqlValues = sql + createSqlValuesGmail(post.getId(), post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString(), ((EmailPost)post).getFrom(), ((EmailPost)post).getTo());
 	        	 stmt.executeUpdate(sqlValues);
 	         }
 	         stmt.close();
@@ -149,11 +188,15 @@ public class BaseDados {
 	         c.close();
 	      } catch ( Exception e ) {
 	         System.out.println("Existem ID's iguais");
-	         System.out.println("Elimina primeiro a tabela da respetiva rede social: " + redeSocial + "\n");
+	         System.out.println("Elimina primeiro a tabela da respetiva rede social: " + "Gmail" + "\n");
 	      }
-	      System.out.println("Records created in " + redeSocial + " successfully");
+	      System.out.println("Records created in " + "Gmail" + " successfully");
 	}
 	
+	/**
+	 * Retorna numa ArrayList<PostGeral> os posts da tabela Facebook
+	 * @return ArrayList<PostGeral>
+	 */
 	public ArrayList<PostGeral> getFacebookPosts() {
 		   Connection c = null;
 		   Statement stmt = null;
@@ -186,6 +229,10 @@ public class BaseDados {
 		   return lista;
 	}
 	
+	/**
+	 * Retorna numa ArrayList<PostGeral> os posts da tabela Twitter
+	 * @return ArrayList<PostGeral>
+	 */
 	public ArrayList<PostGeral> getTwitterPosts() {
 		   Connection c = null;
 		   Statement stmt = null;
@@ -221,6 +268,10 @@ public class BaseDados {
 		   return lista;
 	}
 	
+	/**
+	 * Retorna numa ArrayList<PostGeral> os posts da tabela Gmail
+	 * @return ArrayList<PostGeral>
+	 */
 	public ArrayList<PostGeral> getGmailPosts() {
 		   Connection c = null;
 		   Statement stmt = null;
@@ -255,7 +306,10 @@ public class BaseDados {
 		   return lista;
 	}
 	
-	
+	/**
+	 * Elimina os posts da tabela que é designado pelo parâmetro redeSocial
+	 * @param redeSocial
+	 */
 	public void deleteOperation(String redeSocial) {
 		System.out.println("===>DELETE OPERATION<===");
 		 Connection c = null;

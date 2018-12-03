@@ -10,8 +10,6 @@ import java.util.Date;
  */
 public class Destaques implements Filtragem{
 
-	
-	
 	ArrayList<PostGeral> destaques = new ArrayList<PostGeral>();
 	
 	/**
@@ -118,7 +116,6 @@ public class Destaques implements Filtragem{
 			destaques_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-//		destaques = destaques_Aux;
 		return destaques_Aux;
 	}
 

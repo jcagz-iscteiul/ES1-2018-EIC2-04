@@ -83,6 +83,8 @@ public abstract class RedeSocial {
 		return online;
 	}
 
-	//Possivel metodo futuro
+	/**
+	 * Vai buscar os ultimos posts de cada rede social
+	 */
 	public abstract void refrescarConteudo();
 }

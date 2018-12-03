@@ -168,7 +168,10 @@ public class XML {
 	
 	// -------------------------- TWITTER ----------------------------
 	
-	
+	/**
+	 * Altera o campo AccessToken do Twitter no ficheiro xml com o novo valor prentendido
+	 * @param AccessToken
+	 */
 	public void setTwitterAccessToken(String AccessToken) {
 		try {
 
@@ -211,6 +214,10 @@ public class XML {
 		}
 	}
 	
+	/**
+	 * Altera o campo AccessTokenSecret do Twitter no ficheiro xml com o novo valor prentendido
+	 * @param AcessTokenSecret
+	 */
 	public void setTwitterAcessTokenSecret(String AcessTokenSecret) {
 		try {
 
@@ -253,6 +260,10 @@ public class XML {
 		}
 	}
 	
+	/**
+	 * Altera o campo ConsumerSecret do Twitter no ficheiro xml com o novo valor prentendido
+	 * @param ConsumerSecret
+	 */
 	public void setTwitterConsumerSecret(String ConsumerSecret) {
 		try {
 
@@ -295,6 +306,10 @@ public class XML {
 		}
 	}
 	
+	/**
+	 * Altera o campo DebugEnable do Twitter no ficheiro xml com o novo valor prentendido
+	 * @param DebugEnable
+	 */
 	public void setTwitterDebugEnable(String DebugEnable) {
 		try {
 
@@ -340,7 +355,10 @@ public class XML {
 	
 	// ----------------------------- GMAIL --------------------------------------
 	
-	
+	/**
+	 * Altera o campo Email do Gmail no ficheiro xml com o novo valor prentendido
+	 * @param Email
+	 */
 	public void setGmailEmail(String Email) {
 		try {
 
@@ -383,6 +401,10 @@ public class XML {
 		}
 	}
 	
+	/**
+	 * Altera o campo password do Gmail no ficheiro xml com o novo valor prentendido
+	 * @param Password
+	 */
 	public void setGmailPassword(String Password) {
 		try {
 
@@ -518,7 +540,13 @@ public class XML {
 	}
 	
 	// --------------------- TWITTER ------------------------
-	
+	/**
+	 * Retorna o AccessToken do Twitter 
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getTwitterAccessToken() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
@@ -540,7 +568,13 @@ public class XML {
 		return acesstoken;
 	}
 		
-		
+	/**
+	 * 	Retorna o AccessTokenSecret do Twitter
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getTwitterAccessTokenSecret() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
@@ -565,6 +599,13 @@ public class XML {
 		
 	}
 	
+	/**
+	 * Retorna o ConsumerSecret do Twitter
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getTwitterConsumerSecret() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
@@ -586,6 +627,13 @@ public class XML {
 		return consumersecret;
 	}
 	
+	/**
+	 * Retorna o DebugEnable do Twitter
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getDebugEnable() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
@@ -610,7 +658,14 @@ public class XML {
 		
 		
 	// --------------------- GMAIL -------------------
-		
+	
+	/**
+	 * Retorna o Email do Gmail
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getGmailEmail() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";
@@ -631,7 +686,14 @@ public class XML {
 		//System.out.println(acesstoken);
 		return email;
 	}
-		
+	
+	/**
+	 * Retorna a password do Gmail
+	 * @return String
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
 	public String getGmailPassword() throws ParserConfigurationException, SAXException, IOException {
 
 		String filepath = "src/xml/config.xml";

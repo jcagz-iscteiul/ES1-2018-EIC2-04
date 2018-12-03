@@ -50,8 +50,6 @@ import twitter4j.TwitterException;
 /**
  * É o controlador da interface gráfica. Vão ser inicializados os handlers dos
  * eventos da interface gráfica
- * 
- * @author
  *
  */
 
@@ -202,13 +200,11 @@ public class Main_Controller implements Initializable {
 	}
 
 	/**
-	 * Atualiza a list view da interface gráfica com uma nova lista de posts que são
-	 * das últimas 24 horas
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Destaques, com uma nova 
+	 * lista de posts que são das últimas 24 horas
 	 * 
 	 * @param event
 	 */
-	
-	
 	@FXML
 	public void filtragem24_destaques(ActionEvent event) {
 		listDestaques.getItems().clear();
@@ -218,6 +214,11 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Facebook, com uma nova
+	 * lista de posts que são das últimas 24 horas
+	 * @param event
+	 */
 	@FXML
 	public void filtragem24_facebook(ActionEvent event) {
 		listFacebook.getItems().clear();
@@ -226,7 +227,12 @@ public class Main_Controller implements Initializable {
 			listFacebook.getItems().add(post.getTitulo());
 		}
 	}
-
+	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Gmail, com uma nova
+	 * lista de posts que são das últimas 24 horas
+	 * @param event
+	 */
 	@FXML
 	public void filtragem24_gmail(ActionEvent event) {
 		System.out.println("evento das 24h");
@@ -239,6 +245,11 @@ public class Main_Controller implements Initializable {
 
 	}
 	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Twitter, com uma nova
+	 * lista de posts que são das últimas 24 horas
+	 * @param event
+	 */
 	@FXML
 	public void filtragem24_twitter(ActionEvent event) {
 		System.out.println("evento das 24h");
@@ -250,13 +261,15 @@ public class Main_Controller implements Initializable {
 			
 		}
 	}
-
+	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Facebook, para 
+	 * ascendente ou descendente de acordo com a data
+	 * @param event
+	 */
 	@FXML
 	public void toggleButtonFbEvent(ActionEvent event) {
 			
-//		fb.viraLista();	
-		
-//		this.fb_posts = fb.getLista_posts();
 		this.fb_posts = fb.viraLista(fb_posts);
 		
 		int index = listFacebook.getSelectionModel().getSelectedIndex();
@@ -270,11 +283,13 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
-	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Gmail, para 
+	 * ascendente ou descendente de acordo com a data
+	 * @param event
+	 */
 	@FXML
 	public void toggleButtonGmailEvent(ActionEvent event) {
-		
-//		gm.viraLista();
 		
 		this.gm_posts = gm.viraLista(gm_posts);
 		
@@ -291,13 +306,14 @@ public class Main_Controller implements Initializable {
 	
 	
 	
-	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Twitter, para 
+	 * ascendente ou descendente de acordo com a data
+	 * @param event
+	 */
 	@FXML
 	public void toggleButtonTwitterEvent(ActionEvent event) {
 		
-//		tw.viraLista();
-		
-//		this.tw_posts = tw.getLista_posts();
 		this.tw_posts = tw.viraLista(tw_posts);
 		int index = listTwitter.getSelectionModel().getSelectedIndex();
 		listTwitter.getSelectionModel().clearSelection(index);
@@ -310,13 +326,14 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
-	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Destaques, para 
+	 * ascendente ou descendente de acordo com a data
+	 * @param event
+	 */
 	@FXML
 	public void toggleButtonDestaquesEvent(ActionEvent event) {
-		
-//		destaquesObject.viraLista();
-		
-//		this.destaques = destaquesObject.getDestaques();
+
 		this.destaques = destaquesObject.viraLista(destaques);
 		
 		
@@ -333,7 +350,10 @@ public class Main_Controller implements Initializable {
 	
 	
 	
-	
+	/**
+	 * Manda mail para o email introduzido pelo cliente na interface grafica
+	 * @param event
+	 */
 	@FXML
 	public void sendEmailEvent(ActionEvent event) {
 		
@@ -345,6 +365,10 @@ public class Main_Controller implements Initializable {
 		
 	}
 	
+	/**
+	 * Manda um tweet introduzido pelo cliente na interface gráfica
+	 * @param event
+	 */
 	@FXML
 	public void sendTweetEvent(ActionEvent event) {
 		
@@ -358,6 +382,11 @@ public class Main_Controller implements Initializable {
 		
 	}
 	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Destaques, com os 
+	 * posts atualizados de todas as redes
+	 * @param event
+	 */
 	@FXML
 	public void buttonRefreshDestaques(ActionEvent event) {
 		//Os atributos ficam atualizados
@@ -374,14 +403,17 @@ public class Main_Controller implements Initializable {
 		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
 		this.destaques = destaquesObject.getDestaques();
 		
-		//Transpor a lista para a Interface Gráfica
 		for(PostGeral post: destaques) {
-//			System.out.println("Estou a percorrer a lista dos Destaques");
 			listDestaques.getItems().add(post.createTitulo());
 		}
 		
 	}
 	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Facebook, com os 
+	 * posts atualizados do Facebook
+	 * @param event
+	 */
 	@FXML
 	public void buttonRefreshFacebook(ActionEvent event) {
 		listFacebook.getItems().clear();
@@ -394,7 +426,11 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
-
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Twitter, com os 
+	 * posts atualizados do Twitter
+	 * @param event
+	 */
 	@FXML
 	public void buttonRefreshTwitter(ActionEvent event) {
 		listTwitter.getItems().clear();
@@ -407,6 +443,11 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
+	/**
+	 * Atualiza a list view da interface gráfica, nomeadamente a do Gmail, com os 
+	 * posts atualizados do Gmail
+	 * @param event
+	 */
 	@FXML
 	public void buttonRefreshEmail(ActionEvent event) {
 		listEmail.getItems().clear();
@@ -421,13 +462,10 @@ public class Main_Controller implements Initializable {
 	
 
 	/**
-	 * Vai atualizar a list view da interface gráfica com uma nova lista de posts
-	 * com a palavra que o utilizador introduziu na barra de pesquisa
-	 * 
+	 * Vai atualizar a list view da interface gráfica, nomeadamente a do Destaques, 
+	 * com uma nova lista de posts com a palavra que o utilizador introduziu na barra de pesquisa
 	 * @param event
 	 */
-	
-	
 	@FXML
 	public void searchButtonDestaques(ActionEvent event) {
 		// Vai buscar a palavra que o utilizador escreveu
@@ -448,6 +486,11 @@ public class Main_Controller implements Initializable {
 
 	}
 	
+	/**
+	 * Vai atualizar a list view da interface gráfica, nomeadamente a do Facebook, 
+	 * com uma nova lista de posts com a palavra que o utilizador introduziu na barra de pesquisa
+	 * @param event
+	 */
 	@FXML
 	public void searchButton(ActionEvent event) {
 		// Vai buscar a palavra que o utilizador escreveu
@@ -467,7 +510,12 @@ public class Main_Controller implements Initializable {
 		}
 
 	}
-
+	
+	/**
+	 * Vai atualizar a list view da interface gráfica, nomeadamente a do Gmail, 
+	 * com uma nova lista de posts com a palavra que o utilizador introduziu na barra de pesquisa
+	 * @param event
+	 */
 	@FXML
 	public void searchButtonGmail(ActionEvent event) {
 		String palavra = searchBarGmail.getText();
@@ -485,6 +533,11 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
+	/**
+	 * Vai atualizar a list view da interface gráfica, nomeadamente a do Twitter, 
+	 * com uma nova lista de posts com a palavra que o utilizador introduziu na barra de pesquisa
+	 * @param event
+	 */
 	@FXML
 	public void searchButtonTwitter(ActionEvent event) {
 		String palavra = searchBarTwitter.getText();
@@ -501,7 +554,11 @@ public class Main_Controller implements Initializable {
 			listTwitter.getItems().add(tw.createPostPreview((TwitterPost) post));
 		}
 	}
-
+	
+	/**
+	 * Abre a janela das definições
+	 * @param event
+	 */
 	@FXML
 	public void openSettingsScene(ActionEvent event) {
 		try {
@@ -516,6 +573,24 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("Main: Controlador ativo");
+		
+		if(online) {
+			inicializarGUI();
+		} else {
+			botaoRefreshDestaques.setVisible(false);
+			botaoRefreshEmail.setVisible(false);
+			botaoRefreshFacebook.setVisible(false);
+			botaoRefreshTwitter.setVisible(false);
+			inicializarGUI();
+		}
+	}
+	
+	/**
+	 * Adiciona e define os listeners as vàrias componentes da interface gráfica
+	 */
 	public void inicializarGUI() {
 		
 		if (tabPane.getSelectionModel().getSelectedItem().equals(tabDestaques)) {
@@ -651,7 +726,10 @@ public class Main_Controller implements Initializable {
 			}
 		});
 	}
-
+	
+	/**
+	 * Grava os posts na base de dados
+	 */
 	public void shutDown() {
 		System.out.println("Vou gravar os posts na base de dados");
 		this.fb.getDb().deleteOperation("Facebook");
@@ -659,25 +737,14 @@ public class Main_Controller implements Initializable {
 		this.tw.getDb().deleteOperation("Twitter");
 		this.tw.getDb().insertOperation("Twitter", tw.getLista_posts());
 		this.gm.getDb().deleteOperation("Gmail");
-		this.gm.getDb().insertOperationGmail("Gmail", gm.getLista_posts());
+		this.gm.getDb().insertOperationGmail(gm.getLista_posts());
 		Platform.exit();
 	}
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Main: Controlador ativo");
-		
-		if(online) {
-			inicializarGUI();
-		} else {
-			botaoRefreshDestaques.setVisible(false);
-			botaoRefreshEmail.setVisible(false);
-			botaoRefreshFacebook.setVisible(false);
-			botaoRefreshTwitter.setVisible(false);
-			inicializarGUI();
-		}
-	}
 
+	/**
+	 * Retorna o atributo online
+	 * @return boolean
+	 */
 	public boolean isOnline() {
 		return online;
 	}

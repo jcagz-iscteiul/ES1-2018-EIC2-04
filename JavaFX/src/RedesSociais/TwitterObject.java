@@ -55,7 +55,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	}
 
 	/**
-	 * 
+	 * Faz um tweet na sua própria conta
 	 * @param tweet
 	 * @throws TwitterException
 	 */
@@ -84,31 +84,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 			}
 			
 		}
-	}
-
-	
-	@SuppressWarnings("unchecked")
-	public int another_profile_tweets(int pagina, String user) {
-		
-	    @SuppressWarnings("rawtypes")
-		List statuses = new ArrayList();
-
-	    while (true) {
-
-	      try {
-
-	        int size = statuses.size(); 
-	        Paging page = new Paging(pagina++, 3);
-	        statuses.addAll(me.getUserTimeline(user, page));
-	        if (statuses.size() == size)
-	          break;
-	      }
-	      catch(TwitterException e) {
-
-	        e.printStackTrace();
-	      }
-	    }
-	    return (statuses.size());
 	}
 		
 	
@@ -193,7 +168,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 			tweets_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-//		lista_posts = emails_Aux;
 		return tweets_Aux;
 	}
 	
@@ -238,21 +212,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		}
 	}
 	
-	public static void main(String[] args) {
-		TwitterObject tw = new TwitterObject();
-		System.out.println("ANTES DO REFRESH");
-		for(PostGeral post: tw.getLista_posts()) {
-			System.out.println("ID: " + post.getId());
-			System.out.println("Conteudo: " + post.getConteudo());
-		}
-		System.out.println("\n");
-		tw.refrescarConteudo();
-		System.out.println("DEPOIS DO REFRESH");
-		for(PostGeral post: tw.getLista_posts()) {
-			System.out.println("ID: " + post.getId());
-			System.out.println("Conteudo: " + post.getConteudo());
-		}
-	}
 
 	
 }
