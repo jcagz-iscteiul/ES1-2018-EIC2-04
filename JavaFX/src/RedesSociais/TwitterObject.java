@@ -27,6 +27,7 @@ import xml.XML;
  */
 public class TwitterObject extends RedeSocial implements Filtragem{
 
+	
 	private Twitter me;
 	
 	private static TwitterObject instance = new TwitterObject();
@@ -64,6 +65,11 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		me.updateStatus(tweet);
 
 	}
+	
+	 public void retweet(Status tweet) throws TwitterException {
+		 me.retweetStatus(tweet.getId());
+	       
+	    }
 	
 	/**
 	 * Obtem os tweets da timeline 
