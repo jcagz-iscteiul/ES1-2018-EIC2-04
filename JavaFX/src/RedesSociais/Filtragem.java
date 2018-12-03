@@ -4,14 +4,6 @@ import java.util.ArrayList;
 
 public interface Filtragem{
 	
-	
-	/**
-	 * Retorna uma ArrayList<PostGeral> organizado por utilizadores
-	 * @param fb_posts
-	 * @return ArrayList<PostGeral>
-	 */
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> lista);
-	
 	/**
 	 * Retorna uma nova lista de PostGeral com as respetivas palavras escolhidas pelo utilizador
 	 * @param palavra

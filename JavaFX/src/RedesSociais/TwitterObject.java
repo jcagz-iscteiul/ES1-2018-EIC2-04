@@ -71,8 +71,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	 * @param tweet
 	 * @throws TwitterException
 	 */
-	
-	//Falta testar
 	 public void retweet(long postID) throws TwitterException {
 		 me.retweetStatus(postID);
 	       
@@ -122,17 +120,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		return str;
 	}
 
-	
-
-
-	
-
-	@Override
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
-		return null;
-	}
-
-	
+	//Funções da Interace Filtragem
 	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> tweets) {
 		

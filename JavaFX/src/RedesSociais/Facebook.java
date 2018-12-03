@@ -100,11 +100,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	
 	//Funções da Interface Filtragem
 	@Override
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
-		return null;
-	}
-
-	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: fb_posts) {

@@ -196,11 +196,6 @@ public class Gmail extends RedeSocial implements Filtragem {
 
 	//Funções interface filtragem
 	@Override
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
-		return null;
-	}
-
-	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> fb_posts) {
 		String str;
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();

@@ -52,18 +52,7 @@ public class Destaques implements Filtragem{
 
 	//Funções da interface filtragem
 	@Override
-	public ArrayList<PostGeral> origemMensagem(ArrayList<PostGeral> fb_posts) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	@Override
 	public ArrayList<PostGeral> palavraChave(String palavra, ArrayList<PostGeral> destaques) {
-		// TODO Auto-generated method stub
 		ArrayList<PostGeral> novaListaPosts = new ArrayList<PostGeral>();
 		for(PostGeral post: destaques) {
 			if(post.getConteudo().toLowerCase().contains(palavra.toLowerCase())) {

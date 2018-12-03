@@ -1,6 +1,7 @@
 package JUnitTest;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,33 @@ public class DestaquesTest {
 			assertNotNull(post);
 		}
 		
+	}
+	
+	@Test
+	public void test_palavraChave() {
+		ArrayList<PostGeral> lista = destaques.palavraChave("EIC", destaques.getDestaques());
+		for(PostGeral post: lista) {
+			assertNotNull(post);
+		}
+	}
+	
+	@Test
+	public void test_vinteQuatroHoras() {
+		ArrayList<PostGeral> lista = destaques.vinteQuatroHoras(destaques.getDestaques());
+		assertTrue(lista.size() >= 0);
+	}
+	
+	@Test
+	public void test_getPostEspecifico() {
+		String titulo = "[Twitter] Mon Dec 03 18:14:55 GMT 2018 - SL Benfica";
+		PostGeral post = destaques.getPostEspecifico(titulo);
+		assertTrue(post.createTitulo().equals(titulo));
+	}
+	
+	@Test
+	public void test_viraLista() {
+		ArrayList<PostGeral> lista = destaques.viraLista(destaques.getDestaques());
+		assertTrue(lista.size() == destaques.getDestaques().size());
 	}
 	
 	
