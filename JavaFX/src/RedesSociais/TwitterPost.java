@@ -17,9 +17,21 @@ public class TwitterPost extends PostGeral{
 	 * @param conteudo
 	 * @param autor
 	 */
-	public TwitterPost(int id, Date data, String conteudo, String autor) {
+	
+	private long postID;         //para permitir retweet
+	public TwitterPost(int id, Date data, String conteudo, String autor, long postID) {
 		super(id, "Twitter",data, conteudo, autor);
+		this.postID=postID;
+		
 	}
+	public long getPostID() {
+		return postID;
+	}
+	public void setPostID(long postID) {
+		this.postID = postID;
+	}
+	
+	
 	
 
 }

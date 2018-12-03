@@ -251,12 +251,13 @@ public class BaseDados {
 		         String titulo = rs.getString("TITULO");
 		         String conteudo = rs.getString("CONTEUDO");
 		         String data = rs.getString("DATA");
+		         long postID = rs.getLong("POSTID");
 		         SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
 		         
 		         
 		         
 		         Date data2 = formatter.parse(data);
-		         lista.add(new TwitterPost(id, data2, conteudo, titulo));
+		         lista.add(new TwitterPost(id, data2, conteudo, titulo,postID));
 		      }
 		      rs.close();
 		      stmt.close();

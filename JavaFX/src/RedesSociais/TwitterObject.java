@@ -73,14 +73,14 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	 */
 	
 	//Falta testar
-	 public void retweet(Status tweet) throws TwitterException {
-		 me.retweetStatus(tweet.getId());
+	 public void retweet(long postID) throws TwitterException {
+		 me.retweetStatus(postID);
 	       
 	 }
 	 
 	//Falta testar
-	 public void like(Status tweet) throws TwitterException {
-		 me.createFavorite(tweet.getId());
+	 public void like(long postID) throws TwitterException {
+		 me.createFavorite(postID);
 	 }
 
 	
@@ -98,7 +98,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 				String conteudo = status.getText();
 				String titulo = status.getUser().getName();
 
-				lista_posts.add(new TwitterPost(i,data, conteudo, titulo));
+				lista_posts.add(new TwitterPost(i,data, conteudo, titulo,status.getId()));
 				i++;
 			}
 			
@@ -221,7 +221,7 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 					String conteudo = status.getText();
 					String titulo = status.getUser().getName();
 
-					lista_posts.add(new TwitterPost(i,data, conteudo, titulo));
+					lista_posts.add(new TwitterPost(i,data, conteudo, titulo, status.getId()));
 					i++;
 				}
 			}
@@ -230,6 +230,8 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 	}
+	
+	
 	
 
 	

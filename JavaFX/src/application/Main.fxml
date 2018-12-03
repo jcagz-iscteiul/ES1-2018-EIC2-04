@@ -396,6 +396,7 @@
 																</SplitMenuButton>
                                                 <ToggleButton fx:id="toggleTwitter" layoutX="467.0" layoutY="7.0" mnemonicParsing="false" onAction="#toggleButtonTwitterEvent" text="+Recente / +Antigo" />
                                                 <Button fx:id="botaoRefreshTwitter" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRefreshTwitter" text="Refresh" AnchorPane.leftAnchor="14.0" />
+                                                <Button fx:id="retweetButton" layoutX="85.0" layoutY="7.0" mnemonicParsing="false" onAction="#buttonRetweetEvent" text="Retweet" />
 															</children>
 														</AnchorPane>
 													</top>
@@ -428,7 +429,7 @@
 													<top>
 														<MenuBar BorderPane.alignment="CENTER">
 															<menus>
-																<Menu mnemonicParsing="false" text="About">
+																<Menu mnemonicParsing="false" text="Retweet">
 																	<items>
 																		<MenuItem mnemonicParsing="false" text="Envia tweets" />
 																	</items>

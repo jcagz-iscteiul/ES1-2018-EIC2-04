@@ -178,6 +178,12 @@ public class Main_Controller implements Initializable {
 
 	@FXML
 	private SplitMenuButton twitterSplitMenu;
+	
+	private long tweetSelecionado;
+	
+	private Button retweetButton;
+	
+	private String emailTo_string;
 
 	/**
 	 * É o construtor da classe Main_Controller. Os atributos fb e fb_posts são
@@ -425,6 +431,32 @@ public class Main_Controller implements Initializable {
 			listFacebook.getItems().add(((FacebookPost)post).getTitulo());
 		}
 	}
+	
+	
+	
+	
+	@FXML
+	public void buttonRetweetEvent(ActionEvent event) {
+		try {
+			tw.retweet(tweetSelecionado);
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@FXML
+	public void buttonTweetLikeEvent(ActionEvent event) {
+		try {
+			tw.like(tweetSelecionado);
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	/**
 	 * Atualiza a list view da interface gráfica, nomeadamente a do Twitter, com os 
@@ -675,6 +707,8 @@ public class Main_Controller implements Initializable {
 					String selectedItem = listEmail.getSelectionModel().getSelectedItem();
 					System.out.println("Selected Item: " + selectedItem);
 					EmailPost post = gm.getPostEspecifico(selectedItem);
+					emailTo_string = post.getFrom();
+					emailTo.setText(emailTo_string);
 					textAreaGmail_list.clear();
 					textAreaGmail_list.appendText(post.getConteudo());
 
@@ -698,6 +732,7 @@ public class Main_Controller implements Initializable {
 					String selectedItem = listTwitter.getSelectionModel().getSelectedItem();
 					System.out.println("Selected Item: " + selectedItem);
 					TwitterPost tweet = tw.getPostEspecifico(selectedItem);
+					tweetSelecionado = tweet.getPostID();
 					textAreaTwitter_list.clear();
 					textAreaTwitter_list.appendText(tweet.getConteudo());
 				}

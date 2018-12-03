@@ -88,9 +88,9 @@ public class Gmail extends RedeSocial implements Filtragem {
 			data = msg.getReceivedDate();
 			conteudo = getMessageContent(msg);
 
-			// from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
+//			from = msg.getFrom()[0].toString().replaceAll(">","<").split("<")[1];
 
-			from = "garcez";
+			from = msg.getFrom()[0].toString();
 			to = msg.getAllRecipients()[0].toString();
 			EmailPost post = new EmailPost(i,assunto, data, conteudo, from, to);
 			lista_posts.add(post);
