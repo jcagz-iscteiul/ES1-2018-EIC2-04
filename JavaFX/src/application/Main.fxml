@@ -225,8 +225,8 @@
                                           <AnchorPane prefHeight="45.0" prefWidth="608.0" BorderPane.alignment="CENTER">
                                              <children>
                                                 <TextField fx:id="emailTo" layoutX="73.0" layoutY="10.0" prefHeight="25.0" prefWidth="514.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="10.0" />
-                                                <Label layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="99.0" text="Email" textOverrun="CLIP" />
-                                                <Label layoutX="14.0" layoutY="43.0" prefHeight="17.0" prefWidth="99.0" text="Assunto" />
+                                                <Label fx:id="emailLabel" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="99.0" text="Email" textOverrun="CLIP" />
+                                                <Label fx:id="assuntoLabel" layoutX="14.0" layoutY="43.0" prefHeight="17.0" prefWidth="99.0" text="Assunto" />
                                                 <TextField fx:id="assunto" layoutX="73.0" layoutY="39.0" prefHeight="25.0" prefWidth="514.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="39.0" />
                                              </children>
                                           </AnchorPane>

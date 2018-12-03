@@ -36,6 +36,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitMenuButton;
@@ -186,6 +187,12 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private Button retweetButton;
+	
+	@FXML
+	private Label emailLabel;
+	
+	@FXML
+	private Label assuntoLabel;
 		
 	private long tweetSelecionado;
 	
@@ -627,6 +634,12 @@ public class Main_Controller implements Initializable {
 			conteudoTwitter.setVisible(false);
 			botaoSendTwitter.setVisible(false);
 			retweetButton.setVisible(false);
+			emailLabel.setVisible(false);
+			assuntoLabel.setVisible(false);
+			emailTo.setVisible(false);
+			assunto.setVisible(false);
+			conteudoEmail.setVisible(false);
+			botaoSendEmail.setVisible(false);
 			inicializarGUI();
 		}
 	}
