@@ -427,7 +427,7 @@
 											<children>
 												<BorderPane layoutX="-3.0" layoutY="-1.0" prefHeight="139.0" prefWidth="608.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-1.0">
 													<top>
-														<MenuBar BorderPane.alignment="CENTER">
+														<MenuBar fx:id="menuBarTwitter" BorderPane.alignment="CENTER">
 															<menus>
 																<Menu mnemonicParsing="false" text="Escreva um tweet em baixo" />
 															</menus>

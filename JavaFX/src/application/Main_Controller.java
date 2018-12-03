@@ -37,6 +37,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -44,6 +45,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import twitter4j.TwitterException;
 
@@ -179,9 +181,13 @@ public class Main_Controller implements Initializable {
 	@FXML
 	private SplitMenuButton twitterSplitMenu;
 	
-	private long tweetSelecionado;
+	@FXML
+	private MenuBar menuBarTwitter;
 	
+	@FXML
 	private Button retweetButton;
+		
+	private long tweetSelecionado;
 	
 	private String emailTo_string;
 
@@ -617,6 +623,10 @@ public class Main_Controller implements Initializable {
 			botaoRefreshEmail.setVisible(false);
 			botaoRefreshFacebook.setVisible(false);
 			botaoRefreshTwitter.setVisible(false);
+			menuBarTwitter.setVisible(false);
+			conteudoTwitter.setVisible(false);
+			botaoSendTwitter.setVisible(false);
+			retweetButton.setVisible(false);
 			inicializarGUI();
 		}
 	}
