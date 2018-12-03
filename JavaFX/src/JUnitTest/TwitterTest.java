@@ -11,8 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+import RedesSociais.FacebookPost;
 import RedesSociais.PostGeral;
 import RedesSociais.TwitterObject;
+import RedesSociais.TwitterPost;
+import twitter4j.TwitterException;
 
 public class TwitterTest {
 
@@ -55,6 +58,25 @@ public class TwitterTest {
 		assertTrue(tw.getLista_posts().size() == 0);
 	}
 	
+//	@Test
+//	public void test_getTimeline() {
+//		int antes = tw.getLista_posts().size();
+//		
+//		try {
+//			tw.getTimeLine();
+//		} catch (TwitterException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		int depois = tw.getLista_posts().size();
+//		assertTrue(depois == 2*antes);		
+//	}
+	
+	
+
+	
+	
 	@Test
 	public void test_getXML() {
 		boolean flag = false;
@@ -65,4 +87,10 @@ public class TwitterTest {
 		}
 		assertTrue(flag == true);
 	}
+	
+	
+	
+	
+	
+	
 }

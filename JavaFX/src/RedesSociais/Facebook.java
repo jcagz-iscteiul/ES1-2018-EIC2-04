@@ -120,7 +120,6 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 		
 		calendar.add(Calendar.DAY_OF_MONTH, -1);
 		Date yesterday = calendar.getTime();
-		System.out.println("data hà 24h atrás: " + yesterday.toString());
 		
 		for(PostGeral post : fb_posts) {
 			if(((FacebookPost)post).getData().compareTo(yesterday) * ((FacebookPost)post).getData().compareTo(today)<=0){
