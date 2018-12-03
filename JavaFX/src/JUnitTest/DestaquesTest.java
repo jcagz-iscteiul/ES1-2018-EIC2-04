@@ -33,9 +33,15 @@ public class DestaquesTest {
 	}
 	
 	@Test
-	public void test_setDestaques() {
+	public void test_setDestaques() { 
+		destaques.setDestaques(destaques.getDestaques());
+		for(PostGeral post: destaques.getDestaques()) {
+			assertNotNull(post);
+		}
 		
 	}
+	
+	
 	
 	
 	

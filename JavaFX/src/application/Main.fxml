@@ -429,11 +429,7 @@
 													<top>
 														<MenuBar BorderPane.alignment="CENTER">
 															<menus>
-																<Menu mnemonicParsing="false" text="Retweet">
-																	<items>
-																		<MenuItem mnemonicParsing="false" text="Envia tweets" />
-																	</items>
-																</Menu>
+																<Menu mnemonicParsing="false" text="Escreva um tweet em baixo" />
 															</menus>
 														</MenuBar>
 													</top>

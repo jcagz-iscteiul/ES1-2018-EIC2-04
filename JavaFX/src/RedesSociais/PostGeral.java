@@ -61,6 +61,14 @@ public abstract class PostGeral implements Comparable<PostGeral>{
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * Retorna o atributo redeSocial
+	 * @return String
+	 */
+	public String getRedeSocial() {
+		return redeSocial;
+	}
 
 	/**
 	 * Retorna uma string com os respetivos atributos:
