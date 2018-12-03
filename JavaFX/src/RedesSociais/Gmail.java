@@ -48,11 +48,14 @@ public class Gmail extends RedeSocial implements Filtragem {
 	 */
 	public Gmail() {
 		try {
+			this.online = true;
+			this.db = new BaseDados();
 			autenticarCliente();
 			addEmailsToArray();
-			viraLista();
+			this.lista_posts = viraLista(this.lista_posts);
 		} catch (Exception e) {
 			System.out.println("Nao foi possivel ligar-se ao email");
+			this.online = false;
 			db = new BaseDados();
 			lista_posts = db.getGmailPosts();
 		}
@@ -242,14 +245,15 @@ public class Gmail extends RedeSocial implements Filtragem {
 	}
 	
 	@Override
-	public void viraLista() {
+	public ArrayList<PostGeral> viraLista(ArrayList<PostGeral> lista) {
 		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
 
-		for (int i = lista_posts.size() - 1; i >= 0; i--) {
-			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
+		for (int i = lista.size() - 1; i >= 0; i--) {
+			emails_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 
-		lista_posts = emails_Aux;
+//		lista_posts = emails_Aux;
+		return emails_Aux;
 	}
 	
 	@Override

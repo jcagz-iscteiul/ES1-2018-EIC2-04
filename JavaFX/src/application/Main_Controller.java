@@ -24,6 +24,7 @@ import RedesSociais.Gmail;
 import RedesSociais.PostGeral;
 import RedesSociais.TwitterObject;
 import RedesSociais.TwitterPost;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -64,6 +65,7 @@ public class Main_Controller implements Initializable {
 	private TwitterObject tw;
 	private ArrayList<PostGeral> tw_posts;
 	private ArrayList<PostGeral> destaques;
+	protected boolean online;
 
 	@FXML
 	private TextArea area;
@@ -184,13 +186,15 @@ public class Main_Controller implements Initializable {
 	 * inicializados através da criação do objeto Facebook
 	 */
 	public Main_Controller() {
-		fb = new Facebook();
-		fb_posts = fb.getLista_posts();
+		this.fb = new Facebook();
+		this.fb_posts = fb.getLista_posts();
 		this.tw = TwitterObject.getInstance();
 		this.tw_posts = tw.getLista_posts();
 		this.gm = new Gmail();
 		this.gm_posts = gm.getLista_posts();
 
+		this.online = fb.isOnline();
+		
 		this.destaquesObject = new Destaques(gm_posts, fb_posts, tw_posts);
 		this.destaques = destaquesObject.getDestaques();
 		
@@ -250,9 +254,10 @@ public class Main_Controller implements Initializable {
 	@FXML
 	public void toggleButtonFbEvent(ActionEvent event) {
 			
-		fb.viraLista();	
+//		fb.viraLista();	
 		
-		this.fb_posts = fb.getLista_posts();
+//		this.fb_posts = fb.getLista_posts();
+		this.fb_posts = fb.viraLista(fb_posts);
 		
 		int index = listFacebook.getSelectionModel().getSelectedIndex();
 		listFacebook.getSelectionModel().clearSelection(index);
@@ -269,9 +274,9 @@ public class Main_Controller implements Initializable {
 	@FXML
 	public void toggleButtonGmailEvent(ActionEvent event) {
 		
-		gm.viraLista();
+//		gm.viraLista();
 		
-		this.gm_posts = gm.getLista_posts();
+		this.gm_posts = gm.viraLista(gm_posts);
 		
 		int index = listEmail.getSelectionModel().getSelectedIndex();
 		listEmail.getSelectionModel().clearSelection(index);
@@ -290,10 +295,10 @@ public class Main_Controller implements Initializable {
 	@FXML
 	public void toggleButtonTwitterEvent(ActionEvent event) {
 		
-		tw.viraLista();
+//		tw.viraLista();
 		
-		this.tw_posts = tw.getLista_posts();
-		
+//		this.tw_posts = tw.getLista_posts();
+		this.tw_posts = tw.viraLista(tw_posts);
 		int index = listTwitter.getSelectionModel().getSelectedIndex();
 		listTwitter.getSelectionModel().clearSelection(index);
 		listTwitter.getItems().clear();
@@ -309,9 +314,11 @@ public class Main_Controller implements Initializable {
 	@FXML
 	public void toggleButtonDestaquesEvent(ActionEvent event) {
 		
-		destaquesObject.viraLista();
+//		destaquesObject.viraLista();
 		
-		this.destaques = destaquesObject.getDestaques();
+//		this.destaques = destaquesObject.getDestaques();
+		this.destaques = destaquesObject.viraLista(destaques);
+		
 		
 		int index = listDestaques.getSelectionModel().getSelectedIndex();
 		listDestaques.getSelectionModel().clearSelection(index);
@@ -387,6 +394,7 @@ public class Main_Controller implements Initializable {
 		}
 	}
 	
+
 	@FXML
 	public void buttonRefreshTwitter(ActionEvent event) {
 		listTwitter.getItems().clear();
@@ -395,10 +403,7 @@ public class Main_Controller implements Initializable {
 		this.tw_posts = tw.getLista_posts();
 		
 		for(PostGeral post: tw_posts) {
-//			System.out.println("Estou no buttonRefreshTwitter");
 			listTwitter.getItems().add(tw.createPostPreview((TwitterPost)post));
-//			System.out.println("ID: " + post.getId());
-//			System.out.println("Conteudo: " + post.getConteudo() + "\n");
 		}
 	}
 	
@@ -498,7 +503,7 @@ public class Main_Controller implements Initializable {
 	}
 
 	@FXML
-	void openSettingsScene(ActionEvent event) {
+	public void openSettingsScene(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Definicoes.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
@@ -510,11 +515,9 @@ public class Main_Controller implements Initializable {
 			System.out.println("Cant load new window");
 		}
 	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Main: Controlador ativo");
-
+	
+	public void inicializarGUI() {
+		
 		if (tabPane.getSelectionModel().getSelectedItem().equals(tabDestaques)) {
 			System.out.println("Ja estava selecionado o tab de destaques");
 			
@@ -523,6 +526,7 @@ public class Main_Controller implements Initializable {
 			for (PostGeral destaque : destaques) {
 				listDestaques.getItems().add(destaque.createTitulo());
 			}
+			
 			
 		}
 
@@ -549,7 +553,7 @@ public class Main_Controller implements Initializable {
 				}
 				if (newTab == tabEmail) {
 					System.out.println("- Aberta tab Email");
-					gm.viraLista();
+					gm.setLista_posts(gm.viraLista(gm.getLista_posts()));
 					
 					for (PostGeral post : gm_posts) {
 						listEmail.getItems().add(((EmailPost) post).emailPostPreview());
@@ -646,6 +650,37 @@ public class Main_Controller implements Initializable {
 				currentSelection = -1;
 			}
 		});
+	}
+
+	public void shutDown() {
+		System.out.println("Vou gravar os posts na base de dados");
+		this.fb.getDb().deleteOperation("Facebook");
+		this.fb.getDb().insertOperation("Facebook", fb.getLista_posts());
+		this.tw.getDb().deleteOperation("Twitter");
+		this.tw.getDb().insertOperation("Twitter", tw.getLista_posts());
+		this.gm.getDb().deleteOperation("Gmail");
+		this.gm.getDb().insertOperationGmail("Gmail", gm.getLista_posts());
+		Platform.exit();
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("Main: Controlador ativo");
 		
+		if(online) {
+			inicializarGUI();
+		} else {
+			botaoRefreshDestaques.setVisible(false);
+			botaoRefreshEmail.setVisible(false);
+			botaoRefreshFacebook.setVisible(false);
+			botaoRefreshTwitter.setVisible(false);
+			inicializarGUI();
 		}
+	}
+
+	public boolean isOnline() {
+		return online;
+	}
+	
+	
 }

@@ -16,7 +16,7 @@ public abstract class RedeSocial {
 	protected XML xml = new XML();
 	protected ArrayList<PostGeral> lista_posts = new ArrayList<PostGeral>();
 	protected BaseDados db;
-	
+	protected boolean online;
 	
 	/**
 	 * Utiliza a informação que está no xml para autenticar o cliente
@@ -75,6 +75,14 @@ public abstract class RedeSocial {
 	}
 	
 	
+	/**
+	 * Retorna o atributo online
+	 * @return boolean
+	 */
+	public boolean isOnline() {
+		return online;
+	}
+
 	//Possivel metodo futuro
 	public abstract void refrescarConteudo();
 }

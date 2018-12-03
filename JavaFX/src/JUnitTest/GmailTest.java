@@ -2,6 +2,8 @@ package JUnitTest;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,8 +47,8 @@ public class GmailTest {
 	
 	@Test
 	public void viraArrayList() {
-		gm.viraLista();
-		for(PostGeral post: gm.getLista_posts()) {
+		ArrayList<PostGeral> lista = gm.viraLista(gm.getLista_posts());
+		for(PostGeral post: lista) {
 			assertNotNull(post);
 		}
 	}

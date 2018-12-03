@@ -26,8 +26,7 @@ public class BaseDados {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:dadosBDA.db");
 		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
+			System.out.println("Nao foi possivel conectar-se a base de dados");
 		}
 		System.out.println("Opened database successfully");
 	}
@@ -53,8 +52,7 @@ public class BaseDados {
 	         stmt.close();
 	         c.close();
 	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-//	         System.exit(0);
+	         System.out.println("A tabela que tentou criar já existe");
 	      }
 	      System.out.println("Table created " + redeSocial + " successfully");
 	}
@@ -81,8 +79,7 @@ public class BaseDados {
 	         stmt.close();
 	         c.close();
 	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-//	         System.exit(0);
+	    	 System.out.println("A tabela que tentou criar já existe");
 	      }
 	      System.out.println("Table created GMAIL successfully");
 	}
@@ -96,6 +93,7 @@ public class BaseDados {
 	
 	//So da para o facebook e para o twitter
 	public void insertOperation(String redeSocial, ArrayList<PostGeral> posts) {
+		System.out.println("====>INSERT OPERATION<====");
 		Connection c = null;
 	      Statement stmt = null;
 	      
@@ -110,18 +108,14 @@ public class BaseDados {
 	         String sqlValues = "";
 	         for(PostGeral post: posts) {
 	        	 sqlValues = sql + createSqlValues(post.getId(), redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString());
-	        	 System.out.println("SQL Value ID: " + post.getId() + " \n");
-	        	 System.out.println(sqlValues);
 	        	 stmt.executeUpdate(sqlValues);
 	         }
 	         stmt.close();
 	         c.commit();
 	         c.close();
 	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	         System.out.println("Existem ID's iguais");
 	         System.out.println("Elimina primeiro a tabela da respetiva rede social: " + redeSocial + "\n");
-//	         System.exit(0);
 	      }
 	      System.out.println("Records created in " + redeSocial + " successfully");
 	}
@@ -148,19 +142,14 @@ public class BaseDados {
 	         String sqlValues = "";
 	         for(PostGeral post: posts) {
 	        	 sqlValues = sql + createSqlValuesGmail(post.getId(), redeSocial, post.getTitulo(), post.getConteudo().replaceAll("'", ""), post.getData().toString(), ((EmailPost)post).getFrom(), ((EmailPost)post).getTo());
-	        	 System.out.println("SQL Value ID: " + post.getId() + " \n");
-	        	 System.out.println(sqlValues);
 	        	 stmt.executeUpdate(sqlValues);
 	         }
 	         stmt.close();
 	         c.commit();
 	         c.close();
 	      } catch ( Exception e ) {
-	    	  System.out.println("ENTREI NO CATACH DO INSERT_OPERATIONS_GMAIL");
-	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	         System.out.println("Existem ID's iguais");
 	         System.out.println("Elimina primeiro a tabela da respetiva rede social: " + redeSocial + "\n");
-//	         System.exit(0);
 	      }
 	      System.out.println("Records created in " + redeSocial + " successfully");
 	}
@@ -191,8 +180,7 @@ public class BaseDados {
 		      stmt.close();
 		      c.close();
 		   } catch ( Exception e ) {
-		      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-		      System.exit(0);
+		      System.out.println("Nao foi possivel ir buscar os posts do Facebook a base de dados");
 		   }
 		   System.out.println("Operation get FACEBOOK posts done successfully");
 		   return lista;
@@ -227,8 +215,7 @@ public class BaseDados {
 		      stmt.close();
 		      c.close();
 		   } catch ( Exception e ) {
-		      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-		      System.exit(0);
+			   System.out.println("Nao foi possivel ir buscar os posts do Twitter a base de dados");
 		   }
 		   System.out.println("Operation get TWITTER posts done successfully");
 		   return lista;
@@ -262,8 +249,7 @@ public class BaseDados {
 		      stmt.close();
 		      c.close();
 		   } catch ( Exception e ) {
-		      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-		      System.exit(0);
+		      System.out.println("Nao foi possivel buscar os posts do Gmail a base de dados");
 		   }
 		   System.out.println("Operation get GMAIL posts done successfully");
 		   return lista;
@@ -288,8 +274,7 @@ public class BaseDados {
 	         stmt.close();
 	         c.close();
 	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-//	         System.exit(0);
+	         System.out.println("Nao foi possivel apagar os posts da tabela: " + redeSocial);
 	      }
 	      System.out.println("Operation delete TABLE " + redeSocial + " done successfully");
 	}

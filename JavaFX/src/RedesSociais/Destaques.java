@@ -25,7 +25,7 @@ public class Destaques implements Filtragem{
 		destaques.addAll(facebookPosts);
 		destaques.addAll(listaDeTweets);
 		Collections.sort(destaques);
-		this.viraLista();
+		this.destaques = viraLista(destaques);
 	}
 	
 	
@@ -111,16 +111,15 @@ public class Destaques implements Filtragem{
 
 
 	@Override
-	public void viraLista() {
-		
-		
+	public ArrayList<PostGeral> viraLista(ArrayList<PostGeral> lista) {
 		ArrayList<PostGeral> destaques_Aux = new ArrayList<PostGeral>();
 		
-		for(int i = destaques.size()-1 ; i >= 0 ; i--) {
-			destaques_Aux.add((PostGeral) destaques.toArray()[i]);
+		for(int i = lista.size()-1 ; i >= 0 ; i--) {
+			destaques_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-		destaques = destaques_Aux;
+//		destaques = destaques_Aux;
+		return destaques_Aux;
 	}
 
 

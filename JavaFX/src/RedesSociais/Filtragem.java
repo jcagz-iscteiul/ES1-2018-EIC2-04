@@ -38,7 +38,7 @@ public interface Filtragem{
 	/**
 	 * Vira a lista de PostGeral (ascendente ou descente) de acordo com a data de cada PostGeral
 	 */
-	public void viraLista();
+	public ArrayList<PostGeral> viraLista(ArrayList<PostGeral> lista);
 	
 	
 

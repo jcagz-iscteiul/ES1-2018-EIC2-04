@@ -38,10 +38,13 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	public TwitterObject() {
 		
 		try {
+			this.online = true;
+			this.db = new BaseDados();
 			autenticarCliente();
 			getTimeLine();
 		} catch (TwitterException e) {
 			System.out.println("O Twitter ESTA DESLIGADO [Excepção]");
+			this.online = false;
 			this.db = new BaseDados();
 			this.lista_posts = db.getTwitterPosts();
 		}
@@ -183,14 +186,15 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 	
 	
 	@Override
-	public void viraLista() {
-		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+	public ArrayList<PostGeral> viraLista(ArrayList<PostGeral> lista) {
+		ArrayList<PostGeral> tweets_Aux = new ArrayList<PostGeral>();
 		
-		for(int i = lista_posts.size()-1 ; i >= 0 ; i--) {
-			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
+		for(int i = lista.size()-1 ; i >= 0 ; i--) {
+			tweets_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-		lista_posts = emails_Aux;
+//		lista_posts = emails_Aux;
+		return tweets_Aux;
 	}
 	
 	

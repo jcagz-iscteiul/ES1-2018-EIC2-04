@@ -40,14 +40,17 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	private FacebookClient fbClient;
 	
 	/**
-	 * Construtor
+	 * Construtor da classe
 	 */
 	public Facebook() {
 		try {
+			this.online = true;
+			this.db = new BaseDados();
 			autenticarCliente();
 			addPostsToArray();
 		} catch (Exception e) {
 			System.out.println("Nao foi possivel ligar-se ao Facebook");
+			this.online = false;
 			db = new BaseDados();
 			this.lista_posts = db.getFacebookPosts();
 		}
@@ -156,14 +159,15 @@ public class Facebook extends RedeSocial implements Filtragem{  //implements int
 	}
 	
 	@Override
-	public void viraLista() {
-		ArrayList<PostGeral> emails_Aux = new ArrayList<PostGeral>();
+	public ArrayList<PostGeral> viraLista(ArrayList<PostGeral> lista) {
+		ArrayList<PostGeral> posts_Aux = new ArrayList<PostGeral>();
 		
-		for(int i = lista_posts.size()-1 ; i >= 0 ; i--) {
-			emails_Aux.add((PostGeral) lista_posts.toArray()[i]);
+		for(int i = lista.size()-1 ; i >= 0 ; i--) {
+			posts_Aux.add((PostGeral) lista.toArray()[i]);
 		}
 		
-		lista_posts = emails_Aux;
+//		lista_posts = emails_Aux;
+		return posts_Aux;
 	}
 
 	@Override
