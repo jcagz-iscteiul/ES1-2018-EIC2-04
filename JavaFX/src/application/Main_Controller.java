@@ -915,5 +915,11 @@ public class Main_Controller implements Initializable {
 	
 	public SplitMenuButton getTwitterSplitMenu() {
 		return twitterSplitMenu;
+	}
+
+	public ListView<String> getListFacebook() {
+		return listFacebook;
 	}	
+	
+	
 }

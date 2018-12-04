@@ -128,7 +128,6 @@ public class TwitterObject extends RedeSocial implements Filtragem{
 		for(PostGeral post: tweets) {
 			if(createPostPreview((TwitterPost)post).toLowerCase().contains(palavra.toLowerCase())){
 				novaListaPosts.add(post);
-				System.out.println(post.conteudo);
 			}
 		}
 		return novaListaPosts;

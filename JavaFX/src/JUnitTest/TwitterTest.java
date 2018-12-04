@@ -60,20 +60,12 @@ public class TwitterTest {
 		assertTrue(tw.getLista_posts().size() == 0);
 	}
 	
-//	@Test
-//	public void test_getTimeline() {
-//		int antes = tw.getLista_posts().size();
-//		
-//		try {
-//			tw.getTimeLine();
-//		} catch (TwitterException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		int depois = tw.getLista_posts().size();
-//		assertTrue(depois == 2*antes);		
-//	}
+	@Test
+	public void test_getTimeline() {
+		for(PostGeral post: tw.getLista_posts()) {
+			assertNotNull(post);
+		}
+	}
 	
 	
 	@Test
@@ -97,18 +89,12 @@ public class TwitterTest {
 		
 	}
 	
-//	@Test
-//	public void test_getPostEspecifico() {
-//		TwitterPost tw_post1 = new TwitterPost(1, null, "este post do facebook é um teste, um", "Teste1",11);
-//		TwitterPost tw_post2 = new TwitterPost(1, null, "este post do facebook é um teste, dois", "Teste2",22);
-//		ArrayList<PostGeral> listaTotal = new ArrayList<PostGeral>();
-//		listaTotal.add(tw_post1);
-//		listaTotal.add(tw_post2);
-//		
-//		tw.setLista_posts(listaTotal);
-//
-//		assertTrue(tw_post2.equals(tw.getPostEspecifico("Teste2")));	
-//	}
+	@Test
+	public void test_getPostEspecifico() {
+		String titulo = "Tue Dec 04 21:20:53 GMT 2018 - [SL Benfica]: #HóqueiBenfica | 1-1 |... ";
+		PostGeral post = tw.getPostEspecifico(titulo);
+		assertTrue(tw.createPostPreview((TwitterPost)post).equals(titulo));
+	}
 	
 
 	@Test
@@ -127,13 +113,7 @@ public class TwitterTest {
 	
 	@Test
 	public void test_getXML() {
-		boolean flag = false;
-		if(!(tw.getXml().equals(null))) {
-			flag = true;
-		} else {
-			flag = false;
-		}
-		assertTrue(flag == true);
+		assertNotNull(tw.getXml());
 	}
 	
 	
@@ -143,6 +123,20 @@ public class TwitterTest {
 		for(PostGeral post: tw.getLista_posts()) {
 			assertNotNull(post);
 		}
+	}
+	
+	@Test
+	public void test_palavraChave() {
+		ArrayList<PostGeral> lista = tw.palavraChave("Benfica", tw.getLista_posts());
+		for(PostGeral post: lista) {
+			assertNotNull(post);
+		}
+	}
+	
+	@Test
+	public void test_getInstance() {
+		TwitterObject tw2 = TwitterObject.getInstance();
+		assertNotNull(tw2);
 	}
 	
 	
