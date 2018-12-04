@@ -65,26 +65,219 @@ public class Definicoes_Controller implements Initializable {
 	private Button setGmailPassword;
 	
 	@FXML
-	private CheckBox filtros;
+	private CheckBox filtroPesquisaDestaques;
 	
+	@FXML
+	private CheckBox filtroRecenteDestaques;
+	
+	@FXML
+	private CheckBox filtroSplitMenuDestaques;
+	
+	@FXML
+	private CheckBox filtroRecenteFacebook;
+	
+	@FXML
+	private CheckBox filtroPesquisaFacebook;
+	
+	@FXML
+	private CheckBox filtroSplitMenuFacebook;
+	
+	@FXML
+	private CheckBox filtroPesquisaGmail;
+	
+	@FXML
+	private CheckBox filtroRecenteGmail;
+	
+	@FXML
+	private CheckBox filtroSplitMenuGmail;
+	
+	@FXML
+	private CheckBox filtroPesquisaTwitter;
+	
+	@FXML
+	private CheckBox filtroRecenteTwitter;
+	
+	@FXML
+	private CheckBox filtroSplitMenuTwitter;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Definicoes: Controlador ativo.");
 		xml = new XML();
+		setCheckBoxesCheckedPredefined();
 		
-		filtros.selectedProperty().addListener(new ChangeListener<Boolean>() {
+		filtroPesquisaDestaques.selectedProperty().addListener(new ChangeListener<Boolean>() {
 	        @Override
 	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 	            if(newValue){
-	            	System.out.println("Ticked");
-	        		//controller.setInvisible();
-	        		Main.getMyControllerHandle().setInvisible();
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getPesquisarDestaques());
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getSearchBarDestaques());
 	            }else{
-	            	System.out.println("Ticked off.");
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getPesquisarDestaques());
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getSearchBarDestaques());
 	            }
 	        }
 	    });
+		
+		filtroSplitMenuDestaques.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getDestaquesSplitMenu());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getDestaquesSplitMenu());
+	            }
+	        }
+	    });
+		
+		filtroRecenteDestaques.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getToggleDestaques());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getToggleDestaques());
+	            }
+	        }
+	    });
+		
+		filtroPesquisaFacebook.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getPesquisarFacebook());
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getSearchBarFacebook());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getPesquisarFacebook());
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getSearchBarFacebook());
+	            }
+	        }
+	    });
+		
+		filtroSplitMenuFacebook.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getFacebookSplitMenu());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getFacebookSplitMenu());
+	            }
+	        }
+	    });
+		
+		filtroRecenteFacebook.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getToggleFb());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getToggleFb());
+	            }
+	        }
+	    });
+		
+		filtroPesquisaGmail.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getPesquisarGmail());
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getSearchBarGmail());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getPesquisarGmail());
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getSearchBarGmail());
+	            }
+	        }
+	    });
+		
+		filtroSplitMenuGmail.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getEmailSplitMenu());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getEmailSplitMenu());
+	            }
+	        }
+	    });
+		
+		filtroRecenteGmail.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getToggleGmail());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getToggleGmail());
+	            }
+	        }
+	    });
+		
+		filtroPesquisaTwitter.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getPesquisarTwitter());
+	            	Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getSearchBarTwitter());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getPesquisarTwitter());
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getSearchBarTwitter());
+	            }
+	        }
+	    });
+		
+		filtroSplitMenuTwitter.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getTwitterSplitMenu());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getTwitterSplitMenu());
+	            }
+	        }
+	    });
+		
+		filtroRecenteTwitter.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	        		Main.getMyControllerHandle().setVisible(
+	        				Main.getMyControllerHandle().getToggleTwitter());
+	            }else{
+	            	Main.getMyControllerHandle().setInvisible(
+	            			Main.getMyControllerHandle().getToggleTwitter());
+	            }
+	        }
+	    });
+		
 	}
 
 	// Facebook
@@ -140,5 +333,20 @@ public class Definicoes_Controller implements Initializable {
 	@FXML
 	void setGmailPasswordInfo(ActionEvent event) throws ParserConfigurationException, SAXException, IOException {
 		xml.setGmailPassword(gmailPassword.getText().toString());
+	}
+	
+	public void setCheckBoxesCheckedPredefined() {
+		filtroPesquisaDestaques.setSelected(true);
+		filtroSplitMenuDestaques.setSelected(true);
+		filtroRecenteDestaques.setSelected(true);
+		filtroPesquisaFacebook.setSelected(true);
+		filtroSplitMenuFacebook.setSelected(true);
+		filtroRecenteFacebook.setSelected(true);
+		filtroPesquisaGmail.setSelected(true);
+		filtroSplitMenuGmail.setSelected(true);
+		filtroRecenteGmail.setSelected(true);
+		filtroPesquisaTwitter.setSelected(true);
+		filtroSplitMenuTwitter.setSelected(true);
+		filtroRecenteTwitter.setSelected(true);
 	}
 }

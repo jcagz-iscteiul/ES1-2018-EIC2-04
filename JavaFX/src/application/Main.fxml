@@ -39,7 +39,7 @@
                                           <AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
                                              <children>
                                                 <TextField fx:id="searchBarDestaques" layoutX="73.0" layoutY="7.0" onAction="#searchButtonDestaques" />
-                                                <SplitMenuButton layoutX="389.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="389.0" AnchorPane.topAnchor="7.0">
+                                                <SplitMenuButton fx:id="destaquesSplitMenu" layoutX="389.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="389.0" AnchorPane.topAnchor="7.0">
                                                    <items>
                                                       <MenuItem fx:id="MenuItem1_Facebook1" mnemonicParsing="false" onAction="#filtragem24_destaques" text="Ultimas 24h" />
                                                       <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -175,7 +175,7 @@
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
 																<TextField fx:id="searchBarGmail" layoutX="73.0" layoutY="7.0" onAction="#searchButtonGmail" />
-																<SplitMenuButton layoutX="393.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="7.0">
+																<SplitMenuButton fx:id="emailSplitMenu" layoutX="393.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="393.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" onAction="#filtragem24_gmail" text="Last 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
@@ -255,7 +255,7 @@
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
 																<TextField fx:id="searchBarFacebook" layoutX="74.0" layoutY="7.0" onAction="#searchButton" />
-																<SplitMenuButton layoutX="394.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="394.0" AnchorPane.topAnchor="7.0">
+																<SplitMenuButton fx:id="facebookSplitMenu" layoutX="394.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="394.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem fx:id="MenuItem1_Facebook" mnemonicParsing="false" onAction="#filtragem24_facebook" text="Ultimas 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />
@@ -391,7 +391,7 @@
 														<AnchorPane prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
 															<children>
 																<TextField fx:id="searchBarTwitter" layoutX="75.0" layoutY="7.0" onAction="#searchButtonTwitter" />
-																<SplitMenuButton layoutX="381.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="381.0" AnchorPane.topAnchor="7.0">
+																<SplitMenuButton fx:id="twitterSplitMenu" layoutX="381.0" layoutY="7.0" mnemonicParsing="false" text="Filtros" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="381.0" AnchorPane.topAnchor="7.0">
 																	<items>
 																		<MenuItem mnemonicParsing="false" text="Ultimas 24h" />
 																		<MenuItem mnemonicParsing="false" text="Action 2" />

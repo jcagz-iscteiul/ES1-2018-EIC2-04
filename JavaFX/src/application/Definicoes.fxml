@@ -10,30 +10,41 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="296.0" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="296.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="446.0" prefWidth="296.0">
+            <AnchorPane layoutY="1.0" prefHeight="550.0" prefWidth="296.0">
                <children>
-                  <Label layoutX="10.0" layoutY="28.0" text="Facebook AccessToken:" />
-                  <Button fx:id="getFacebookAccessToken" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#getFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-                  <TextArea fx:id="facebookAccessToken" layoutX="10.0" layoutY="49.0" prefHeight="38.0" prefWidth="277.0" />
-                  <Button fx:id="setFacebookAccessToken" layoutX="156.0" layoutY="90.0" mnemonicParsing="false" onAction="#setFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
-                  <Label layoutX="10.0" layoutY="7.0" text="Facebook XML Editor" />
-                  <Label layoutX="11.0" layoutY="327.0" text="Twitter XML Editor:" />
-                  <Label layoutX="11.0" layoutY="347.0" text="Twitter AccessToken:" />
-                  <TextArea fx:id="twitterAccessToken" layoutX="11.0" layoutY="369.0" prefHeight="38.0" prefWidth="277.0" />
-                  <Button fx:id="getTwitterAccessToken" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" onAction="#getTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
-                  <Button fx:id="setTwitterAccessToken" layoutX="157.0" layoutY="411.0" mnemonicParsing="false" onAction="#setTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
-                  <Label layoutX="10.0" layoutY="118.0" text="Gmail XML Editor:" />
-                  <Label layoutX="10.0" layoutY="139.0" text="Gmail Email:" />
-                  <TextArea fx:id="gmailEmail" layoutX="10.0" layoutY="159.0" prefHeight="38.0" prefWidth="277.0" />
-                  <Button fx:id="getGmailEmail" layoutX="10.0" layoutY="201.0" mnemonicParsing="false" onAction="#getGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailEmail" />
-                  <Button fx:id="setGmailEmail" layoutX="156.0" layoutY="201.0" mnemonicParsing="false" onAction="#setGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailEmail" />
-                  <Label layoutX="10.0" layoutY="230.0" text="GmailPassword:" />
-                  <TextArea fx:id="gmailPassword" layoutX="10.0" layoutY="250.0" prefHeight="38.0" prefWidth="277.0" />
-                  <Button fx:id="getGmailPassword" layoutX="10.0" layoutY="292.0" mnemonicParsing="false" onAction="#getGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailPassword" />
-                  <Button fx:id="setGmailPassword" layoutX="156.0" layoutY="292.0" mnemonicParsing="false" onAction="#setGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailPassword" />
-                  <CheckBox fx:id="filtros" layoutX="156.0" layoutY="28.0" mnemonicParsing="false" text="Filtros" />
+                  <Label layoutX="10.0" layoutY="33.0" text="Facebook AccessToken:" />
+                  <Button fx:id="getFacebookAccessToken" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#getFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+                  <TextArea fx:id="facebookAccessToken" layoutX="10.0" layoutY="59.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="setFacebookAccessToken" layoutX="156.0" layoutY="100.0" mnemonicParsing="false" onAction="#setFacebookAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+                  <Label layoutX="10.0" layoutY="12.0" text="Facebook XML Editor" />
+                  <Label layoutX="11.0" layoutY="358.0" text="Twitter XML Editor:" />
+                  <Label layoutX="11.0" layoutY="378.0" text="Twitter AccessToken:" />
+                  <TextArea fx:id="twitterAccessToken" layoutX="11.0" layoutY="400.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getTwitterAccessToken" layoutX="11.0" layoutY="442.0" mnemonicParsing="false" onAction="#getTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="getAccessToken" />
+                  <Button fx:id="setTwitterAccessToken" layoutX="157.0" layoutY="442.0" mnemonicParsing="false" onAction="#setTwitterAccessTokenInfo" prefHeight="25.0" prefWidth="131.0" text="setAccessToken" />
+                  <Label layoutX="10.0" layoutY="141.0" text="Gmail XML Editor:" />
+                  <Label layoutX="10.0" layoutY="162.0" text="Gmail Email:" />
+                  <TextArea fx:id="gmailEmail" layoutX="10.0" layoutY="185.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getGmailEmail" layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#getGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailEmail" />
+                  <Button fx:id="setGmailEmail" layoutX="156.0" layoutY="227.0" mnemonicParsing="false" onAction="#setGmailEmailInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailEmail" />
+                  <Label layoutX="10.0" layoutY="253.0" text="GmailPassword:" />
+                  <TextArea fx:id="gmailPassword" layoutX="10.0" layoutY="273.0" prefHeight="38.0" prefWidth="277.0" />
+                  <Button fx:id="getGmailPassword" layoutX="10.0" layoutY="315.0" mnemonicParsing="false" onAction="#getGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailPassword" />
+                  <Button fx:id="setGmailPassword" layoutX="156.0" layoutY="315.0" mnemonicParsing="false" onAction="#setGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailPassword" />
+                  <CheckBox fx:id="filtroRecenteDestaques" layoutX="15.0" layoutY="512.0" mnemonicParsing="false" text="Filtro +/- Recente (Destaques)" />
+                  <CheckBox fx:id="filtroRecenteFacebook" layoutX="148.0" layoutY="38.0" mnemonicParsing="false" text="Filtro +/- Recente" />
+                  <CheckBox fx:id="filtroSplitMenuDestaques" layoutX="15.0" layoutY="494.0" mnemonicParsing="false" text="Filtro SplitMenu (Destaques)" />
+                  <CheckBox fx:id="filtroPesquisaDestaques" layoutX="15.0" layoutY="476.0" mnemonicParsing="false" text="Filtro Pesquisa (Destaques)" />
+                  <CheckBox fx:id="filtroSplitMenuFacebook" layoutX="148.0" layoutY="20.0" mnemonicParsing="false" text="Filtro SplitMenu" />
+                  <CheckBox fx:id="filtroPesquisaFacebook" layoutX="148.0" layoutY="2.0" mnemonicParsing="false" text="Filtro Pesquisa" />
+                  <CheckBox fx:id="filtroRecenteGmail" layoutX="148.0" layoutY="165.0" mnemonicParsing="false" text="Filtro +/- Recente" />
+                  <CheckBox fx:id="filtroSplitMenuGmail" layoutX="148.0" layoutY="147.0" mnemonicParsing="false" text="Filtro SplitMenu" />
+                  <CheckBox fx:id="filtroPesquisaGmail" layoutX="148.0" layoutY="129.0" mnemonicParsing="false" text="Filtro Pesquisa" />
+                  <CheckBox fx:id="filtroRecenteTwitter" layoutX="148.0" layoutY="379.0" mnemonicParsing="false" text="Filtro +/- Recente" />
+                  <CheckBox fx:id="filtroSplitMenuTwitter" layoutX="148.0" layoutY="361.0" mnemonicParsing="false" text="Filtro SplitMenu" />
+                  <CheckBox fx:id="filtroPesquisaTwitter" layoutX="148.0" layoutY="343.0" mnemonicParsing="false" text="Filtro Pesquisa" />
                </children>
             </AnchorPane>
          </children>
