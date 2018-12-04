@@ -24,7 +24,7 @@ public class TwitterPostTest {
 	@Test
 	public void test_getData() {
 		Date data = new Date("Wed Nov 21 09:39:07 GMT 2018");
-		assertTrue(post.getData() == data);
+		assertTrue(post.getData().equals(data));
 	}
 	
 	@Test
