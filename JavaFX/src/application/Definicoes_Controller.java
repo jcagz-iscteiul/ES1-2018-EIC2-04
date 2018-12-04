@@ -17,10 +17,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import xml.XML;
 
 public class Definicoes_Controller implements Initializable {
@@ -71,16 +73,13 @@ public class Definicoes_Controller implements Initializable {
 		System.out.println("Definicoes: Controlador ativo.");
 		xml = new XML();
 		
-		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
-		Main_Controller controller = loader.getController();
-		controller.setDefController(this);*/
-		
 		filtros.selectedProperty().addListener(new ChangeListener<Boolean>() {
 	        @Override
 	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 	            if(newValue){
 	            	System.out.println("Ticked");
 	        		//controller.setInvisible();
+	        		Main.getMyControllerHandle().setInvisible();
 	            }else{
 	            	System.out.println("Ticked off.");
 	            }
