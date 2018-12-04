@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Definicoes_Controller">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="296.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="296.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="446.0" prefWidth="296.0">
                <children>
@@ -33,6 +33,7 @@
                   <TextArea fx:id="gmailPassword" layoutX="10.0" layoutY="250.0" prefHeight="38.0" prefWidth="277.0" />
                   <Button fx:id="getGmailPassword" layoutX="10.0" layoutY="292.0" mnemonicParsing="false" onAction="#getGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="getGmailPassword" />
                   <Button fx:id="setGmailPassword" layoutX="156.0" layoutY="292.0" mnemonicParsing="false" onAction="#setGmailPasswordInfo" prefHeight="25.0" prefWidth="131.0" text="setGmailPassword" />
+                  <CheckBox fx:id="filtros" layoutX="156.0" layoutY="28.0" mnemonicParsing="false" text="Filtros" />
                </children>
             </AnchorPane>
          </children>

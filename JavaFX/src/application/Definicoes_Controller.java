@@ -11,11 +11,16 @@ import org.xml.sax.SAXException;
 import RedesSociais.Facebook;
 import RedesSociais.Gmail;
 import RedesSociais.TwitterObject;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import xml.XML;
 
 public class Definicoes_Controller implements Initializable {
@@ -56,11 +61,31 @@ public class Definicoes_Controller implements Initializable {
 
 	@FXML
 	private Button setGmailPassword;
+	
+	@FXML
+	private CheckBox filtros;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Definicoes: Controlador ativo.");
 		xml = new XML();
+		
+		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		Main_Controller controller = loader.getController();
+		controller.setDefController(this);*/
+		
+		filtros.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	        @Override
+	        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	            if(newValue){
+	            	System.out.println("Ticked");
+	        		//controller.setInvisible();
+	            }else{
+	            	System.out.println("Ticked off.");
+	            }
+	        }
+	    });
 	}
 
 	// Facebook
@@ -117,5 +142,4 @@ public class Definicoes_Controller implements Initializable {
 	void setGmailPasswordInfo(ActionEvent event) throws ParserConfigurationException, SAXException, IOException {
 		xml.setGmailPassword(gmailPassword.getText().toString());
 	}
-
 }
