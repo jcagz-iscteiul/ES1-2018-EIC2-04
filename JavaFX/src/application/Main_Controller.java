@@ -35,6 +35,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -174,6 +175,9 @@ public class Main_Controller implements Initializable {
 	
 	@FXML
 	private TextField searchBarDestaques;
+	
+	@FXML
+	private SplitMenuButton destaquesSplitMenu;
 
 	@FXML
 	private SplitMenuButton facebookSplitMenu;
@@ -214,6 +218,8 @@ public class Main_Controller implements Initializable {
 	private long tweetSelecionado;
 	
 	private String emailTo_string;
+	
+	private Definicoes_Controller defController;
 
 	
 	/**
@@ -638,7 +644,6 @@ public class Main_Controller implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Main: Controlador ativo");
 		
-		
 		//Get Data de Hoje
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate = LocalDate.now();
@@ -682,7 +687,6 @@ public class Main_Controller implements Initializable {
 			
 			
 		}
-
 		tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
 
 			@Override
@@ -823,6 +827,22 @@ public class Main_Controller implements Initializable {
 	}
 
 	/**
+	 * Coloca um determinado objecto Invisible.
+	 * * @param Object
+	 */
+	public void setInvisible(Object object) {
+		((Node) object).setVisible(false);
+	}
+	
+	/**
+	 * Coloca um determinado objecto Visible.
+	 * * @param Object
+	 */
+	public void setVisible(Object object) {
+		((Node) object).setVisible(true);
+	}
+	
+	/**
 	 * Retorna o atributo online
 	 * @return boolean
 	 */
@@ -830,5 +850,70 @@ public class Main_Controller implements Initializable {
 		return online;
 	}
 	
+	//Gets falta javadoc
 	
+	
+	public Label getPesquisarDestaques() {
+		return pesquisarDestaques;
+	}
+	
+	public TextField getSearchBarDestaques() {
+		return searchBarDestaques;
+	}
+	
+	public ToggleButton getToggleDestaques() {
+		return toggleDestaques;
+	}
+	
+	public SplitMenuButton getDestaquesSplitMenu() {
+		return destaquesSplitMenu;
+	}
+	
+	public Label getPesquisarFacebook() {
+		return pesquisarFacebook;
+	}
+	
+	public TextField getSearchBarFacebook() {
+		return searchBarFacebook;
+	}
+	
+	public SplitMenuButton getFacebookSplitMenu() {
+		return facebookSplitMenu;
+	}
+	
+	public ToggleButton getToggleFb() {
+		return toggleFb;
+	}
+	
+	public Label getPesquisarGmail() {
+		return pesquisarGmail;
+	}
+	
+	public TextField getSearchBarGmail() {
+		return searchBarGmail;
+	}
+	
+	public ToggleButton getToggleGmail() {
+		return toggleGmail;
+	}
+	
+	public SplitMenuButton getEmailSplitMenu() {
+		return emailSplitMenu;
+	}
+	
+	public Label getPesquisarTwitter() {
+		return pesquisarTwitter;
+	}
+	
+	public TextField getSearchBarTwitter() {
+		return searchBarTwitter;
+	}
+	
+	public ToggleButton getToggleTwitter() {
+		return toggleTwitter;
+	}
+	
+	public SplitMenuButton getTwitterSplitMenu() {
+		return twitterSplitMenu;
+	}	
 }
