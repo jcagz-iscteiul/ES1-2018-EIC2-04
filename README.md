@@ -11,6 +11,5 @@ Membros do Grupo:
 Vídeo de Demonstração: (LINK)
 
 Idenficação e descrição de erros não implementadas ou incompletas:
--
--
--
+- Não conseguimos implementar a funcionalidade de publicar posts no facebook
+
