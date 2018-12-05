@@ -91,9 +91,20 @@ public class TwitterTest {
 	
 	@Test
 	public void test_getPostEspecifico() {
-		String titulo = "Tue Dec 04 21:20:53 GMT 2018 - [SL Benfica]: #HóqueiBenfica | 1-1 |... ";
-		PostGeral post = tw.getPostEspecifico(titulo);
-		assertTrue(tw.createPostPreview((TwitterPost)post).equals(titulo));
+//		String titulo = "Tue Dec 04 21:20:53 GMT 2018 - [SL Benfica]: #HóqueiBenfica | 1-1 |... ";
+//		PostGeral post = tw.getPostEspecifico(titulo);
+//		assertTrue(tw.createPostPreview((TwitterPost)post).equals(titulo));
+		ArrayList<PostGeral> listaTotal = new ArrayList<PostGeral>();
+		Date data1 = new Date(2018-12-10);
+		Date data2 = new Date(2018-12-13);
+		TwitterPost tw_post1 = new TwitterPost(1,data1,"teste1","autor1",1);
+		TwitterPost tw_post2 = new TwitterPost(2,data2,"teste2","autor2",2);
+		listaTotal.add(tw_post1);
+		listaTotal.add(tw_post2);
+		tw.setLista_posts(listaTotal);
+		String titulo = tw.createPostPreview(tw_post1);
+		TwitterPost tw_post3 = tw.getPostEspecifico(titulo);
+		assertTrue(tw_post1.getTitulo().equals(tw_post3.getTitulo()));
 	}
 	
 

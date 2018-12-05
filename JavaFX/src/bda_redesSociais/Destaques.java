@@ -20,7 +20,7 @@ public class Destaques implements Filtragem{
 	 */
 	public Destaques(ArrayList<PostGeral> emails, ArrayList<PostGeral> facebookPosts, ArrayList<PostGeral> listaDeTweets) {
 		destaques.addAll(emails);
-		destaques.addAll(facebookPosts);
+		destaques.addAll(facebookPosts); 
 		destaques.addAll(listaDeTweets);
 		Collections.sort(destaques);
 		this.destaques = viraLista(destaques);

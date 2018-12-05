@@ -58,7 +58,7 @@ public class DestaquesTest {
 	
 	@Test
 	public void test_getPostEspecifico() {
-		String titulo = "[Twitter] Mon Dec 03 18:14:55 GMT 2018 - SL Benfica";
+		String titulo = "[Facebook] Fri Oct 26 14:42:37 BST 2018 - Fri Oct 26 14:42:37 BST 2018 - [ES] Vim apresentar o ... ";
 		PostGeral post = destaques.getPostEspecifico(titulo);
 		assertTrue(post.createTitulo().equals(titulo));
 	}

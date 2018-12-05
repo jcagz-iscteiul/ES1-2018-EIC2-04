@@ -34,7 +34,7 @@ public class XML {
 	public void setFacebookAppSecret(String AppSecret) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -82,7 +82,7 @@ public class XML {
 
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -128,7 +128,7 @@ public class XML {
 
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -175,7 +175,7 @@ public class XML {
 	public void setTwitterAccessToken(String AccessToken) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -221,7 +221,7 @@ public class XML {
 	public void setTwitterAcessTokenSecret(String AcessTokenSecret) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -267,7 +267,7 @@ public class XML {
 	public void setTwitterConsumerSecret(String ConsumerSecret) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -313,7 +313,7 @@ public class XML {
 	public void setTwitterDebugEnable(String DebugEnabled) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -362,7 +362,7 @@ public class XML {
 	public void setGmailEmail(String Email) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -408,7 +408,7 @@ public class XML {
 	public void setGmailPassword(String Password) {
 		try {
 
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -461,7 +461,7 @@ public class XML {
 	public String getFacebookAppSecret() throws ParserConfigurationException, SAXException, IOException {
 
 		
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -489,7 +489,7 @@ public class XML {
 	 */
 	public String getFacebookAccessToken() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -518,7 +518,7 @@ public class XML {
 	public String getAppID() throws ParserConfigurationException, SAXException, IOException {
 	
 	
-			String filepath = "src/xml/config.xml";
+			String filepath = "src/bdaXML/config.xml";
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory .newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -549,7 +549,7 @@ public class XML {
 	 */
 	public String getTwitterAccessToken() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -577,7 +577,7 @@ public class XML {
 	 */
 	public String getTwitterAccessTokenSecret() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -608,7 +608,7 @@ public class XML {
 	 */
 	public String getTwitterConsumerSecret() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -636,7 +636,7 @@ public class XML {
 	 */
 	public String getTwitterDebugEnable() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -668,7 +668,7 @@ public class XML {
 	 */
 	public String getGmailEmail() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -696,7 +696,7 @@ public class XML {
 	 */
 	public String getGmailPassword() throws ParserConfigurationException, SAXException, IOException {
 
-		String filepath = "src/xml/config.xml";
+		String filepath = "src/bdaXML/config.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
