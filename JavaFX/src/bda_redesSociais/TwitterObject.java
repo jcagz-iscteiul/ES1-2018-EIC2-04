@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 
 import java.io.IOException;
@@ -11,14 +11,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import baseDados.BaseDados;
+import bda_baseDeDados.BaseDados;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
-import xml.XML;
 
 
 /**
