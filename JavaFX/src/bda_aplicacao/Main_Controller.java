@@ -16,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.restfb.types.Post;
+
 
 import bda_redesSociais.Destaques;
 import bda_redesSociais.EmailPost;
@@ -52,6 +52,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import twitter4j.TwitterException;
+
 
 /**
  * É o controlador da interface gráfica. Vão ser inicializados os handlers dos
