@@ -648,7 +648,7 @@ public class Main_Controller implements Initializable {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate = LocalDate.now();
 		System.out.println(dtf.format(localDate));
-		getDate.setText("Hoje: " + localDate.toString());
+		getDate.setText(localDate.toString());
 		
 		if(online) {
 			inicializarGUI();
