@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import RedesSociais.Destaques;
-import RedesSociais.Facebook;
-import RedesSociais.Gmail;
-import RedesSociais.PostGeral;
-import RedesSociais.TwitterObject;
+import bda_redesSociais.Destaques;
+import bda_redesSociais.Facebook;
+import bda_redesSociais.Gmail;
+import bda_redesSociais.PostGeral;
+import bda_redesSociais.TwitterObject;
 
 public class DestaquesTest {
 	

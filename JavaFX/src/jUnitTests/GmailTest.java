@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.*;
 
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import RedesSociais.EmailPost;
-import RedesSociais.Gmail;
-import RedesSociais.PostGeral;
+import bda_redesSociais.EmailPost;
+import bda_redesSociais.Gmail;
+import bda_redesSociais.PostGeral;
 
 public class GmailTest {
 	

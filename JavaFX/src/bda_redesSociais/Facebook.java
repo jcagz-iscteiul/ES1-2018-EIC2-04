@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -23,8 +23,8 @@ import com.restfb.types.Post;
 import com.restfb.types.User;
 import com.restfb.types.send.SendResponse;
 
-import baseDados.BaseDados;
-import xml.XML;
+import bdaXML.XML;
+import bda_baseDeDados.BaseDados;
 
 import com.restfb.Version;
 

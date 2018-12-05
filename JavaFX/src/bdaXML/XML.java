@@ -3,7 +3,7 @@
  * @author eic2.04
  */
 
-package xml;
+package bdaXML;
 import java.io.File;
 import java.io.IOException;
 

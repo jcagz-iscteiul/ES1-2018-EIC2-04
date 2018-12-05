@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import baseDados.BaseDados;
-import xml.XML;
+import bdaXML.XML;
+import bda_baseDeDados.BaseDados;
 
 public abstract class RedeSocial {
 	

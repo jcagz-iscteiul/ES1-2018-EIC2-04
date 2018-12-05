@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,8 +7,8 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import RedesSociais.FacebookPost;
-import RedesSociais.TwitterPost;
+import bda_redesSociais.FacebookPost;
+import bda_redesSociais.TwitterPost;
 
 public class TwitterPostTest {
 	

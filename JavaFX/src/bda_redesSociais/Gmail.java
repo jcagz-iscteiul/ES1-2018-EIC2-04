@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ import javax.mail.Flags.Flag;
 
 import com.sun.mail.imap.IMAPFolder;
 
-import baseDados.BaseDados;
-import xml.XML;
+import bdaXML.XML;
+import bda_baseDeDados.BaseDados;
 
 /**
  * Simula o Gmail

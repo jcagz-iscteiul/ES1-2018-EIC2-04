@@ -1,11 +1,12 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
-import xml.XML;
+
+import bdaXML.XML;
 public class testeXML {
 
 	

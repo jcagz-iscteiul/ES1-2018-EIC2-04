@@ -1,4 +1,4 @@
-package baseDados;
+package bda_baseDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-import RedesSociais.EmailPost;
-import RedesSociais.Facebook;
-import RedesSociais.FacebookPost;
-import RedesSociais.Gmail;
-import RedesSociais.PostGeral;
-import RedesSociais.TwitterObject;
-import RedesSociais.TwitterPost;
+import bda_redesSociais.EmailPost;
+import bda_redesSociais.Facebook;
+import bda_redesSociais.FacebookPost;
+import bda_redesSociais.Gmail;
+import bda_redesSociais.PostGeral;
+import bda_redesSociais.TwitterObject;
+import bda_redesSociais.TwitterPost;
 
 public class BaseDados {
 

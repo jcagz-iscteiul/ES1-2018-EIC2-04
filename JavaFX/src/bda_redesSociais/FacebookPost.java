@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 import java.util.Date;
 

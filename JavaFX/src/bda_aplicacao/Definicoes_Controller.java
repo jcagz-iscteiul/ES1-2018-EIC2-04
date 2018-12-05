@@ -1,4 +1,4 @@
-package application;
+package bda_aplicacao;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,9 +8,10 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import RedesSociais.Facebook;
-import RedesSociais.Gmail;
-import RedesSociais.TwitterObject;
+import bdaXML.XML;
+import bda_redesSociais.Facebook;
+import bda_redesSociais.Gmail;
+import bda_redesSociais.TwitterObject;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -23,7 +24,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import xml.XML;
 
 public class Definicoes_Controller implements Initializable {
 	private XML xml;

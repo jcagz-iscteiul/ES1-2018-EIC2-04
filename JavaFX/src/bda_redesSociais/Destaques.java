@@ -1,4 +1,4 @@
-package RedesSociais;
+package bda_redesSociais;
 
 import java.util.ArrayList;
 import java.util.Calendar;

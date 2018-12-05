@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -15,9 +15,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
-import RedesSociais.Facebook;
-import RedesSociais.FacebookPost;
-import RedesSociais.PostGeral;
+
+import bda_redesSociais.Facebook;
+import bda_redesSociais.FacebookPost;
+import bda_redesSociais.PostGeral;
 
 public class FacebookTest {
 

@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.*;
 
@@ -13,10 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-import RedesSociais.FacebookPost;
-import RedesSociais.PostGeral;
-import RedesSociais.TwitterObject;
-import RedesSociais.TwitterPost;
+import bda_redesSociais.FacebookPost;
+import bda_redesSociais.PostGeral;
+import bda_redesSociais.TwitterObject;
+import bda_redesSociais.TwitterPost;
 import twitter4j.TwitterException;
 
 public class TwitterTest {

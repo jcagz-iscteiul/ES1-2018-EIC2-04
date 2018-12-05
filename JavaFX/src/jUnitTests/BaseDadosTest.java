@@ -1,4 +1,4 @@
-package JUnitTest;
+package jUnitTests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import RedesSociais.PostGeral;
-import baseDados.BaseDados;
+import bda_baseDeDados.BaseDados;
+import bda_redesSociais.PostGeral;
 
 public class BaseDadosTest {
 	
