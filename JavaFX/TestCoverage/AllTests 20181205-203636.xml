@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="ES1-2018-EIC2-04_BDA" tests="69" started="69" failures="0" errors="0" ignored="0">
+  <testsuite name="jUnitTests.AllTests" time="496.08">
+    <testsuite name="jUnitTests.BaseDadosTest" time="0.352">
+      <testcase name="test_getFacebookPosts" classname="jUnitTests.BaseDadosTest" time="0.334"/>
+      <testcase name="test_createSqlValues" classname="jUnitTests.BaseDadosTest" time="0.0"/>
+      <testcase name="test_getTwitterPosts" classname="jUnitTests.BaseDadosTest" time="0.006"/>
+      <testcase name="test_getGmailPosts" classname="jUnitTests.BaseDadosTest" time="0.011"/>
+      <testcase name="test_createSqlValuesGmail" classname="jUnitTests.BaseDadosTest" time="0.0"/>
+    </testsuite>
+    <testsuite name="jUnitTests.DestaquesTest" time="200.322">
+      <testcase name="test_setDestaques" classname="jUnitTests.DestaquesTest" time="34.304"/>
+      <testcase name="test_getPostEspecifico" classname="jUnitTests.DestaquesTest" time="34.432"/>
+      <testcase name="test_vinteQuatroHoras" classname="jUnitTests.DestaquesTest" time="33.165"/>
+      <testcase name="test_palavraChave" classname="jUnitTests.DestaquesTest" time="33.694"/>
+      <testcase name="test_viraLista" classname="jUnitTests.DestaquesTest" time="32.622"/>
+      <testcase name="test_getDestaques" classname="jUnitTests.DestaquesTest" time="32.105"/>
+    </testsuite>
+    <testsuite name="jUnitTests.EmailPostTest" time="0.002">
+      <testcase name="test_getFrom" classname="jUnitTests.EmailPostTest" time="0.0"/>
+      <testcase name="test_compareTo" classname="jUnitTests.EmailPostTest" time="0.0"/>
+      <testcase name="test_emailPostPreview" classname="jUnitTests.EmailPostTest" time="0.0"/>
+      <testcase name="test_getRedeSocial" classname="jUnitTests.EmailPostTest" time="0.001"/>
+      <testcase name="test_createTitulo" classname="jUnitTests.EmailPostTest" time="0.0"/>
+      <testcase name="test_getId" classname="jUnitTests.EmailPostTest" time="0.001"/>
+      <testcase name="test_getTo" classname="jUnitTests.EmailPostTest" time="0.0"/>
+    </testsuite>
+    <testsuite name="jUnitTests.FacebookPostTest" time="0.001">
+      <testcase name="test_getData" classname="jUnitTests.FacebookPostTest" time="0.0"/>
+      <testcase name="test_compareTo" classname="jUnitTests.FacebookPostTest" time="0.0"/>
+      <testcase name="test_createTitulo" classname="jUnitTests.FacebookPostTest" time="0.0"/>
+      <testcase name="test_getTitulo" classname="jUnitTests.FacebookPostTest" time="0.0"/>
+      <testcase name="test_getId" classname="jUnitTests.FacebookPostTest" time="0.001"/>
+    </testsuite>
+    <testsuite name="jUnitTests.FacebookTest" time="4.454">
+      <testcase name="test_getPostEspecifico" classname="jUnitTests.FacebookTest" time="0.279"/>
+      <testcase name="test_addPostsToArray" classname="jUnitTests.FacebookTest" time="0.314"/>
+      <testcase name="test_vinteQuatroHoras" classname="jUnitTests.FacebookTest" time="0.282"/>
+      <testcase name="test_getXML" classname="jUnitTests.FacebookTest" time="1.029"/>
+      <testcase name="test_palavraChave" classname="jUnitTests.FacebookTest" time="0.29"/>
+      <testcase name="test_refrescarConteudo" classname="jUnitTests.FacebookTest" time="0.596"/>
+      <testcase name="test_setPosts" classname="jUnitTests.FacebookTest" time="0.382"/>
+      <testcase name="test_getPosts" classname="jUnitTests.FacebookTest" time="0.326"/>
+      <testcase name="test_viraLista" classname="jUnitTests.FacebookTest" time="0.573"/>
+      <testcase name="test_createPostPreview" classname="jUnitTests.FacebookTest" time="0.383"/>
+    </testsuite>
+    <testsuite name="jUnitTests.GmailTest" time="287.35">
+      <testcase name="test_getPostEspecifico" classname="jUnitTests.GmailTest" time="32.288"/>
+      <testcase name="test_addEmailsToArray" classname="jUnitTests.GmailTest" time="31.876"/>
+      <testcase name="test_vinteQuatroHoras" classname="jUnitTests.GmailTest" time="31.352"/>
+      <testcase name="test_palavraChave" classname="jUnitTests.GmailTest" time="32.401"/>
+      <testcase name="test_refrescarConteudo" classname="jUnitTests.GmailTest" time="64.38"/>
+      <testcase name="viraArrayList" classname="jUnitTests.GmailTest" time="31.331"/>
+      <testcase name="test_getEmails" classname="jUnitTests.GmailTest" time="32.051"/>
+      <testcase name="test_getMessageContent" classname="jUnitTests.GmailTest" time="31.671"/>
+    </testsuite>
+    <testsuite name="jUnitTests.testeXML" time="0.14">
+      <testcase name="testSetGetFacebookAcessToken" classname="jUnitTests.testeXML" time="0.052"/>
+      <testcase name="testSetGetTwitterDebug" classname="jUnitTests.testeXML" time="0.012"/>
+      <testcase name="testSetGetFacebookAppID" classname="jUnitTests.testeXML" time="0.01"/>
+      <testcase name="testSetGetFacebookAppSecret" classname="jUnitTests.testeXML" time="0.008"/>
+      <testcase name="testSetGetTwitterAcessTokenSecret" classname="jUnitTests.testeXML" time="0.011"/>
+      <testcase name="testSetGetTwitterConsumerSecret" classname="jUnitTests.testeXML" time="0.012"/>
+      <testcase name="testgetGmailPassword" classname="jUnitTests.testeXML" time="0.01"/>
+      <testcase name="testgetGmailEmail" classname="jUnitTests.testeXML" time="0.013"/>
+      <testcase name="testSetGetTwitterAcessToken" classname="jUnitTests.testeXML" time="0.012"/>
+    </testsuite>
+    <testsuite name="jUnitTests.TwitterPostTest" time="0.001">
+      <testcase name="test_getData" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+      <testcase name="test_compareTo" classname="jUnitTests.TwitterPostTest" time="0.001"/>
+      <testcase name="test_createTitulo" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+      <testcase name="test_setPostID" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+      <testcase name="test_getPostID" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+      <testcase name="test_getTitulo" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+      <testcase name="test_getId" classname="jUnitTests.TwitterPostTest" time="0.0"/>
+    </testsuite>
+    <testsuite name="jUnitTests.TwitterTest" time="3.457">
+      <testcase name="test_getPostEspecifico" classname="jUnitTests.TwitterTest" time="0.433"/>
+      <testcase name="test_getInstance" classname="jUnitTests.TwitterTest" time="0.255"/>
+      <testcase name="test_addPostsToArray" classname="jUnitTests.TwitterTest" time="0.471"/>
+      <testcase name="test_vinteQuatroHoras" classname="jUnitTests.TwitterTest" time="0.229"/>
+      <testcase name="test_getXML" classname="jUnitTests.TwitterTest" time="0.445"/>
+      <testcase name="test_palavraChave" classname="jUnitTests.TwitterTest" time="0.255"/>
+      <testcase name="test_refrescarConteudo" classname="jUnitTests.TwitterTest" time="0.49"/>
+      <testcase name="test_setPosts" classname="jUnitTests.TwitterTest" time="0.178"/>
+      <testcase name="test_getTimeline" classname="jUnitTests.TwitterTest" time="0.175"/>
+      <testcase name="test_getPosts" classname="jUnitTests.TwitterTest" time="0.175"/>
+      <testcase name="test_viraLista" classname="jUnitTests.TwitterTest" time="0.171"/>
+      <testcase name="test_createPostPreview" classname="jUnitTests.TwitterTest" time="0.179"/>
+    </testsuite>
+  </testsuite>
+</testrun>
