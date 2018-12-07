@@ -12,4 +12,5 @@ Vídeo de Demonstração: https://www.youtube.com/watch?v=dMzGNMr3c-g&feature=yo
 
 Idenficação e descrição de erros não implementadas ou incompletas:
 - Não conseguimos implementar a funcionalidade de publicar posts no facebook
+- Não conseguimos gerar o .jar devido a incompatibilidades com o javaFX
 
