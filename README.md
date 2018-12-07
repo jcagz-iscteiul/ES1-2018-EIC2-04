@@ -8,7 +8,7 @@ Membros do Grupo:
 - João Garcez         78530
 - Pedro Norte         78760
 
-Vídeo de Demonstração: (LINK)
+Vídeo de Demonstração: https://www.youtube.com/watch?v=dMzGNMr3c-g&feature=youtu.be
 
 Idenficação e descrição de erros não implementadas ou incompletas:
 - Não conseguimos implementar a funcionalidade de publicar posts no facebook
